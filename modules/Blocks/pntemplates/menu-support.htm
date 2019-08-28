@@ -1,0 +1,17 @@
+<script language="JavaScript1.1" src="system/Blocks/pntemplates/menu.js" type="text/javascript"></script>
+<style type="text/css">@import url("system/Blocks/pntemplates/menu.css"); </style>
+<table cellspacing="0" cellpadding="0" width="100%" border="0">
+  <tbody>
+        <tr class="envoNavGroupRow" style="background-color:#999999">
+          <td class="envoNavGroup" colspan="2"><div class="envoNavTitle">Support</div></td>
+		</tr>
+  <!--[foreach from=$menuitems item=item ]-->
+        <tr class="envoNavOtherRow">
+          <td class="swath">&nbsp;</td>
+          <td class="envoNavOther" onmouseover="ENVO_navBar(this,1,0) onclick="ENVO_navBarClick(this,0,'link4')" onmouseout="ENVO_navBar(this,0,0)">
+            <div class="envoNavText"><a href="<!--[$item.MENUITEMURL]-->" title="<!--[$item.MENUITEMCOMMENT]-->"><!--[$item.MENUITEMTITLE]--></a></div>
+		  </td>
+		</tr>
+  <!--[/foreach]-->  
+  </tbody>
+</table>

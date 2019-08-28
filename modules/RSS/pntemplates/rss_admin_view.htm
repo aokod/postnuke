@@ -1,0 +1,26 @@
+<!--[*  $Id: rss_admin_view.htm 15158 2004-12-14 11:14:23Z markwest $  *]-->
+<!--[include file="rss_admin_menu.htm"]-->
+<h2><!--[pnml name="_RSSVIEW"]--></h2>
+<table class="pn-admintable">
+  <tr>
+    <th><!--[pnml name="_RSSNAME"]--></th>
+    <th><!--[pnml name="_RSSURL"]--></th>
+    <th><!--[pnml name="_RSSOPTIONS"]--></th>
+  </tr>
+  <!--[section name=rssitems loop=$rssitems]-->  
+    <tr class="<!--[cycle values="pn-odd,pn-even"]-->">
+      <td><!--[$rssitems[rssitems].name|pnvarprepfordisplay]--></td>
+      <td><!--[$rssitems[rssitems].url|pnvarprepfordisplay]--></td>
+	  <td>
+	    <!--[assign var="options" value=$rssitems[rssitems].options]-->
+		<!--[strip]-->
+        [<!--[section name=options loop=$options]-->
+	    <a href="<!--[$options[options].url|pnvarprepfordisplay]-->"><!--[pnml name=$options[options].title]--></a> 
+		<!--[if !$smarty.section.options.last]--> | <!--[/if]-->
+        <!--[/section]-->]
+		<!--[/strip]-->
+      </td>
+    </tr>
+  <!--[/section]-->
+</table>
+<!--[pager show=page rowcount=$pager.numitems limit=$pager.itemsperpage posvar=startnum shift=1]-->

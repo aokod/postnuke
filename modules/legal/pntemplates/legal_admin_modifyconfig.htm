@@ -1,0 +1,39 @@
+<!--[*  $Id: legal_admin_modifyconfig.htm 15409 2005-01-19 11:43:30Z markwest $  *]-->
+<!--[include file="legal_admin_menu.htm"]-->
+<h2><!--[pnml name="_MODIFYCONFIG"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="legal" type="admin" func="updateconfig"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="legal"]-->" />
+	<div class="pn-adminformrow">
+		<label for="legal_termsofuse"><!--[pnml name="_LEGALTERMSOFUSE"]--></label>
+		<!--[if $termsofuse eq 1]-->
+		<input id="legal_termsofuse" name="termsofuse" type="checkbox" value="1" checked="checked" />
+		<!--[else]-->
+		<input id="legal_termsofuse" name="termsofuse" type="checkbox" value="1" />
+		<!--[/if]-->
+	</div>
+	<div class="pn-adminformrow">
+		<label for="legal_privacypolicy"><!--[pnml name="_LEGALPRIVACYPOLICY"]--></label>
+		<!--[if $privacypolicy eq 1]-->
+		<input id="legal_privacypolicy" name="privacypolicy" type="checkbox" value="1" checked="checked" />
+		<!--[else]-->
+		<input id="legal_privacypolicy" name="privacypolicy" type="checkbox" value="1" />
+		<!--[/if]-->
+	</div>
+	<div class="pn-adminformrow">
+		<label for="legal_accessibilitystatement"><!--[pnml name="_LEGALACCESSIBILITYSTATEMENT"]--></label>
+		<!--[if $accessibilitystatement eq 1]-->
+		<input id="legal_accessibilitystatement" name="accessibilitystatement" type="checkbox" value="1" checked="checked" />
+		<!--[else]-->
+		<input id="legal_accessibilitystatement" name="accessibilitystatement" type="checkbox" value="1" />
+		<!--[/if]-->
+	</div>
+	<div class="pn-adminformrow">
+		<!--[pnmodcallhooks hookobject="module" hookaction="modifyconfig" hookid="legal" module="legal"]-->
+	</div>
+	<div class="pn-adminformrow">
+	<input name="submit" type="submit" value="<!--[pnml name="_UPDATECONFIG"]-->" />
+	</div>
+	<div style="clear:both"></div>
+</div>
+</form>

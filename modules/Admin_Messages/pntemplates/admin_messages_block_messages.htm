@@ -1,0 +1,7 @@
+<!--[*  $Id: admin_messages_block_messages.htm 16756 2005-09-13 10:57:21Z markwest $  *]-->
+<div style="padding:5px;">
+<!--[section name=messages loop=$messages]-->
+<h1><!--[$messages[messages].title|pnvarprephtmldisplay|pnmodcallhooks:"Admin_Messages"|pnvarcensor]--></h1>
+<!--[$messages[messages].content|pnvarprephtmldisplay|pnmodcallhooks:"Admin_Messages"|pnvarcensor]-->
+<!--[/section]-->
+</div>

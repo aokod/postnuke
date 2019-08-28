@@ -1,0 +1,63 @@
+<!--[*  $Id: ratings_user_display.htm 15986 2005-03-15 09:48:54Z markwest $  *]-->
+<!--[if $showrating eq 1]-->
+  <!--[pnml name="_RATING"]-->
+  <!--[if $style eq 'percentage']-->
+    <!--[$rating|pnvarprepfordisplay]-->%
+  <!--[ elseif $style eq outoffive]-->
+    <!--[$rating|pnvarprepfordisplay]-->/5
+  <!--[ elseif $style eq outoften]-->
+    <!--[$rating|pnvarprepfordisplay]-->/10
+  <!--[ elseif $style eq outoffivestars]-->
+	<!--[section name=fullstars loop=$rating]-->
+    <!--[pnimg src="star.gif"]-->
+	<!--[/section]-->
+    <!--[if $fracrating gte 5]-->
+    <!--[pnimg src=halfstar.gif"]-->
+    <!--[/if]-->
+  <!--[ elseif $style eq outoftenstars]-->
+	<!--[section name=fullstars loop=$rating]-->
+    <!--[pnimg src="star.gif"]-->
+	<!--[/section]-->
+    <!--[if $fracrating gte 5]-->
+    <!--[pnimg src="halfstar.gif"]-->
+    <!--[/if]-->
+  <!--[/if]-->
+<!--[/if]-->
+<!--[if $showratingform eq 1 and $permission eq true]-->
+<form action="<!--[pnmodurl modname=Ratings type=user func=rate]-->" method="post" enctype="application/x-www-form-urlencoded" name="<!--[pnml name="_RATING"]-->">
+<div>
+	<label for="rating"><!--[pnml name="_RATETHISITEM"]--></label>
+    <input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Ratings"]-->" />
+    <input type="hidden" name="returnurl" value="<!--[$returnurl|pnvarprepfordisplay]-->" />
+    <input type="hidden" name="modname" value="<!--[$modname|pnvarprepfordisplay]-->" />
+    <input type="hidden" name="objectid" value="<!--[$objectid|pnvarprepfordisplay]-->" />
+    <input type="hidden" name="ratingtype" value="<!--[$ratingtype|pnvarprepfordisplay]-->" />
+  <!--[if $style eq 'percentage']-->
+    <input name="rating" type="text" size="3" maxlength="3" id="rating" />
+  <!--[ elseif $style eq 'outoffive' or $style eq 'outoffivestars']-->
+    <select name="rating" size="1" id="rating">
+      <option value="0" selected="selected">0</option>
+      <option value="20">1</option>
+      <option value="40">2</option>
+      <option value="60">3</option>
+      <option value="80">4</option>
+      <option value="100">5</option>
+	</select>
+  <!--[ elseif $style eq 'outoften' or $style eq 'outoftenstars']-->
+    <select name="rating" size="1" id="rating">
+      <option value="10" selected="selected">1</option>
+      <option value="20">2</option>
+      <option value="30">3</option>
+      <option value="40">4</option>
+      <option value="50">5</option>
+      <option value="60">6</option>
+      <option value="70">7</option>
+      <option value="80">8</option>
+      <option value="90">9</option>
+      <option value="100">10</option>
+	</select>
+  <!--[/if]-->
+  <input name="submit" type="submit" value="<!--[pnml name="_SUBMIT"]-->" />
+</div>
+</form>
+<!--[/if]-->

@@ -1,0 +1,24 @@
+<!--[*  $Id: example_admin_modifyconfig.htm 19361 2006-07-03 14:57:57Z markwest $  *]-->
+<!--[include file="example_admin_menu.htm"]-->
+<h2><!--[pnml name="_MODIFYCONFIG"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Example" type="admin" func="updateconfig"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Example"]-->" />
+	<div class="pn-adminformrow">
+		<label for="example_bold"><!--[pnml name="_EXAMPLEDISPLAYBOLD"]--></label>
+		<!--[if $bold eq 1]-->
+		<input id="example_bold" name="bold" type="checkbox" value="1" checked="checked" />
+		<!--[else]-->
+		<input id="example_bold" name="bold" type="checkbox" value="1" />
+		<!--[/if]-->
+	</div>
+	<div class="pn-adminformrow">
+		<label for="example_itemsperpage"><!--[pnml name="_EXAMPLEITEMSPERPAGE"]--></label>
+		<input id="example_itemsperpage" type="text" name="itemsperpage" size="3" value="<!--[$itemsperpage|pnvarprepfordisplay]-->" />
+	</div>
+	<!--[pnmodcallhooks hookobject="module" hookaction="modifyconfig" hookid="Example" module="Example"]-->
+	<div class="pn-adminformrow">
+	<input name="submit" type="submit" value="<!--[pnml name="_UPDATECONFIG"]-->" />
+	</div>
+</div>
+</form>

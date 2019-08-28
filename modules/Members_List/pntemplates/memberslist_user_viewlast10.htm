@@ -1,0 +1,35 @@
+<!--[*  $Id: memberslist_user_viewlast10.htm 17337 2005-12-16 13:41:54Z markwest $  *]-->
+<!--[include file="memberslist_user_menu.htm"]-->
+<h2><!--[pnml name="_MEMBERSLISTLAST10REG"]--></h2>
+<table class="memberslist-results">
+  <tr>
+    <th><!--[pnml name="_MEMBERSLISTONLINESTATUS"]--></th>
+    <th><!--[pnml name="_MEMBERSLISTNICKNAME"]--></th>
+    <th><!--[pnml name="_MEMBERSLISTREGDATE"]--></th>
+    <th><!--[pnml name="_MEMBERSLISTREALNAME"]--></th>
+    <th><!--[pnml name="_MEMBERSLISTPM"]--></th>
+    <th><!--[pnml name="_MEMBERSLISTURL"]--></th>
+  </tr>
+  <!--[section name=users loop=$users]-->
+    <tr>
+      <td>
+	    <!--[if $users[users].onlinestatus eq 1 ]-->
+		  <div style="color:red;"><strong><!--[pnimg src="online.gif" alt=_MEMBERSLISTSTATUSONLINE altml=true]--><!--[pnml name="_MEMBERSLISTSTATUSONLINE"]--></strong></div>		
+        <!--[else]-->
+		  <div style="color:black;"><strong><!--[pnimg src="offline.gif" alt=_MEMBERSLISTSTATUSOFFLINE" altml=true]--><!--[pnml name="_MEMBERSLISTSTATUSOFFLINE"]--></strong></div>		
+		<!--[/if]-->
+	  </td>
+      <td><strong><a href="user.php?op=userinfo&amp;uname=<!--[$users[users].uname|pnvarprepfordisplay]-->"><!--[$users[users].uname]--></a></strong></td>
+      <td><!--[$users[users].pn_user_regdate|default:"&nbsp;"]--></td>
+      <td><!--[$users[users].name|default:"&nbsp;"]--></td>
+      <td><!--[pm uname=$users[users].uname]--></td>
+      <td>
+        <!--[if $users[users].url eq '']-->
+			&nbsp;
+        <!--[else]-->
+          <a href="<!--[$users[users].url|pnvarprepfordisplay]-->"><!--[pnimg src="url.gif" alt=$users[users].url]--></a>
+		<!--[/if]-->
+      </td>
+    </tr>
+  <!--[/section]-->
+</table>

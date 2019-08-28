@@ -1,0 +1,21 @@
+<!--[*  $Id: admin_admin_new.htm 15405 2005-01-19 11:20:07Z markwest $  *]-->
+<!--[include file="admin_admin_menu.htm"]-->
+<h2><!--[pnml name="_ADMINADDCATEGORY"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Admin" type="admin" func="create"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+    <input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Admin"]-->" />
+    <div class="pn-adminformrow">
+      <label for="admin_name"><!--[pnml name="_ADMINNAME"]--></label>
+      <input id="admin_name" name="catname" type="text" size="30" maxlength="50" />
+    </div>
+    <div class="pn-adminformrow">
+      <label for="admin_description"><!--[pnml name="_ADMINDESCRIPTION"]--></label>
+      <textarea id="admin_description" name="description" cols="50" rows="10"></textarea>
+    </div>
+    <!--[pnmodcallhooks hookobject=item hookaction=new module=Admin]-->
+    <div class="pn-adminformrow">
+      <input name="submit" type="submit" value="<!--[pnml name="_ADMINADDCATEGORY"]-->" />
+	</div>
+    <div style="clear:both;"></div>
+</div>
+</form>

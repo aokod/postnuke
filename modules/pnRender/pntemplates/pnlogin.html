@@ -1,0 +1,44 @@
+<!--[* $Id: pnlogin.html 16582 2005-08-01 11:09:05Z landseer $ *]-->
+<!--[*  ---------------------------------------------------------------------- *]-->
+<!--[*  pnRender                                                               *]-->
+<!--[*  PostNuke wrapper class for Smarty                                      *]-->
+<!--[*  ---------------------------------------------------------------------- *]-->
+<!--[*  Author: Frank Schummertz, frank.schummertz@landseer.stuttgart.de       *]-->
+<!--[*  ---------------------------------------------------------------------- *]-->
+<!--[*  LICENSE                                                                *]-->
+<!--[*  This program is free software; you can redistribute it and/or          *]-->
+<!--[*  modify it under the terms of the GNU General Public License (GPL)      *]-->
+<!--[*  as published by the Free Software Foundation; either version 2         *]-->
+<!--[*  of the License, or (at your option) any later version.                 *]-->
+<!--[*  This program is distributed in the hope that it will be useful,        *]-->
+<!--[*  but WITHOUT ANY WARRANTY; without even the implied warranty of         *]-->
+<!--[*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the          *]-->
+<!--[*  GNU General Public License for more details.                           *]-->
+<!--[*  To read the license please visit http://www.gnu.org/copyleft/gpl.html  *]-->
+<!--[*  ---------------------------------------------------------------------- *]-->
+<!--[*  Purpose of this template:                                              *]-->
+<!--[*  pnrender login block                                                   *]-->
+<!--[*  ---------------------------------------------------------------------- *]-->
+
+<form action="user.php" method="post">
+<div style="text-align: left; padding: 2px;">
+    <label for="uname"><!--[ pnml name='_LOGINBLOCK_NICKNAME' ]--></label><br />
+    <input type="text" id="uname" name="uname" size="14" maxlength="25"	onblur="if(this.value=='')this.value='<!--[ pnml name=_LOGINBLOCK_NICKNAME ]-->';" onfocus="if(this.value=='<!--[ pnml name=_BLOCKNICKNAME ]-->')this.value='';" /><br />
+    <br />
+    <label for="pass"><!--[ pnml name='_LOGINBLOCK_PASSWORD' ]--></label><br />
+    <input type="password" id="pass" name="pass" size="14" maxlength="20" />
+    <br />
+    <!--[ if $seclevel != 'High' ]-->
+        <input type="checkbox" value="1" name="rememberme" id="rememberme" />&nbsp;
+        <label for="rememberme"><!--[ pnml name='_LOGINBLOCK_REMEMBERME' ]--></label>
+        <br />
+    <!--[ /if ]-->
+    <br />
+    <!--[ pnml name='_LOGINBLOCK_ASREGISTERED' html=1|pnvarprephtmldisplay ]-->
+    <input type="hidden" name="module" value="User" />
+    <input type="hidden" name="op" value="login" />
+    <input type="hidden" name="url" value="<!--[ $path|pnvarprepfordisplay ]-->" />
+    <br /><br />
+    <input type="submit" value="<!--[ pnml name='_LOGINBLOCK_LOGIN' ]-->" />
+</div>
+</form>

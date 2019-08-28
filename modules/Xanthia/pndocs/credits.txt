@@ -1,0 +1,16 @@
+Special thanks to Brian K. Virgin the original author of Encompass from which Xanthia was created.
+It has been a great module and inspiration of CE.
+
+Special thanks to Gregory Remington aka mediatech for all the great suggestions to make Xanthia
+leap to the "next level".
+
+Thanks to Craig R. Saunders (ColdRolledSteel) from http://www.mtrad.com for his work on short urls.
+
+Credit to Martin Anderson for further work on short urls implementation and assoicated rewrite rules.
+
+Credit to CHTEKK from http://www.longitekk.com/ for further work on short urls development and providing the concept of the configurable short urls extension
+
+Credit to the original authors of the envolution NoMoreBlocks module - Written by: ZXvision TiMax Cino
+ZXvision zxvision@envolution.it
+TiMax timax@envolution.it
+Cino  cino@envolution.it

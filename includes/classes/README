@@ -1,0 +1,6 @@
+#
+# Added to hold shared class files
+# 
+# /blocks/rss.php uses rss.class, but also http_get.class
+# the latter can be used by others to connect to remote urls
+#

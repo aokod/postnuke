@@ -1,0 +1,108 @@
+<!--[include file="permissions_admin_menu.htm" permgrp=$permgrp]-->
+<!--[include file="componentinstance.js"]-->
+<h1><!--[$title|pnvarprepfordisplay]--></h1>
+<!--[if $showsirenbar eq 1]-->
+<!--[include file="permissionsadminsirenbar.htm"]-->
+<!--[/if]-->
+<!--[if $action eq "insert" or $action eq "modify" or $action eq "add"]-->
+<form class="pn-adminform" action="<!--[$formurl|pnvarprepfordisplay]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Permissions"]-->" />
+<input type="hidden" name="permtype" value="<!--[$permtype|pnvarprepfordisplay]-->" />
+<input type="hidden" name="permgrp" value="<!--[$permgrp|pnvarprepfordisplay]-->" />
+<input type="hidden" name="insseq" value="<!--[$insseq|pnvarprepfordisplay]-->" />
+<input type="hidden" name="realm" value="0" />
+<!--[/if]-->
+<table class="pn-admintable">
+  <tr>
+    <th><!--[pnml name="_SEQUENCE"]--></th>
+    <th><!--[$mlpermtype|pnvarprepfordisplay]--></th>
+    <th><a href="javascript:showinstanceinformation()"><!--[pnml name="_COMPONENT"]--></a></th>
+    <th><a href="javascript:showinstanceinformation()"><!--[pnml name="_INSTANCE"]--></a></th>
+    <th><!--[pnml name="_PERMLEVEL"]--></th>
+    <th>&nbsp;</th>
+  </tr>
+  <!--[section name=permissions loop=$permissions]-->
+    <tr class="<!--[cycle values="pn-odd,pn-even"]-->">
+      <!--[if ($insseq eq $permissions[permissions].sequence) and ($action eq insert)]-->
+		  <td>&nbsp;</td>
+          <td>	    
+            <select name="id">
+              <!--[html_options options=$idvalues]-->
+            </select>
+          </td>
+          <td><textarea name="component"></textarea></td>
+          <td><textarea name="instance"></textarea></td>
+          <td>
+		    <select name="level">
+		      <!--[html_options options=$permissionlevels]-->
+            </select>
+          </td>
+          <td>
+            <input name="submit" type="submit" value="<!--[$submit]-->" />
+		  </td>
+			</tr>
+			<tr>
+              <td><!--[$permissions[permissions].sequence|pnvarprepfordisplay]--></td>
+			  <td><!--[$permissions[permissions].group|pnvarprepfordisplay]--></td>
+			  <td><!--[$permissions[permissions].component|pnvarprepfordisplay]--></td>
+			  <td><!--[$permissions[permissions].instance|pnvarprepfordisplay]--></td>
+			  <td><!--[$permissions[permissions].accesslevel|pnvarprepfordisplay]--></td>
+			  <td>&nbsp;</td>
+      <!--[elseif ($chgpid eq $permissions[permissions].pid) and ($action eq modify)]-->
+		    <td>
+			<input type="text" name="seq" value="<!--[$permissions[permissions].sequence|pnvarprepfordisplay]-->" />
+			<input type="hidden" name="oldseq" value="<!--[$permissions[permissions].sequence]-->" />
+			<input type="hidden" name="pid" value="<!--[$permissions[permissions].pid]-->" />
+			</td>
+            <td>	    
+            <select name="id">
+              <!--[html_options options=$idvalues selected=$selectedid]-->
+            </select>
+			</td>
+			<td><textarea name="component"><!--[$permissions[permissions].component|pnvarprepfordisplay]--></textarea></td>
+			<td><textarea name="instance"><!--[$permissions[permissions].instance|pnvarprepfordisplay]--></textarea></td>
+			<td>
+			  <select name="level">
+				<!--[html_options options=$permissionlevels selected=$permissions[permissions].level]-->
+			  </select>
+			</td>
+			<td>
+			<input name="submit" type="submit" value="<!--[$submit|pnvarprepfordisplay]-->" />
+			</td>
+      <!--[else]-->	  
+        <td><!--[$permissions[permissions].sequence|pnvarprepfordisplay]--></td>
+        <td><!--[$permissions[permissions].group|pnvarprepfordisplay]--></td>
+        <td><!--[$permissions[permissions].component|pnvarprepfordisplay]--></td>
+        <td><!--[$permissions[permissions].instance|pnvarprepfordisplay]--></td>
+        <td><!--[$permissions[permissions].accesslevel|pnvarprepfordisplay]--></td>
+        <td>&nbsp;</td>
+	  <!--[/if]-->
+    </tr>
+  <!--[/section]-->
+  <!--[if $action eq "add"]-->
+  <tr>
+    <td>&nbsp;</td>
+	<td>	    
+	<select name="id">
+	  <!--[html_options options=$idvalues selected=$idvalue]-->
+	</select>
+	</td>
+	<td><textarea name="component"><!--[$permissions[permissions].component|pnvarprepfordisplay]--></textarea></td>
+	<td><textarea name="instance"><!--[$permissions[permissions].instance|pnvarprepfordisplay]--></textarea></td>
+	<td>
+	  <select name="level">
+		<!--[html_options options=$permissionlevels selected=$permissions[permissions].level]-->
+	  </select>
+	</td>
+	<td>
+	<input name="submit" type="submit" value="<!--[$submit|pnvarprepfordisplay]-->" />
+	</td>
+	</tr>
+  <!--[/if]-->
+</table>
+<!--[if $action eq "insert" or $action eq "modify" or $action eq "add"]-->
+</div>
+</form>
+<!--[/if]-->
+<!--[$pager]-->

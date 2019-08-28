@@ -1,0 +1,33 @@
+<!--[*  $Id: admin_admin_categorymenu.htm 16554 2005-07-29 08:45:06Z larsneo $  *]-->
+<!--[pngetstatusmsg]-->
+<div class="container" style="border-color:<!--[pnthemegetvar name="sepcolor"]-->">
+<h1><!--[pnml name=_ADMIN]--> (<!--[pnml name=_PN_VERSION_NUM]-->)</h1>
+<!--[if !$magic_quotes]-->
+<strong><!--[pnml name=_ADMIN_MAGIC_QUOTES html=1]--></strong><br />
+<!--[/if]-->
+<!--[if $register_globals]-->
+<strong><!--[pnml name=_ADMIN_REGISTER_GLOBALS html=1]--></strong><br />
+<!--[/if]-->
+<!--[if $config_php]-->
+<strong><!--[pnml name=_ADMIN_CONFIG_PHP html=1]--></strong><br />
+<!--[/if]-->
+<!--[if $config_old_php]-->
+<strong><!--[pnml name=_ADMIN_CONFIG_OLD_PHP html=1]--></strong><br />
+<!--[/if]-->
+<!--[if !$pntemp_htaccess]-->
+<strong><!--[pnml name=_ADMIN_PNTEMP_HTACCESS html=1]--></strong><br />
+<!--[/if]-->
+<br />
+<ul id="minitabs">
+<!--[section name=menuoption loop=$menuoptions]-->
+<li>
+<!--[if $currentcat eq $menuoptions[menuoption].cid]-->
+<a class="active" href="<!--[$menuoptions[menuoption].url|pnvarprepfordisplay]-->" title="<!--[$menuoptions[menuoption].description|pnvarprepfordisplay]-->"><!--[$menuoptions[menuoption].title|pnvarprepfordisplay]--></a>
+<!--[else]-->
+<a href="<!--[$menuoptions[menuoption].url|pnvarprepfordisplay]-->" title="<!--[$menuoptions[menuoption].description|pnvarprepfordisplay]-->"><!--[$menuoptions[menuoption].title|pnvarprepfordisplay]--></a>
+<!--[/if]-->
+</li>
+<!--[/section]-->
+</ul>
+<!--[ adminonlinemanual ]-->
+</div>

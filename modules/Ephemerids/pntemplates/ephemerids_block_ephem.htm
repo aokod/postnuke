@@ -1,0 +1,6 @@
+<!--[*  $Id: ephemerids_block_ephem.htm 15027 2004-12-05 12:27:48Z markwest $  *]-->
+<h4><!--[pnml name="_ONEDAY"]--></h4>
+<!--[section name=ephemerids loop=$items]-->
+<p><strong><!--[$items[ephemerids].year|pnvarprepfordisplay]--></strong></p>
+<p><!--[$items[ephemerids].event|pnmodcallhooks:"Ephemerids"|pnvarprephtmldisplay|pnvarcensor]--></p>
+<!--[/section]-->

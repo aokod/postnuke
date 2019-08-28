@@ -1,0 +1,57 @@
+<!--[*  $Id: blocks_admin_new.htm 15963 2005-03-10 16:24:37Z markwest $  *]-->
+<!--[include file="blocks_admin_menu.htm"]-->
+<h2><!--[pnml name="_ADDBLOCK"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Blocks" type="admin" func="create"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+    <input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Blocks"]-->" />
+	<table>
+    <tr>
+      <td><label for="blocks_title"><!--[pnml name="_TITLE"]--></label></td>
+      <td><input id="blocks_title" name="title" type="text" size="40" maxlength="60" /></td>
+    </tr>
+    <tr>
+      <td><label for="blocks_blockid"><!--[pnml name="_BLOCK"]--></label></td>
+      <td>
+	    <select id="blocks_blockid" name="blockid">
+            <!--[html_options options=$blockids]-->
+        </select>
+	  </td>
+    </tr>
+    <tr>
+      <td><label for="blocks_position"><!--[pnml name="_POSITION"]--></label></td>
+      <td>
+	    <select id="blocks_position" name="position">
+          <option value="l"><!--[pnml name="_LEFT"]--></option>		
+          <option value="r"><!--[pnml name="_RIGHT"]--></option>		
+          <option value="c"><!--[pnml name="_CENTRE"]--></option>		
+        </select>
+	  </td>
+    </tr>
+    <tr>
+      <td><label for="blocks_collapsable"><!--[pnml name="_COLLAPSABLE"]--></label></td>
+      <td>
+	    <!--[pnml name=_YES]--><input id="blocks_collapsable" name="collapsable" type="radio" value="1" checked="checked" />
+        <!--[pnml name=_NO]--><input id="blocks_collapsable" name="collapsable" type="radio" value="0" />
+      </td>
+    </tr>
+    <tr>
+      <td><label for="blocks_defaultstate"><!--[pnml name="_DEFAULTSTATE"]--></label></td>
+      <td>
+	    <!--[pnml name=_EXPANDED]--><input id="blocks_defaultstate" name="defaultstate" type="radio" value="1" checked="checked" />
+        <!--[pnml name=_COLLAPSED]--><input id="blocks_defaultstate" name="defaultstate" type="radio" value="0" />
+      </td>
+    </tr>
+    <tr>
+      <td><label for="blocks_language"><!--[pnml name="_LANGUAGE"]--> </label></td>
+      <td>
+	    <select id="blocks_language" name="language">
+          <option value=""><!--[pnml name="_ALL"]--></option>		
+            <!--[html_options options=$blocklanguages]-->
+        </select>
+	  </td>
+    </tr>
+    </table>
+    <!--[pnmodcallhooks hookobject=item hookaction=new module=Blocks]-->
+	<input name="submit" type="submit" value="<!--[pnml name="_COMMIT"]-->" />
+</div>
+</form>

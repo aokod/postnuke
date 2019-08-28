@@ -1,0 +1,33 @@
+<!--[*  $Id: autolinks_admin_modifyconfig.htm 15410 2005-01-19 11:51:29Z markwest $  *]-->
+<!--[include file="autolinks_admin_menu.htm"]-->
+<h2><!--[pnml name="_AUTOLINKSMODIFYCONFIG"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Autolinks" type="admin" func="updateconfig"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<div class="pn-adminformrow">
+		<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Autolinks"]-->" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="autolinks_linkfirst"><!--[pnml name="_AUTOLINKSLINKFIRST"]--></label>
+		<input id="autolinks_linkfirst" type="text" name="linkfirst" size="3" value="<!--[$linkfirst|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="autolinks_invisilinks"><!--[pnml name="_AUTOLINKSNODECORATION"]--></label>
+		<input id="autolinks_invisilinks" type="text" name="invisilinks" size="3" value="<!--[$invisilinks|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="autolinks_newwindow"><!--[pnml name="_AUTOLINKSNEWWINDOW"]--></label>
+		<input id="autolinks_newwindow" type="text" name="newwindow" size="3" value="<!--[$newwindow|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="autolinks_itemsperpage"><!--[pnml name="_AUTOLINKSITEMSPERPAGE"]--></label>
+		<input id="autolinks_itemsperpage" type="text" name="itemsperpage" size="3" value="<!--[$itemsperpage|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow">
+		<!--[pnmodcallhooks hookobject=module hookaction=modifyconfig module=Autolinks]-->
+	</div>
+	<div class="pn-adminformrow">
+		<input name="submit" type="submit" value="<!--[pnml name="_AUTOLINKSUPDATECONFIG"]-->" />
+	</div>
+	<div style="clear:both"></div>
+</div>
+</form>

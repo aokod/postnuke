@@ -1,0 +1,69 @@
+<!--[*  $Id: credits_user_main.htm 17330 2005-12-14 15:23:48Z markwest $  *]-->
+<!--[include file="credits_user_menu.htm]-->
+<div style="text-align:center;"><!--[pnml name=_CREDITSPOSTNUKE html=1]--></div>
+<div style="text-align:center;">
+	<a href="<!--[pnmodurl modname=Credits type=user func=display mod=core filetype=credits]-->">
+		<img src="modules/Credits/pnimages/credits.gif" alt="<!--[pnml name=_CREDITSCREDITS]-->" />
+    	<!--[pnml name=_CREDITSREADPNCR]-->
+	</a>
+	<a href="<!--[pnmodurl modname=Credits type=user func=display mod=core filetype=help]-->">
+		<img src="modules/Credits/pnimages/help.gif" alt="<!--[pnml name=_CREDITSHELP]-->" />
+		<!--[pnml name=_CREDITSREADPNHP]-->
+	</a>
+	<a href="<!--[pnmodurl modname=Credits type=user func=display mod=core filetype=license]-->">
+		<img src="modules/Credits/pnimages/license.gif" alt="<!--[pnml name=_CREDITSLICENSE]-->" />
+	    <!--[pnml name=_CREDITSREADPNLIC]-->
+	</a>
+</div>
+<table width="100%" border="3">
+  <tr>
+      <th><!--[pnml name=_HEADCREDITDISPNAME]--></th>
+      <th><!--[pnml name=_HEADCREDITVERSION]--></th>
+      <th><!--[pnml name=_HEADCREDITDESC]--></th>
+      <th><!--[pnml name=_HEADCREDITAUTHOR]--></th>
+      <th><!--[pnml name=_HEADCREDITDOCS]--></th>
+  </tr>
+  <!--[section name=modulesinfo loop=$modules]-->
+    <tr>
+      <td><!--[$modules[modulesinfo].filename|default:""|pnvarprepfordisplay]-->
+	      <!--[if $modules[modulesinfo].official eq 1]--><img src="modules/Credits/pnimages/official.gif" alt="" /><!--[/if]-->
+	  </td>
+      <td><!--[$modules[modulesinfo].version|default:" "|pnvarprepfordisplay]--></td>
+      <td><!--[$modules[modulesinfo].description|default:" "|pnvarprepfordisplay]--></td>
+      <td>
+		<!--[strip]-->
+	  	<!--[section name=contacts loop=$modules[modulesinfo].contact]-->
+			<!--[if $modules[modulesinfo].contact[contacts] neq '']-->
+			<a href="<!--[$modules[modulesinfo].contact[contacts]|trim|pnvarprepfordisplay]-->"><!--[$modules[modulesinfo].author[contacts]|trim|pnvarprephtmldisplay]--></a>
+			<!--[else]-->
+			<!--[$modules[modulesinfo].author[contacts]|trim|pnvarprephtmldisplay]-->
+			<!--[/if]-->
+            <!--[if $smarty.section.contacts.last neq true]-->, <!--[/if]-->
+		<!--[/section]-->
+		<!--[/strip]-->
+	  </td>
+	  <td align="left">&nbsp;
+          <!--[if $modules[modulesinfo].credits != ""]-->
+			<a href="<!--[pnmodurl modname=Credits type=user func=display mod=$modules[modulesinfo].filename filetype=credits]-->">
+				<img src="modules/Credits/pnimages/credits.gif" alt="<!--[pnml name=_CREDITSCREDITS]-->" />
+			</a>
+		  <!--[/if]-->
+		  <!--[if $modules[modulesinfo].help != ""]-->
+    		<a href="<!--[pnmodurl modname=Credits type=user func=display mod=$modules[modulesinfo].filename filetype=help]-->">
+				<img src="modules/Credits/pnimages/help.gif" alt="<!--[pnml name=_CREDITSHELP]-->" />
+			</a>
+		  <!--[/if]-->
+		  <!--[if $modules[modulesinfo].license != ""]-->
+    		<a href="<!--[pnmodurl modname=Credits type=user func=display mod=$modules[modulesinfo].filename filetype=license]-->">
+				<img src="modules/Credits/pnimages/license.gif" alt="<!--[pnml name=_CREDITSLICENSE]-->" />
+			</a>
+		  <!--[/if]-->
+		  <!--[if $modules[modulesinfo].changelog != ""]-->
+			<a href="<!--[pnmodurl modname=Credits type=user func=display mod=$modules[modulesinfo].filename filetype=changelog]-->">
+				<img src="modules/Credits/pnimages/credits.gif" alt="<!--[pnml name=_CREDITSCHANGELOG]-->" />
+			</a>
+		  <!--[/if]-->
+	  </td>
+    </tr>
+  <!--[/section]-->
+</table>

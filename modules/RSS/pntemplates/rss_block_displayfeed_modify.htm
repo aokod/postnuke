@@ -1,0 +1,22 @@
+<tr>
+	<td><label for="rss_feedid"><!--[pnml name="_RSSFEEDID"]--></label></td>
+	<td>
+		<select id="rss_feedid" name="feedid">
+		<!--[html_options options=$allfeeds selected=$feedid]-->
+		</select>
+	</td>
+</tr>
+<tr>
+	<td><label for="rss_numitems"><!--[pnml name="_RSSNUMITEMS"]--></label></td>
+	<td><input id="rss_numitems" type="text" name="numitems" value="<!--[$numitems|pnvarprepfordisplay]-->" /></td>
+</tr>
+<tr>
+	<td><label for="rss_displayimage"><!--[pnml name="_RSSDISPLAYIMAGE"]--></label></td>
+	<td>
+		<!--[if $displayimage eq 1]-->
+		<input id="rss_displayimage" name="displayimage" type="checkbox" value="1" checked="checked" />
+		<!--[else]-->
+		<input id="rss_displayimage" name="displayimage" type="checkbox" value="1" />
+		<!--[/if]-->
+	</td>
+</tr>

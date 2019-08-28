@@ -1,0 +1,29 @@
+This module adds the Vietdev Visual Editor 8.0 to PostNuke .72x series.
+One can control the editor with PostNuke permissions.
+
+
+The editor shows up when user has at least "GROUP | typetool:: | MOD_NAME:: | comment" permission - 
+this way it's disabled for unregistered users by default.
+
+if you want to enable it for them simply use 
+----- 
+[...]
+unregistered | typetool:: | .* | comment 
+unregistered | .* | .* | read 
+-----
+
+if you want to restrict the visual editor to admins use 
+----- 
+Admins | .* | .* | admin 
+All Groups | typetool:: | .* | none 
+Users | .* | .* | comment 
+[...]
+-----
+
+if you want to disable the visual editor for only specific modules use
+----
+Admins | .* | .* | admin 
+All Groups | typetool:: | (MOD_NAME|MOD_NAME|MOD_NAME):: | none 
+Users | .* | .* | comment 
+[...]
+-----

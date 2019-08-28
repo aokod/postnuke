@@ -1,0 +1,31 @@
+<!--[*  $Id: autolinks_admin_view.htm 15154 2004-12-14 10:56:42Z markwest $  *]-->
+<!--[include file="autolinks_admin_menu.htm"]-->
+<h2><!--[pnml name="_AUTOLINKSVIEW"]--></h2>
+<table class="pn-admintable">
+  <tr>
+      <th><!--[pnml name="_AUTOLINKSKEYWORD"]--></th>
+      <th><!--[pnml name="_AUTOLINKSTITLE"]--></th>
+      <th><!--[pnml name="_AUTOLINKSURL"]--></th>
+      <th><!--[pnml name="_AUTOLINKSCOMMENT"]--></th>
+      <th><!--[pnml name="_AUTOLINKSOPTIONS"]--></th>
+  </tr>
+  <!--[section name=autolinks loop=$autolinks]-->  
+    <tr class="<!--[cycle values="pn-odd,pn-even"]-->">
+      <td><!--[$autolinks[autolinks].keyword|pnvarprepfordisplay]--></td>
+      <td><!--[$autolinks[autolinks].title|pnvarprepfordisplay]--></td>
+      <td><!--[$autolinks[autolinks].url|pnvarprepfordisplay]--></td>
+      <td><!--[$autolinks[autolinks].comment|pnvarprepfordisplay]--></td>
+	  <td>
+	    <!--[assign var="options" value=$autolinks[autolinks].options]-->
+		<!--[strip]-->
+        [<!--[section name=options loop=$options]-->
+	    <a href="<!--[$options[options].url|pnvarprepfordisplay]-->"><!--[pnml name=$options[options].title]--></a> 
+		<!--[if !$smarty.section.options.last]--> | <!--[/if]-->
+        <!--[/section]-->]
+		<!--[/strip]-->
+
+      </td>
+    </tr>
+  <!--[/section]-->
+</table>
+<!--[pager show=page rowcount=$pager.numitems limit=$pager.itemsperpage posvar=startnum shift=1]-->

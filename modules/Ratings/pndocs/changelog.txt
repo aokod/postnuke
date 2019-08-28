@@ -1,0 +1,10 @@
+Version 1.3 March 2005
+   - added item delete hook
+Version 1.2 October 2004
+   - fully templated using pnRender
+   - added module delete hook
+Version 1.1 24th Februrary 2002
+   - changed rating from int to double to allow for fairer average rating
+     on items with many ratinsg
+Version 1.0 1st February 2002
+   - initial version

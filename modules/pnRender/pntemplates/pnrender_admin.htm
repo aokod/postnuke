@@ -1,0 +1,67 @@
+<!--[*  $Id: pnrender_admin.htm 16064 2005-04-04 09:03:36Z markwest $           *]-->
+<!--[*  ---------------------------------------------------------------------- *]-->
+<!--[*  pnRender                                                               *]-->
+<!--[*  PostNuke wrapper class for Smarty                                      *]-->
+<!--[*  ---------------------------------------------------------------------- *]-->
+<!--[*  Author: PostNuke development team                                      *]-->
+<!--[*  ---------------------------------------------------------------------- *]-->
+<!--[*  LICENSE                                                                *]-->
+<!--[*  This program is free software; you can redistribute it and/or          *]-->
+<!--[*  modify it under the terms of the GNU General Public License (GPL)      *]-->
+<!--[*  as published by the Free Software Foundation; either version 2         *]-->
+<!--[*  of the License, or (at your option) any later version.                 *]-->
+<!--[*  This program is distributed in the hope that it will be useful,        *]-->
+<!--[*  but WITHOUT ANY WARRANTY; without even the implied warranty of         *]-->
+<!--[*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the          *]-->
+<!--[*  GNU General Public License for more details.                           *]-->
+<!--[*  To read the license please visit http://www.gnu.org/copyleft/gpl.html  *]-->
+<!--[*  ---------------------------------------------------------------------- *]-->
+<!--[*  Purpose of this template:                                              *]-->
+<!--[*  Admin panel                                                            *]-->
+<!--[*  ---------------------------------------------------------------------- *]-->
+<!--[admincategorymenu]-->
+<!--[pngetstatusmsg]-->
+<h1><!--[pnml name="_PNRENDER_ADMIN"]--></h1>
+<br />
+<form action="<!--[pnmodurl modname="pnRender" type="admin" func="updateconfig"]-->"  method="post" enctype="application/x-www-form-urlencoded">
+<div>
+<input type="hidden" name="authid" id="authid" value="<!--[pnsecgenauthkey module="pnRender"]-->" />
+<table border="0" width="100%">
+	<tr>
+		<td>
+			<fieldset>
+	  			<legend>
+					<strong><!--[pnml name="_PNRENDER_COMPILE_SETTINGS"]--></strong>
+				</legend>
+    			<!--[html_checkboxes name=settings output=$compile_output values=$compile_values checked=$compile_checked separator="<br />" ]--><br />
+				<a href="<!--[pnmodurl modname="pnRender" type="admin" func="clear_compiled"]-->&amp;authid=<!--[pnsecgenauthkey module="pnRender"]-->"><!--[pnml name="_PNRENDER_CLEAR_COMPILED"]--></a>
+			</fieldset>
+		</td>
+		<td>
+			<fieldset>
+				<legend>
+					<strong><!--[pnml name="_PNRENDER_CACHE_SETTINGS"]--></strong>
+				</legend>
+	   			<!--[html_checkboxes name=settings output=$cache_output values=$cache_values checked=$cache_checked separator="<br />" ]-->
+				<!--[pnml name="_PNRENDER_CACHE_LIFETIME"]-->:
+				<input type="text" name="lifetime" id="lifetime" value="<!--[$lifetime|pnvarprepfordisplay]-->" size="6" />&nbsp;
+				<!--[pnml name="_PNRENDER_CACHE_LIFETIME_UNIT"]--><br /><br />
+				<a href="<!--[pnmodurl modname="pnRender" type="admin" func="clear_cache"]-->&amp;authid=<!--[pnsecgenauthkey module="pnRender"]-->"><!--[pnml name="_PNRENDER_CLEAR_CACHED"]--></a><br />										 
+			</fieldset>
+		</td>
+	</tr>
+	<tr>
+	    <td>
+			<fieldset>
+	  			<legend>
+					<strong><!--[pnml name="_PNRENDER_DEBUG_SETTINGS"]--></strong>
+				</legend>
+    			<!--[html_checkboxes name=settings output=$expose_output values=$expose_values checked=$expose_checked separator="<br />" ]--><br />
+			</fieldset>
+	    </td>
+	    <td>&nbsp;</td>
+	</tr>
+</table><br />
+<input type="submit" value="<!--[pnml name="_PNRENDER_OK"]-->" />
+</div>
+</form>

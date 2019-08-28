@@ -1,0 +1,51 @@
+body.vdev {margin-left:10; font-family:arial; font-size:12; background:#c0c0c0;}
+body.vdevdialog {margin-left:0; font-family:arial; font-size:12; background:#c0c0c0;}
+
+img.vdev {width:23; height:22}
+
+select.vdev {font-family:arial; font-size:12; height:22; background:#c0c0c0; color:#0000FF}
+
+input.vdev {font-family:arial; font-size:12; height:22; background:#c0c0c0; color:#0000FF}
+input.vdevx {font-family:arial; font-size:12; height:22; background:#c0c0c0; color:#FF00FF}
+
+button.vdev1 {font-family:arial; font-size:12; height:22; width:42; color:#0000FF;}
+button.vdev {font-family:arial; font-size:12; height:22; width:86; color:#0000FF;}
+
+table.vdev  {cursor:pointer}
+tr.vdev {background:#c0c0c0}
+tr.vdevtr {background:#d0d0d0}
+td.vdevcolor {width:18; height:18}
+td.vdevtable {width:40; height:12; font-size:11; font-family:arial}
+td.vdevtitle {font-family:'arial'; font-size:15; background:#aa4444; text-align:center; color:white; font-weight:bold}
+td.vdevtext {font-size:12; font-family:arial; color:white}
+td.vdevtext1 {font-size:10; font-family:arial}
+td.vdevtext2 {font-size:12; font-family:arial; color:black}
+
+tr.vdevtext {font-size:12; font-family:arial; color:white}
+tr.vdevtext1 {font-size:12; font-family:arial; color:black}
+
+
+/* red, green, blue, plus, minus button*/
+input.vdevr {font-family:arial; font-size:12; height:22; width:22; background:#FF0000; color:white;}
+input.vdevg {font-family:arial; font-size:12; height:22; width:22; background:#00FF00; color:black;}
+input.vdevb {font-family:arial; font-size:12; height:22; width:22; background:#0000FF; color:white;}
+input.vdevp {font-family:arial; font-size:12; height:22; width:22; background:#AA4444; color:white;}
+input.vdevm {font-family:arial; font-size:12; height:22; width:22; background:#AA4444; color:white;}
+
+
+
+/* options */ /* div filter */
+input.vdevopt,select.vdevopt {color:blue; background:#eeffee; width:120px}
+
+/* table proper */ /* divstyle */
+input.vdevtp,select.vdevtp {color:blue; background:#eeffee; width:65px}
+
+/* div border */
+input.vdevbd,select.vdevbd {color:blue; background:#eeffee; width:80px}
+
+
+
+span.vdevtext1 {font-size:10; font-family:arial}
+
+legend.vdevtext {font-size:14; font-family:arial; color:blue}
+

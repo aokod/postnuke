@@ -1,0 +1,19 @@
+<!--[*  $Id: example_user_display.htm 16295 2005-06-03 11:38:38Z markwest $  *]-->
+<!--[include file="example_user_menu.htm"]-->
+<div class="example_item">
+<!--[* Print the item name. Note the chaning of the modifiers. *]-->
+<!--[pnml name="_EXAMPLENAME"]-->: 
+<!--[if $bold]-->  
+<!--[* Please note that the use of the "examplebold" modifier *]-->
+<!--[* is just an example of how to use your own plugins.     *]-->
+<!--[* Otherwise, using a plugin for such a simple function   *]-->
+<!--[* would be overkill -- you would simply put the string   *]-->
+<!--[* in <strong>...</strong>                                          *]-->
+<!--[$itemname|pnmodcallhooks|pnvarprephtmldisplay|pnvarcensor|examplebold]-->
+<!--[else]-->
+<!--[$itemname|pnmodcallhooks|pnvarprephtmldisplay|pnvarcensor]-->
+<!--[/if]-->
+<!--[pnml name="_EXAMPLENUMBER"]-->: <!--[$number|pnvarprepfordisplay]-->
+</div>
+<!--[pnmodurl modname=Example func=display tid=$tid assign=returnurl]-->
+<!--[pnmodcallhooks hookobject=item hookaction=display hookid=$tid module=Example returnurl=$returnurl]-->	

@@ -1,0 +1,67 @@
+<!--[include file=messages_user_menu.htm]-->
+<h2><!--[pnml name=_MESSAGESSENDMSG]--></h2>
+<form action="<!--[pnmodurl modname=Messages type=user func=submit]-->" method="post">
+<input type="hidden" name="authid" value="<!--[ pnsecgenauthkey ]-->" />
+<div>
+<strong><!--[pnml name=_MESSAGESABOUTPOSTING]-->: <!--[pnml name=_MESSAGESALLREGCANPOST]--></strong>
+<table border="0" cellpadding="3" cellspacing="1" width="100%">
+	<tr>
+		<td><!--[pnml name=_TO]-->:</td>
+		<!--[if $reply neq '']-->
+			<td><input type="hidden" name="to_user" value="<!--[$fromuser]-->" /><!--[$fromuser]--></td>
+		<!--[else]-->
+			<!--[if $touser neq '']-->
+			<td><input name="to_user" size="26" maxlength="25" value="<!--[$touser]-->" /></td>
+			<!--[else]-->
+			<td><input name="to_user" size="26" maxlength="25" /></td>
+			<!--[/if]-->
+		<!--[/if]-->
+	</tr>
+	<tr>
+		<td><!--[pnml name=_MESSAGESSUBJECT]-->:</td>
+		<!--[if $reply neq '']-->
+			<td><input type="text" name="subject" value="<!--[pnml name=_MESSAGESRE]-->: <!--[$subject]-->" size="70" maxlength="100" /></td>
+		<!--[else]-->
+			<td><input type="text" name="subject" size="70" maxlength="100" /></td>
+		<!--[/if]-->
+	</tr>
+	<tr>
+	<!--[if $icons neq '']-->
+		<td><!--[pnml name=_MESSAGESICON]--></td>
+		<td>
+			<!--[section name=icons loop=$icons]-->
+			<input type="radio" name="image" value="<!--[$icons[icons].imgsrc]-->" /><img src="images/smilies/<!--[$icons[icons].imgsrc]-->" alt="" />
+			<!--[/section]-->
+		</td>
+	<!--[else]-->
+		<td colspan="2"><input type="hidden" name="image" value="icon1.gif" /></td>
+    <!--[/if]-->
+	</tr>
+	<tr>
+		<td valign="top">
+		    <!--[pnml name=_MESSAGESMESSAGE]-->:
+		    <!--[if $bbcode]-->
+		    <div>
+		        (<a href="<!--[ pnmodurl modname=pn_bbcode func=whatisbbcode ]-->"><!--[pnml name=_MESSAGESBBCODE]--></a>)
+	        </div>
+		    <!--[/if]-->
+		</td>
+		<td>
+		    <textarea name="message" rows="15" cols="70"><!--[$reply]--></textarea>
+		</td>
+	</tr>
+	<tr><td colspan="2"><!--[allowedhtml]--></td></tr>
+    <tr>
+		<td colspan="2">
+			<input type="hidden" name="msg_id" value="<!--[$msgid]-->" />
+			<input type="submit" name="submit" value="<!--[pnml name=_SUBMIT]-->" />&nbsp;
+			<!--[if $reply neq ""]-->
+				<input type="submit" name="cancel" value="<!--[pnml name=_MESSAGESCANCELREPLY]-->" />
+			<!--[else]-->
+				<input type="submit" name="cancel" value="<!--[pnml name=_MESSAGESCANCELSEND]-->" />
+			<!--[/if]-->
+		</td>
+	</tr>
+</table>
+</div>
+</form>

@@ -1,0 +1,72 @@
+<!--[*  $Id: mailer_admin_modifyconfig.htm 16085 2005-04-08 11:25:04Z markwest $  *]-->
+<!--[include file="mailer_admin_menu.htm"]-->
+<h2><!--[pnml name="_MAILERMODIFYCONFIG"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Mailer" type="admin" func="updateconfig"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Mailer"]-->" />
+	<div class="pn-adminformrow">
+		<label for="mailer_mailertype"><!--[pnml name="_MAILERTRANSPORT"]--></label>
+		<select id="mailer_mailertype" name="mailertype"><!--[html_options options=$mailertypes selected=$mailertype]--></select>
+	</div>
+	<div class="pn-adminformrow">
+		<label for="mailer_charset"><!--[pnml name="_MAILERCHARSET"]--></label>
+		<input id="mailer_charset" name="charset" type="text" size="10" maxlength="20" value="<!--[$charset|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="mailer_encoding"><!--[pnml name="_MAILERENCODING"]--></label>
+		<input id="mailer_encoding" name="encoding" type="text" size="10" maxlength="20" value="<!--[$encoding|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="mailer_contenttype"><!--[pnml name="_MAILERCONTENTTYPE"]--></label>
+		<input id="mailer_contenttype" name="contenttype" type="text" size="10" maxlength="20" value="<!--[$contenttype|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="mailer_wordwrap"><!--[pnml name="_MAILERWORDWRAP"]--></label>
+		<input id="mailer_wordwrap" name="wordwrap" type="text" size="3" maxlength="3" value="<!--[$wordwrap|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="mailer_msmailheaders"><!--[pnml name="_MAILERMSMAILHEADERS"]--></label>
+		<!--[if $msmailheadersc eq 1]-->
+			<input id="mailer_msmailheaders" name="msmailheaders" type="checkbox" value="1" checked="checked" />
+		<!--[else]-->
+			<input id="mailer_msmailheaders" name="msmailheaders" type="checkbox" value="1" />
+		<!--[/if]-->
+	</div>
+	<div class="pn-adminformrow">
+		<label for="mailer_sendmailpath"><!--[pnml name="_MAILERSENDMAILPATH"]--></label>
+		<input id="mailer_sendmailpath" name="sendmailpath" type="text" size="50" maxlength="50" value="<!--[$sendmailpath|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="mailer_smtpserver"><!--[pnml name="_MAILERSMTPSERVER"]--></label>
+		<input id="mailer_smtpserver" name="smtpserver" type="text" size="30" maxlength="50" value="<!--[$smtpserver|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="mailer_smtpport"><!--[pnml name="_MAILERSMTPPORT"]--></label>
+		<input id="mailer_smtpport" name="smtpport" type="text" size="5" maxlength="5" value="<!--[$smtpport|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="mailer_smtptimeout"><!--[pnml name="_MAILERSMTPTIMEOUT"]--></label>
+		<input id="mailer_smtptimeout" name="smtptimeout" type="text" size="5" maxlength="5" value="<!--[$smtptimeout|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="mailer_smtpauth"><!--[pnml name="_MAILERSMTPAUTH"]--></label>
+		<!--[if $smtpauth eq 1]-->
+		<input id="mailer_smtpauth" name="smtpauth" type="checkbox" value="1" checked="checked" />
+		<!--[else]-->
+		<input id="mailer_smtpauth" name="smtpauth" type="checkbox" value="1" />
+		<!--[/if]-->
+	</div>
+	<div class="pn-adminformrow">
+		<label for="mailer_smtpusername"><!--[pnml name="_MAILERSMTPUSERNAME"]--></label>
+		<input id="mailer_smtpusername" name="smtpusername" type="text" size="30" maxlength="50" value="<!--[$smtpusername|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="mailer_smtppassword"><!--[pnml name="_MAILERSMTPPASSWORD"]--></label>
+		<input id="mailer_smtppassword" name="smtppassword" type="password" size="30" maxlength="30" value="<!--[$smtppassword|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow">
+		<input name="submit" type="submit" value="<!--[pnml name="_MAILERUPDATECONFIG"]-->" />
+	</div>
+	<div style="clear:both"></div>
+</div>
+</form>

@@ -1,0 +1,109 @@
+<!--[include file="xanthiaadminmenu.htm"]-->
+<br />
+<div class="pn-title"><!--[pnml name="_XA_CONFIGURE_TITLE"]--></div>
+<form action="<!--[pnmodurl modname="Xanthia" type="admin" func="updateMain"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Xanthia"]-->" />
+<table width="100%">						
+	<tr>
+		<td><label><!--[pnml name="_XA_CONFIGURE_VBA"]--></label>
+		</td>	<!--[if $vba eq 1]-->
+		<td>								
+			<input name="vba" type="checkbox" value="1" checked="checked" />
+		</td>	<!--[else]-->
+		<td>								
+			<input name="vba" type="checkbox" value="1" />
+		</td>	<!--[/if]-->
+	</tr>						
+	<tr>
+		<td><label><!--[pnml name="_XA_CONFIGURE_SHORTURL"]--></label>
+		<!--[if $htaccess != 1]-->
+		&nbsp;&nbsp;&nbsp;<span style="color:red;"><strong><!--[pnml name="_XA_CONFIGURENOHTACCESS]--></strong></span>
+		<!--[/if]-->						
+		</td>	
+		<!--[if $htaccess eq 1]-->
+			<!--[if $shorturls eq 1 ]-->
+				<td>								
+					<input name="shorturls" type="checkbox" value="1" checked="checked" />
+				</td>	<!--[else]-->
+				<td>								
+					<input name="shorturls" type="checkbox" value="1" />
+				</td>
+			<!--[/if]-->
+		<!--[/if]-->
+	</tr>
+	<tr>
+		<td><label><!--[pnml name="_XA_SHORTURL_EXTENSION]--></label></td>
+		<td><input name="shorturlsextension" value="<!--[$shorturlsextension]-->" /></td>
+	</tr>													
+	<tr>
+		<td><label><!--[pnml name="_XA_CONFIGURE_USECACHE"]--></label>
+		</td>	<!--[if $enablecache eq 1]-->
+		<td>								
+			<input name="enablecache" type="checkbox" value="1" checked="checked" />
+		</td>	<!--[else]-->
+		<td>								
+			<input name="enablecache" type="checkbox" value="1" />
+		</td>	<!--[/if]-->
+	</tr>
+	<tr>
+		<td><label><!--[pnml name="_XA_MODULES_NOCACHE"]--></label></td>
+		<td><input name="modulesnocache" type="text" size="30" maxlength="255" value="<!--[$modulesnocache]-->" /> (<!--[pnml name="_XA_COMMASEPERATED"]-->)</td>
+	</tr>
+	<tr>
+		<td><label><!--[pnml name="_XA_CONFIGURE_TEMPLATECHECK"]--></label>
+		</td>	<!--[if $compile_check eq 1]-->
+		<td>								
+			<input name="compile_check" type="checkbox" value="1" checked="checked" />
+		</td>	<!--[else]-->
+		<td>								
+			<input name="compile_check" type="checkbox" value="1" />
+		</td>	<!--[/if]-->
+	</tr>
+	<tr>
+		<td><label><!--[pnml name="_XA_CONFIGURE_FORCETEMPLATECHECK"]--></label>
+		</td>	<!--[if $force_compile eq 1]-->
+		<td>								
+			<input name="force_compile" type="checkbox" value="1" checked="checked" />
+		</td>	<!--[else]-->
+		<td>								
+			<input name="force_compile" type="checkbox" value="1" />
+		</td>	<!--[/if]-->
+	</tr>
+	<tr>
+		<td><label><!--[pnml name="_XA_CONFIGURE_CACHETIME"]--></label>
+		</td>
+		<td>								
+			<input type="text" name="cache_lifetime" id="cache_lifetime" value="<!--[$cache_lifetime|pnvarprepfordisplay]-->" size="4" maxlength="4" tabindex="2" />
+		</td>	
+	</tr>
+	<tr>
+		<td><label><!--[pnml name="_XA_CONFIGURE_DBTEMPLATES"]--></label>
+		</td>	<!--[if $db_templates eq 1]-->
+		<td>								
+			<input name="db_templates" type="checkbox" value="1" checked="checked" />
+		</td>	<!--[else]-->
+		<td>								
+			<input name="db_templates" type="checkbox" value="1" />
+		</td>	<!--[/if]-->
+	</tr>
+	<tr>
+		<td><label><!--[pnml name="_XA_CONFIGURE_TRIMWHITESPACE"]--></label>
+		</td>	<!--[if $trimwhitespace eq 1]-->
+		<td>								
+			<input name="trimwhitespace" type="checkbox" value="1" checked="checked" />
+		</td>	<!--[else]-->
+		<td>								
+			<input name="trimwhitespace" type="checkbox" value="1" />
+		</td>	<!--[/if]-->
+	</tr>
+	<tr>
+		<td>&nbsp;
+		</td>
+		<td>								
+			<input type="submit" value="<!--[pnml name="_SUBMIT"]-->" align="middle" tabindex="9" />
+		</td>
+	</tr>
+</table>
+</div>
+</form>

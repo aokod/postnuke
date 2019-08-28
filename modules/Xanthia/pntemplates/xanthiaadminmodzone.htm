@@ -1,0 +1,34 @@
+<!--[$menu]-->
+<br />
+<div class="pn-title"><!--[pnml name="_XA_CONFIGTEMPLATES"]--></div>
+<div class="pn-normal"><!--[pnml name="_XA_TPLINFO"]--></div>
+<form action="<!--[pnmodurl modname="Xanthia" type="admin" func="updateZones"]-->" method="post" enctype="application/x-www-form-urlencoded" name="modifythemezone">		
+<div>
+<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Xanthia"]-->" />
+<input type="hidden" name="skin" value="<!--[$skinid|pnvarprepfordisplay]-->" />	
+<input type="hidden" name="zone" id="zone" value="<!--[$zone|pnvarprepfordisplay]-->" />
+<input type="hidden" name="skintype" id="skintype" value="<!--[$skintype|pnvarprepfordisplay]-->" />
+<table>
+	<tr>
+		<td><!--[pnml name="_XA_ZONELABEL"]--></td>
+		<td><strong><!--[$zone|pnvarprepfordisplay]--></strong></td>
+	</tr>
+	<tr>
+		<td><!--[pnml name="_XA_TEMPLATE"]--></td>
+		<td>
+			<select name="tpl" id="tpl" size="1" tabindex="3">
+			<!--[section name=allzones loop=$allzones]-->  
+			<!--[if  $defaultzone eq $allzones[allzones].id ]-->
+				<option value="<!--[$allzones[allzones].id|pnvarprepfordisplay]-->" selected="selected"><!--[$allzones[allzones].name|pnvarprepfordisplay]--></option>
+			<!--[else]-->
+				<option value="<!--[$allzones[allzones].id|pnvarprepfordisplay]-->"><!--[$allzones[allzones].name|pnvarprepfordisplay]--></option>
+			<!--[/if]-->
+			<!--[/section]-->
+			</select>
+		</td>
+	</tr>
+	<tr>
+</table>
+<input name="submit" type="submit" value="<!--[pnml name="_SUBMIT"]-->" />
+</div>
+</form>

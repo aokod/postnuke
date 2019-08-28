@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<!--[pnconfiggetvar name=backend_language]-->">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<!--[pnml name=_CHARSET]-->" />
+<meta name="description" content="<!--[pnconfiggetvar name=sitename]-->" />
+<meta name="robots" content="index,follow" />
+<meta name="resource-type" content="document" />
+<meta http-equiv="expires" content="0" />
+<meta name="author" content="<!--[pnconfiggetvar name=sitename]-->" />
+<meta name="copyright" content="Copyright (c) 2004 by <!--[pnconfiggetvar name=sitename]-->" />
+<meta name="revisit-after" content="1 days" />
+<meta name="distribution" content="Global" />
+<meta name="generator" content="PostNuke - http://postnuke.com" />
+<meta name="rating" content="General" />
+<meta name="HandheldFriendly" content="True" />
+<title><!--[pnconfiggetvar name=sitename]--></title>
+<!--[modulestylesheet xhtml=true]-->
+<!--[modulestylesheet stylesheet=admin.css modname=admin xhtml=true]-->
+</head>
+<body>
+<div style="text-align:right;width:100%"><img src="images/logo.gif" alt="" /></div>
+<h1><!--[pnml name="_PERMISSIONINFO"]--></h1>
+<div style="margin-left:2.5%">
+<table class="pn-admintable" style="width:95%">
+	<tr>
+		<th><!--[pnml name="_REGISTEREDCOMP"]--></th>
+		<th><!--[pnml name="_INSTANCETEMP"]--></th>
+	</tr>
+	<!--[foreach from=$schemas key=component item=instance name=schemas]-->
+	<tr class="<!--[cycle values="pn-odd,pn-even"]-->">
+		<td><!--[$component|pnvarprepfordisplay]--></td>
+		<td><!--[$instance|pnvarprepfordisplay]--></td>
+	</tr>
+	<!--[/foreach]-->
+</table>
+</div>
+</body>
+</html>

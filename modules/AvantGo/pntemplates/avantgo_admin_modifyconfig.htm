@@ -1,0 +1,16 @@
+<!--[*  $Id: avantgo_admin_modifyconfig.htm 15410 2005-01-19 11:51:29Z markwest $  *]-->
+<!--[include file="avantgo_admin_menu.htm"]-->
+<h2><!--[pnml name="_AVANTGOMODIFYCONFIG"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="AvantGo" type="admin" func="updateconfig"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="AvantGo"]-->">
+	<div class="pn-adminformrow">
+		<label for="avantgo_itemsperpage"><!--[pnml name="_AVANTGOITEMSPERPAGE"]--></label>
+		<input id="avantgo_itemsperpage" type="text" name="itemsperpage" size="3" value="<!--[$itemsperpage|pnvarprepfordisplay]-->">
+	</div>
+	<div class="pn-adminformrow">
+		<input name="submit" type="submit" value="<!--[pnml name="_AVANTGOMODIFYCONFIG"]-->">
+	</div>
+	<div class="pn-adminformrow"></div>
+</div>
+</form>

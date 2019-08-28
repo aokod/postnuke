@@ -1,0 +1,33 @@
+<!--[*  $Id: ephemerids_admin_view.htm 15154 2004-12-14 10:56:42Z markwest $  *]-->
+<!--[include file="ephemerids_admin_menu.htm"]-->
+<h2><!--[pnml name="_EPHEMERIDSVIEW"]--></h2>
+<table class="pn-admintable">
+  <tr>
+    <th><!--[pnml name="_EPHEMERIDSDAY"]--></th>
+    <th><!--[pnml name="_EPHEMERIDSMONTH"]--></th>
+    <th><!--[pnml name="_EPHEMERIDSYEAR"]--></th>
+    <th><!--[pnml name="_EPHEMERIDSEVENT"]--></th>
+    <th><!--[pnml name="_EPHEMERIDSNUMBER"]--></th>
+    <th><!--[pnml name="_EPHEMERIDSOPTIONS"]--></th>
+  </tr>
+  <!--[section name=ephemerids loop=$ephemerids]-->  
+    <tr class="<!--[cycle values="pn-odd,pn-even"]-->">
+      <td><!--[$ephemerids[ephemerids].did|pnvarprepfordisplay]--></td>
+      <td><!--[$ephemerids[ephemerids].mid|pnvarprepfordisplay]--></td>
+      <td><!--[$ephemerids[ephemerids].yid|pnvarprepfordisplay]--></td>
+      <td><!--[$ephemerids[ephemerids].content|pnvarprepfordisplay]--></td>
+      <td><!--[$ephemerids[ephemerids].eid|pnvarprepfordisplay]--></td>
+	  <td>
+	    <!--[assign var="options" value=$ephemerids[ephemerids].options]-->
+		<!--[strip]-->
+        [<!--[section name=options loop=$options]-->
+	    <a href="<!--[$options[options].url|pnvarprepfordisplay]-->"><!--[pnml name=$options[options].title]--></a> 
+		<!--[if !$smarty.section.options.last]--> | <!--[/if]-->
+        <!--[/section]-->]
+		<!--[/strip]-->
+
+      </td>
+    </tr>
+  <!--[/section]-->
+</table>
+<!--[pager show=page rowcount=$pager.numitems limit=$pager.itemsperpage posvar=startnum shift=1]-->

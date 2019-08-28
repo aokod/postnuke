@@ -1,0 +1,33 @@
+<!--[$menu]-->
+<form method="post" action="<!--[pnmodurl modname=Xanthia type=admin func=doModTemplate]-->">
+<div>
+<!--[section name=formcontent loop=$formcontent]-->
+	<input type="hidden" name="authid" id="authid" value="<!--[pnsecgenauthkey module="Xanthia"]-->" />
+	<input type="hidden" name="tpl_id" id="tpl_id" value="<!--[$formcontent[formcontent].hiddentpl_id]-->" />
+	<input type="hidden" name="skin_id" id="skin_id" value="<!--[$formcontent[formcontent].hiddenskin_id]-->" />
+	<input type="hidden" name="tpl_file" id="tpl_file" value="<!--[$formcontent[formcontent].hiddentpl_file]-->" />
+	<input type="hidden" name="osource" id="osource" value="<!--[$formcontent[formcontent].hiddenosource]-->" />
+	<table>
+		<tr>
+			<th><!--[pnml name="_XA_EDITTEMPLATEFILE"]--></th>
+		</tr>
+		<tr>
+			<td><!--[$formcontent[formcontent].filetext]-->:&nbsp;&nbsp;<!--[$formcontent[formcontent].filename]--></td>
+		</tr>
+		<tr>
+			<td><!--[$formcontent[formcontent].modifiedtext]-->:&nbsp;&nbsp;<!--[$formcontent[formcontent].modified]--></td>
+		</tr>
+		<tr>
+			<td>
+				<textarea name="source" id="source" rows="25" cols="120" tabindex="1"><!--[$formcontent[formcontent].source|pnvarprepfordisplay]--></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="submit" value="<!--[pnml name=_SUBMIT]-->" />
+			</td>
+		</tr>
+	</table>
+<!--[/section]-->
+</div>
+</form>

@@ -1,0 +1,7 @@
+<!--[*  $Id: credits_user_display.htm 16292 2005-06-03 11:04:01Z markwest $  *]-->
+<!--[include file="credits_user_menu.htm"]-->
+<a href="<!--[pnmodurl modname="Credits" type="user" func="main"]-->"><!--[pnml name="_CREDITSBACK"]--></a>
+<h2><!--[$heading|pnvarprepfordisplay]--> <!--[pnml name="_CREDITSFOR"]--> <!--[$displayname|pnvarprepfordisplay]--> <!--[pnml name="_CREDITSVERSION"]--> <!--[$version|pnvarprepfordisplay]--></h2>
+<div style="text-align: left"><!--[$thefile|pnvarprephtmldisplay|pnmodcallhooks]--></div>
+<!--[pnmodurl modname=Credits func=display mod=$name filetype=$filetype assign=returnurl]-->
+<!--[pnmodcallhooks hookobject=item hookaction=display hookid=$itemid module=Credits returnurl=$returnurl]-->

@@ -1,0 +1,91 @@
+<!--[$menu]-->
+<br />
+<div class="pn-title"><!--[$skin]--> <!--[pnml name="_XA_TEMPLATES"]--></div>
+<div class="pn-normal" style="width:100%;">
+<table width="100%" border="3">
+	<tr>
+		<th>
+			<!--[pnml name="_XA_THEMETEMPLATES"]--><br />
+			<a href="<!--[pnmodurl modname="Xanthia" type="admin" func="newThemeTpl" ttype="theme" authid=$authid skin=$skinid]-->"><!--[pnml name="_XA_NEWTHEMETEMPLATE"]--></a>
+		</th>
+		<th>
+			<!--[pnml name="_XA_MODULETEMPLATES"]--><br />
+			<a href="<!--[pnmodurl modname="Xanthia" type="admin" func="newThemeTpl" ttype="module" authid=$authid skin=$skinid]-->"><!--[pnml name="_XA_NEWMODULETEMPLATE"]--></a>
+		</th>
+		<th>
+			<!--[pnml name="_XA_BLOCKTEMPLATES"]--><br />
+			<a href="<!--[pnmodurl modname="Xanthia" type="admin" func="newThemeTpl" ttype="block" authid=$authid skin=$skinid]-->"><!--[pnml name="_XA_NEWBLOCKTEMPLATE"]--></a>
+		</th>
+	</tr>
+	<tr>
+		<td valign="top">
+			<table>
+				<tr>
+					<td><strong><!--[pnml name="_XA_FILE"]--></strong></td>
+					<td><strong><!--[pnml name="_XA_ACTION"]--></strong></td>
+				</tr>
+				<!--[section name=themes loop=$themes]-->
+					<!--[assign var="themetpl" value=$themes[themes].themetpl]-->
+					<!--[assign var="themereload" value=$themes[themes].themereload]-->
+					<!--[section name=themetpl loop=$themetpl]-->
+					<tr>
+						<td><!--[$themetpl[themetpl].label|pnvarprepfordisplay]--></td>
+						<td>[<a href="<!--[$themetpl[themetpl].url|pnvarprepfordisplay]-->"><!--[pnml name="_XA_EDITTEMPLATE"]--></a>]</td>
+						<!--[section name=themereload loop=$themereload]-->
+							<!--[if $themereload[themereload].url neq '']-->   
+								<td>[<a href="<!--[$themereload[themereload].url|pnvarprepfordisplay]-->"><!--[pnml name="_XA_RELOADTEMPLATE"]--></a>]</td>
+							<!--[/if]-->
+						<!--[/section]-->
+					</tr>
+					<!--[/section]-->
+				<!--[/section]-->
+			</table>
+		</td>
+		<td valign="top">
+			<table>
+				<tr>
+					<td><strong><!--[pnml name="_XA_FILE"]--></strong></td>
+					<td><strong><!--[pnml name="_XA_ACTION"]--></strong></td>
+				</tr>
+				<!--[section name=modules loop=$modules]-->
+					<!--[assign var="moduletpl" value=$modules[modules].moduletpl]-->
+					<!--[assign var="modulereload" value=$modules[modules].modulereload]-->
+					<!--[section name=moduletpl loop=$moduletpl]-->
+						<tr>
+							<td><!--[$moduletpl[moduletpl].label|pnvarprepfordisplay]--></td>
+							<td>[<a href="<!--[$moduletpl[moduletpl].url|pnvarprepfordisplay]-->"><!--[pnml name="_XA_EDITTEMPLATE"]--></a>]</td>
+							<!--[section name=modulereload loop=$modulereload]-->
+								<!--[if  $modulereload[modulereload].url neq '']-->   
+									<td>[<a href="<!--[$modulereload[modulereload].url|pnvarprepfordisplay]-->"><!--[pnml name="_XA_RELOADTEMPLATE"]--></a>]</td>
+								<!--[/if]-->
+							<!--[/section]-->
+						</tr>
+					<!--[/section]-->
+				<!--[/section]-->
+			</table>
+		</td>
+		<td valign="top">
+			<table>
+				<tr>
+					<td><strong><!--[pnml name="_XA_FILE"]--></strong></td>
+					<td><strong><!--[pnml name="_XA_ACTION"]--></strong></td>
+				</tr>
+				<!--[section name=blocks loop=$blocks]-->
+					<!--[assign var="blocktpl" value=$blocks[blocks].blocktpl]-->
+					<!--[assign var="blockreload" value=$blocks[blocks].blockreload]-->
+					<!--[section name=blocktpl loop=$blocktpl]-->
+						<tr>
+							<td><!--[$blocktpl[blocktpl].label|pnvarprepfordisplay]--></td>
+							<td>[<a href="<!--[$blocktpl[blocktpl].url|pnvarprepfordisplay]-->"><!--[pnml name="_XA_EDITTEMPLATE"]--></a>]</td>
+							<!--[section name=blockreload loop=$blockreload]-->
+								<!--[if  $blockreload[blockreload].url neq '']-->   
+									<td>[<a href="<!--[$blockreload[blockreload].url|pnvarprepfordisplay]-->"><!--[pnml name="_XA_RELOADTEMPLATE"]--></a>]</td>
+								<!--[/if]-->
+							<!--[/section]-->
+						</tr>
+					<!--[/section]-->
+				<!--[/section]-->
+			</table>
+		</td>
+	</tr>
+</table></div>

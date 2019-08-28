@@ -1,0 +1,62 @@
+Xanthia Theme Engine Changelog
+
+Version 1.0 February 12 2003
+    - initial revision.
+
+Version 2.0 RC 1 November 6 2003
+    - First release candidate from PostNuke team released to pnCorps team only
+
+Version 2.0 RC 2 November 29 2003
+
+Fixed : Language dependant blocks display at all times when using block control. 
+Fixed : Error messages generated from index.php failed to display.
+Fixed : Block control fields not removed from the db when theme is removed.
+Fixed : String handling moved to ' rather than " when no embedded variables present.
+Fixed : Duplicate main content generated with new root index.php fix from above.
+Fixed : No 'block control' entry in block control admin panel.
+Fixed : Display issues with blocks with HTML titles.
+Fixed : Duplicate modules in block control.
+Fixed : Add theme and theme credits links present when no themes are available.
+Fixed : Removed all hardcoded language strings.
+Fixed : UPPERCASE typos in PostNuke theme templates.
+Fixed : Hardcoded extension on 10 parameter short url.
+Fixed : Added module name parameter to pnsecgenauthkey tag in pnRender admin
+Updated : Cache and compile directories now don't use sub directories. See note 4.
+Updated : Smarty Updated to v2.60 Release code from (RC2). See Smarty changelog for smarty fixes.
+Updated : Short URLS moved to Smarty Output Filter.
+Updated : Theme Credits function now allows for theme developer provided custom fields from xaninfo.php.
+Updated : Theme Block control updated to use block id rather than block title. See note 1.
+Updated : Removed all non-essential pnHTML usage.
+New : Theme info plugin displays current theme credits from xaninfo.php as html comment.
+New : Block to display a modules output. See notes 2 & 3.
+
+Note 1 : This is a significant change. All existing custom layouts will need reseting.
+Change to the extralite theme prior to installing RC2 and remove all themes from the admin panel
+before re-adding each theme.
+Note 2 : Heavily based on block-o-matic by Dmitry Beranksy (http://pn.dembel.org).
+Note 3 : This works for API Compliant modules only.
+Note 4 : This works better in hosted environments
+
+Version 2.0 RC 3
+
+Fixed : Missing quote in Xanthia init script preventing successful install under certain configurations
+Fixed : Removed unneeded short urls global from all theme.php's
+Fixed : Added ADODB error checks to queries during engine initialisation (pnuserapi.php). See note 1.
+Fixed : Added check for valid engine object after engine initialisation (all theme.php's). See note 1.
+Fixed : Added missing </head> tag in piterpanv2 theme (master.htm)
+Fixed : Correct smarty variable case in table1 and table2 templates - prevented old style module output from displaying.
+Fixed : .7x category/theme overides now work in Xanthia themes.
+Updated : Many functions how have internal in memory caches to avoid repeated db queries. This enhances performance.
+Updated : Xanthia themes now include header and footer html so master.htm now represents an entire page.
+Updated : Xanthia now uses new database connection method (credit to Eric Barr for this code).
+Updated : Output filters now only operate on the final master template to avoid repeated replacements on sub templates.
+Updated : Engine now uses assign by reference on all dynamic content - reduces memory usage.
+New : Caching of block zones, palettes and theme settings in pnTemp/Xanthia_Config via Generate Config Cache admin option.
+New : Full page caching available via admin panel. Modules can be excluded from full page caching via the admin panel.
+New : modulestylesheets plugin allows loading of per module stylesheets (stored in modules/<modname>/pnstyle).
+New : New plugin to generate standard PN header and footer (additional_header, pagerendertime, lang, keywords, charset).
+New : visual editor plugins for typetool v55 (PN .72x), typetool v8 (larsneo's new version) and htmlarea (.8x).
+New : *pnHome module to allow specific look for the homepage in Xanthia theme.
+New : nocache block registered to allow for non-cachable theme elements.
+
+Note 1 - these two fixes combine to prevent a path disclosue when a theme is not activted in the xanthia admin panel.

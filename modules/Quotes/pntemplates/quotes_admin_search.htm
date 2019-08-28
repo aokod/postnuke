@@ -1,0 +1,30 @@
+<!--[*  $Id: quotes_admin_search.htm 15031 2004-12-05 16:54:49Z markwest $  *]-->
+<!--[include file="quotes_admin_menu.htm"]-->
+<h2><!--[pnml name=_QUOTESSEARCHRESULTS]--></h2>
+<form action="<!--[pnmodurl modname=Quotes type=admin func=search]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+  <label for="quotes_keyword"><!--[pnml name=_QUOTESSEARCH]--></label>
+  <input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Quotes"]-->" />
+  <input id="quotes_keyword" type="text" name="keyword" size="30" maxsize="128" />
+  <input name="submit" type="submit" value="<!--[pnml name="_SUBMIT"]-->" />
+</div>
+</form>
+<table class="pn-admintable">
+  <tr>
+    <th><!--[pnml name="_QUOTESQUOTE"]--></th>
+    <th><!--[pnml name="_QUOTESAUTHOR"]--></th>
+    <th><!--[pnml name="_QUOTESACTION"]--></th>
+  </tr>
+  <!--[section name=quotes loop=$quotes]-->  
+    <tr class="<!--[cycle values="pn-odd,pn-even"]-->">
+      <td><!--[$quotes[quotes].quotetext|pnvarprepfordisplay]--></td>
+      <td><!--[$quotes[quotes].quoteauthor|pnvarprepfordisplay]--></td>
+	  <td>
+	    <!--[assign var="options" value=$quotes[quotes].options]-->
+        <!--[section name=options loop=$options]-->
+	      <a href="<!--[$options[options].url|pnvarprepfordisplay]-->"><!--[$options[options].title|pnvarprepfordisplay]--></a>
+        <!--[/section]-->
+      </td>
+    </tr>
+  <!--[/section]-->
+</table>

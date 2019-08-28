@@ -1,0 +1,15 @@
+<input type="hidden" name="module" id="module" value="Xanthia" />
+<input type="hidden" name="type" id="type" value="admin" />
+<input type="hidden" name="func" id="func" value="blockControlRule" />
+<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Xanthia"]-->" />
+<input type="hidden" name="position" value="<!--[$position]-->" />
+<input type="hidden" name="bmodule" value="<!--[$bmodule]-->" />
+<input type="hidden" name="weight" value="1000.0" />
+<input type="hidden" name="identi" value="" />
+<input type="hidden" name="refresh" value="no" />
+<select name="block[]" id="block[]" size="5" multiple="multiple" />
+<!--[section name=blocks loop=$blocks]-->
+<option value="<!--[$blocks[blocks].title]-->"><!--[$blocks[blocks].title1]--></option>
+<!--[/section]-->
+</select>
+<input type="submit" value="<!--[pnml name="_SUBMIT"]-->" align="middle" />

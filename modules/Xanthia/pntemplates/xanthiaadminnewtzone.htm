@@ -1,0 +1,63 @@
+<!--[$menu]-->
+<br />
+<div class="pn-title"><!--[pnml name=_XA_CREATEZONE]--></div>
+<form action="<!--[pnmodurl modname="Xanthia" type="admin" func="createZones"]-->" method="post" enctype="application/x-www-form-urlencoded" name="nuovezone">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Xanthia"]-->" />
+	<input type="hidden" name="skin" value="<!--[$skin|pnvarprepfordisplay]-->" />
+	<table>
+		<tr>
+			<td><!--[pnml name=_XA_ZONENAME]--></td>
+			<td><input type="text" name="zone" id="zone" value="" size="40" maxlength="60" tabindex="1" /></td>
+		</tr>
+		<tr>
+			<td><!--[pnml name="_XA_ZONELABEL"]--></td>
+			<td><input type="text" name="label" id="label" value="" size="40" maxlength="60" tabindex="2" /></td>
+		</tr>
+		<tr><td colspan="2"><!--[pnml name="_XA_DEFAULTLABEL"]--></td></tr>
+		<tr>
+			<td><!--[pnml name="_XA_NEWMASTERMODULES"]--></td>
+			<td>
+				<select name="modulos" id="modulos" size="1" tabindex="3" onChange="document.nuovezone.label.value=this.options[this.selectedIndex].value">
+				<!--[section name=modules loop=$modules]-->  	
+					<!--[if  $defaultmodulevalue eq $modules[modules].id ]-->
+						<option value="<!--[$modules[modules].id]-->" selected="selected"><!--[$modules[modules].name]--></option>
+					<!--[else]-->
+						<option value="<!--[$modules[modules].id]-->"><!--[$modules[modules].name]--></option>
+					<!--[/if]-->
+				<!--[/section]-->
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td><!--[pnml name="_XA_BLOCKS"]--></td>
+			<td>
+				<select name="modulos1" id="modulos1" size="1" tabindex="4" onChange="document.nuovezone.label.value=this.options[this.selectedIndex].value">
+				<!--[section name=blocks loop=$blocks]-->  
+					<!--[if  $defaultblockvalue eq $blocks[blocks].id ]-->
+						<option value="<!--[$blocks[blocks].id]-->" selected="selected"><!--[$blocks[blocks].name]--></option>
+					<!--[else]-->
+						<option value="<!--[$blocks[blocks].id]-->"><!--[$blocks[blocks].name]--></option>
+					<!--[/if]-->
+				<!--[/section]-->
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td><!--[pnml name="_XA_NEWZONES"]--></td>
+			<td>
+				<select name="modulos2" id="modulos2" size="1" tabindex="4" onChange="document.nuovezone.label.value=this.options[this.selectedIndex].value">
+				<!--[section name=zones loop=$zones]-->  
+					<!--[if  $defaultzonevalue eq $zones[zones].id ]-->
+						<option value="<!--[$zones[zones].id]-->" selected="selected"><!--[$zones[zones].name]--></option>
+					<!--[else]-->
+						<option value="<!--[$zones[zones].id]-->"><!--[$zones[zones].name]--></option>
+					<!--[/if]-->
+				<!--[/section]-->
+				</select>
+			</td>
+		</tr>
+	</table>
+	<input name="submit" type="submit" value="<!--[pnml name="_XA_COMMIT"]-->" />
+</div>
+</form>

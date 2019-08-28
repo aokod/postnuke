@@ -1,0 +1,16 @@
+<!--[*  $Id: groups_admin_delete.htm 15409 2005-01-19 11:43:30Z markwest $  *]-->
+<!--[include file="groups_admin_menu.htm"]-->
+<h2><!--[pnml name="_GROUPSDELETE"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Groups" type="admin" func="delete"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+    <input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Groups"]-->" />
+    <input type="hidden" name="confirmation" value="1" />
+    <input type="hidden" name="gid" value="<!--[$gid|pnvarprepfordisplay]-->" />
+	<div class="pn-adminformrow">
+		<label for="groups_submit"><!--[pnml name="_GROUPSCONFIRMDELETE"]--></label>
+		<input id="groups_submit" name="submit" type="submit" value="<!--[pnml name="_GROUPSCONFIRMDELETE"]-->" />
+	</div>
+	<div style="clear:both"></div>
+</div>
+</form>
+<a href="<!--[pnmodurl modname="Groups" type="admin" func="view"]-->"><!--[pnml name="_GROUPSCANCELDELETE"]--></a>

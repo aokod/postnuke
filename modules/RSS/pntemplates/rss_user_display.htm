@@ -1,0 +1,33 @@
+<!--[*  $Id: rss_user_display.htm 16291 2005-06-03 09:23:58Z markwest $  *]-->
+<!--[include file="rss_user_menu.htm"]-->
+<!--[if $feed->image.url neq ""]-->
+	<div class="rss-image">
+	<a href="<!--[$feed->image.link|pnvarprepfordisplay]-->"><img src="<!--[$feed->image.url|pnvarprepfordisplay]-->" alt="<!--[$feed->image.title|pnvarprepfordisplay]-->" /></a>
+	</div><br /><br />
+<!--[/if]-->
+
+<div><strong><!--[pnml name="_RSSNAME"]--></strong> : <!--[$item.feedname|pnvarprephtmldisplay]--></div>
+<div><strong><!--[pnml name="_RSSURL"]--></strong> : <!--[$item.url|pnvarprepfordisplay]--></div>
+<div style="clear:both"></div>
+<br />
+<div>
+	<!--[section name=rssitems loop=$feed->items]-->
+		<div>
+			<div>
+			<a href="<!--[$feed->items[rssitems].link|pnvarprepfordisplay]-->" <!--[if $openinnewwindow eq 1]-->target="_blank"<!--[/if]-->><!--[$feed->items[rssitems].title|pnvarprepfordisplay]--></a>
+			<!--[if $feed->items[rssitems].author neq '']-->
+			<!--[pnml name="_RSSBYAUTHOR"]--> <!--[$feed->items[rssitems].author|pnvarprepfordisplay]-->
+			<!--[/if]-->
+			</div>
+			<!--[if $feed->items[rssitems].description neq '']-->
+				<br />
+				<div>
+				<!--[$feed->items[rssitems].description|pnvarprephtmldisplay]--><br />
+				<div align="right"><a href="<!--[$feed->items[rssitems].link|pnvarprepfordisplay]-->" <!--[if $openinnewwindow eq 1]-->target="_blank"<!--[/if]-->><!--[pnml name="_RSSREADMORE"]--></a></div>
+				</div>
+			<!--[ /if ]-->
+		</div><br /><br />
+	<!--[/section]-->
+</div>
+<!--[pnmodurl modname=RSS func=display fid=$item.fid assign=returnurl]-->
+<!--[pnmodcallhooks hookobject=item hookaction=display hookid=$item.fid module=RSS returnurl=$returnurl]-->

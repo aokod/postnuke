@@ -1,0 +1,24 @@
+<!--[*  $Id: typetool_admin_modifyconfig.htm 15410 2005-01-19 11:51:29Z markwest $  *]-->
+<!--[include file="typetool_admin_menu.htm"]-->
+<h2><!--[pnml name="_TYPETOOLSETTINGS"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="typetool" type="admin" func="updateconfig"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="typetool"]-->" />
+	<div class="pn-adminformrow">
+		<label for="typetool_tt_enable"><!--[pnml name="_TYPETOOLONOFF"]--></label>
+		<!--[if $tt_enable eq 1]-->
+			<input id="typetool_tt_enable" name="tt_enable" type="checkbox" value="1" checked="checked" />
+		<!--[else]-->
+			<input id="typetool_tt_enable" name="tt_enable" type="checkbox" value="1" />
+		<!--[/if]-->
+	</div>
+	<div class="pn-adminformrow">
+		<label for="typetool_tt_language"><!--[pnml name="_TYPETOOLLANGUAGE"]--></label>
+		<input id="typetool_tt_language" type="text" name="tt_language" size="35" maxlength="35" value="<!--[$tt_language|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow">
+		<input name="submit" type="submit" value="<!--[pnml name="_TYPETOOLUPDATE"]-->" />
+	</div>
+	<div style="clear:both"></div>
+</div>
+</form>

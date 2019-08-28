@@ -1,0 +1,20 @@
+.rss-itemscontainer {
+	margin-top:10px;
+}
+
+.rss-itemcontainer {
+	padding-bottom:5px;
+}
+
+.rss-item {
+	text-align:left;
+	border-style:solid;
+	border-width:1px;
+	padding:5px;
+}
+.rss-readmore {
+	text-align:right;
+}
+.rss-image {
+	text-align:center;
+}

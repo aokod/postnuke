@@ -1,0 +1,33 @@
+<!--[$menu]-->
+<br />
+<div class="pn-title"><!--[$skin|pnvarprepfordisplay]--> <!--[pnml name="_XA_ZONECONFIG"]--></div>
+<div class="pn-menu">
+<span class="pn-menuitem-title">[&nbsp;<a href="<!--[pnmodurl modname="Xanthia" type="admin" func="newZones" skin=$skinid]-->"><!--[pnml name="_XA_ADDZONE"]--></a>&nbsp;]</span>
+</div>
+<div class="pn-normal" style="width:100%;">
+<table width="100%" border="3">
+	<tr>
+		<th><!--[pnml name="_XA_ZONENAME"]--></th>
+		<th><!--[pnml name="_XA_ZONELABEL"]--></th>
+		<th><!--[pnml name="_XA_ZONETYPE"]--></th>
+		<th><!--[pnml name="_XA_ISACTIVE"]--></th>
+		<th><!--[pnml name="_XA_TEMPLATE"]--></th>
+		<th><!--[pnml name="_XA_ACTIONS"]--></th>
+	</tr>
+	<!--[section name=items loop=$items]-->  
+	<tr>
+		<td><!--[$items[items].name|pnvarprepfordisplay]--></td>
+		<td><!--[$items[items].zonelabel|pnvarprepfordisplay]--></td>
+		<td><!--[$items[items].type|pnvarprepfordisplay]--></td>
+		<td><!--[$items[items].active|pnvarprepfordisplay]--></td>
+		<td><!--[$items[items].template|pnvarprepfordisplay]--></td>
+		<td>
+		<!--[assign var="actions" value=$items[items].actions]-->
+		<!--[section name=actions loop=$actions]-->
+		<a href="<!--[$actions[actions].url|pnvarprepfordisplay]-->"><!--[$actions[actions].label|pnvarprepfordisplay]--></a>
+		<!--[/section]-->
+		</td>
+	</tr>
+	<!--[/section]-->
+</table>
+</div>

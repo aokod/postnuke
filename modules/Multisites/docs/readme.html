@@ -1,0 +1,140 @@
+<html> <font face="Arial, Helvetica, sans-serif">This documentation is there to explain
+how to transform a classic postNuke into a multi sites one. There is almost nothing
+in the folder NS-Multisites, it is normal, almost everything is already in the
+core of postNuke, and some manipulations has to be done by someone qualified (not
+too much).</font>
+<p><font face="Arial, Helvetica, sans-serif">Our example is going to talk about
+  several domain names, and one server. These are going to be:</font></p>
+<p><font face="Arial, Helvetica, sans-serif">www.domain1.com, www.domain1.net,
+  www.domain1.org, essai.domain1.net<br>
+  www.domain2.com, www.domain2.net, www.domain2.org, othersubdomain.domain2.net</font></p>
+<p><font face="Arial, Helvetica, sans-serif">We would like to have all the domain1
+  having the same content, all the domain2 but &quot;othersubdomain.domain2.net&quot;
+  with the same content, and &quot;othersubdomain.domain2.net&quot; with a different
+  content.<br>
+  </font></p>
+<h3><font face="Arial, Helvetica, sans-serif">Create a folder in the main folder.
+  </font></h3>
+<blockquote>
+  <p><font face="Arial, Helvetica, sans-serif"> Name it "parameters" </font></p>
+</blockquote>
+<h3><font face="Arial, Helvetica, sans-serif">create, in the folder parameters
+  a source: whoisit.inc.php</font></h3>
+<blockquote>
+  <p><font face="Arial, Helvetica, sans-serif"> Sources of parameters/whoisit.inc.php:</font></p>
+  <pre><font face="Arial, Helvetica, sans-serif" size="2">&lt;?</font><font face="Arial, Helvetica, sans-serif">
+</font><font face="Arial, Helvetica, sans-serif" size="2">     $serverName = $_SERVER['SERVER_NAME'];</font></pre>
+  <pre><font face="Arial, Helvetica, sans-serif">     // The following line strips www from servername
+     // comment if not needed.
+     $serverName = str_replace(&quot;www.&quot;,&quot;&quot;,$serverName);</font></pre>
+  <pre><font face="Arial, Helvetica, sans-serif">     // These lines will cause all .org/.net/.com sites to be treated the same
+     // so postnuke.com and postnuke.net would point to the same multisite config
+     $serverName = str_replace(&quot;.org&quot;,&quot;&quot;,$serverName);
+     $serverName = str_replace(&quot;.net&quot;,&quot;&quot;,$serverName);
+     $serverName = str_replace(&quot;.com&quot;,&quot;&quot;,$serverName);</font></pre>
+  <pre><font face="Arial, Helvetica, sans-serif">     // optional default for no match on $SERVER_NAME
+     // uncomment to use
+     /*
+     if (!file_exists($serverName)) {
+         $serverName = &quot;defaultsite&quot;;
+     }
+     */</font><font face="Arial, Helvetica, sans-serif" size="2"><br>?&gt;
+
+</font><font face="Arial, Helvetica, sans-serif">You may find a &quot;whoisit.inc.php&quot; in the folder NS-Multisites/installation. Copy it in the folder &quot;parameters&quot;.
+</font></pre>
+  </blockquote>
+<h3><font face="Arial, Helvetica, sans-serif">In that folder, <b>create a folder</b>
+  with the name domain1, <b>an other one</b> with the name domain2, and <b>a third
+  one</b> with the name &quot;othersubdomain.domain2&quot;. </font></h3>
+<blockquote>
+  <p><font face="Arial, Helvetica, sans-serif">In these folders, copy the original
+    config.php, and modify each of them as you want, especially $dbname, or $prefix.</font></p>
+</blockquote>
+<h3><font face="Arial, Helvetica, sans-serif">Create a folder in each of these
+  folders, name it &quot;images&quot;</font></h3>
+<blockquote>
+  <p><font face="Arial, Helvetica, sans-serif">If you use a multi sites configuration,
+    it is normal the logos are in these personal folder. The logo is a minimum.
+    In that folder, put the image you want to use as a logo for that site. IT
+    IS MANDATORY. </font></p>
+  <p><font face="Arial, Helvetica, sans-serif">I did modified the scrip print.php
+    to go and get it there. The themes has to be modified accordingly, ie I did
+    correct the theme &quot;extralite&quot;, and that is all.</font></p>
+  <p><font face="Arial, Helvetica, sans-serif">The modification is:</font></p>
+  <blockquote>
+    <p><font face="Arial, Helvetica, sans-serif" size="2">img src=\"".WHERE_IS_PERSO."images/logo.gif\"
+      alt=\""._WELCOMETO." $sit</font> </p>
+  </blockquote>
+  <p><font face="Arial, Helvetica, sans-serif">I dont really understand why this
+    &quot;logo.gif&quot; appears here, it should obviously be &quot;$site_logo&quot;
+    ...</font></p>
+  <blockquote>
+    <p>&nbsp;</p>
+  </blockquote>
+</blockquote>
+<h3><font face="Arial, Helvetica, sans-serif">Replace original config.php in the
+  root with: </font></h3>
+<blockquote>
+  <p><font face="Arial, Helvetica, sans-serif" size="2">&lt;?</font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="2"> include("parameters/whoisit.inc.php");
+    <br>
+    if (!(empty($serverName)))<br>
+    { include("parameters/".$serverName."/config.php"); }</font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="2"> /* this next defined
+    is coming before the one I put in mainfile2.php. So there are 2 possibilities,
+    to destroy the one I put in mainfile2.php, or to let it, as it is coming after
+    the one below, it wont affect WHERE_IS_PERSO. */</font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="2"> define("WHERE_IS_PERSO","parameters/".$serverName."/");
+    </font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="2">?&gt;</font></p>
+  <p><font face="Arial, Helvetica, sans-serif">You may find a config.php in &quot;NS-Multisites/installation&quot;.
+    Copy it in your root of postNuke, but <b>please, dont forget to copy the original
+    config.php as explained above, before you copy that one ! </b></font></p>
+  <p>&nbsp;</p>
+</blockquote>
+<h3><font face="Arial, Helvetica, sans-serif">With this, your site is multi site.
+  Now, you may want give the possibility to your sub sites to have personnal (exclusive)
+  themes.</font></h3>
+<blockquote>
+  <p><font face="Arial, Helvetica, sans-serif">Explication: your site is &quot;multi
+    site&quot;. You can modifiy anything in each config.php, it will affect only
+    the corresponding site. But: the themes are still the themes available in
+    your top themes folder. The images topics are still the one in your top images/topics
+    ... We are going to personalyze these also.</font></p>
+</blockquote>
+<h3><font face="Arial, Helvetica, sans-serif">In the folders &quot;domain1&quot;,
+  &quot;domain2&quot;, &quot;othersubdomain.domain2&quot;: </font></h3>
+<blockquote>
+  <p><font face="Arial, Helvetica, sans-serif">Create a folder <b>themes</b> in
+    each of them.</font></p>
+  <p><font face="Arial, Helvetica, sans-serif">In that folder, you have to create
+    an empty &quot;index.html&quot;, for security reasons. Then you may copy a
+    complete theme, like the one you may find in the principal themes folder (with
+    its sub folders, css ...). The themes you put there <b>HAS TO HAVE A DIFFERENT
+    NAME</b>. For Instance, I did my tests with a copy of PostNuke theme, renaming
+    it in PostNuke2. That is all, since now on, you should see that PostNuke2
+    theme in your change folder list, beside the themes present in the main folder.</font></p>
+</blockquote>
+<h3><font face="Arial, Helvetica, sans-serif">That is all for the personal themes.</font></h3>
+<h3><font face="Arial, Helvetica, sans-serif">A personal pntables.php ? </font></h3>
+<blockquote>
+  <p><font face="Arial, Helvetica, sans-serif">Easy ! just copy pntables.php into
+    your &quot;parametes/linux.mouzaia&quot; folder. Then you can modify it. If
+    the system does not find a pntables.php in that folder, it uses the master
+    one.</font></p>
+</blockquote>
+<h3><font face="Arial, Helvetica, sans-serif">Personal Images.</font></h3>
+<p>Since config.php is not used so much in .71, but a table in the database, I
+  presume it is possible to modify the content of ex-tipath directly in the database:</p>
+<p>SELECT nuke_module_vars.pn_value FROM nuke_module_vars WHERE nuke_module_vars.pn_modname='/PNConfig'
+  AND nuke_module_vars.pn_name='tipath'</p>
+<p>Since tables belongs to a domain, you can modify pn_value, changing the path
+  to the images there.</p>
+<h3><font face="Arial, Helvetica, sans-serif">It does not work ! </font></h3>
+<p><font face="Arial, Helvetica, sans-serif">In whoisit.inc.php, I just
+  treat .com, .net, .org, but of course, you may have to treat .fr or .co.uk,
+  or dont treat them at all, then use a folder named linux.mouzaia.org for instance,
+or whatever you want ....</font></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

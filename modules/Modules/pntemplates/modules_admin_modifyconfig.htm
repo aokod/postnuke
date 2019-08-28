@@ -1,0 +1,30 @@
+<!--[*  $Id: modules_admin_modifyconfig.htm 16057 2005-04-03 17:56:24Z larsneo $  *]-->
+<!--[include file="modules_admin_menu.htm"]-->
+<h2><!--[pnml name="_MODULESMODIFYCONFIG"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Modules" type="admin" func="updateconfig"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Modules"]-->" />
+	<div class="pn-adminformrow">
+		<label for="modules_itemsperpage"><!--[pnml name="_MODULESITEMSPERPAGE"]--></label>
+		<input id="modules_itemsperpage" type="text" name="itemsperpage" size="3" value="<!--[$itemsperpage|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow">
+		<!--[pnml name="_MODULESLOADLEGACY"]-->
+		<!--[if $loadlegacy eq 1]-->
+			<div>
+				<label for="modules_loadlegacy_yes"><!--[pnml name="_YES"]--></label><input id="modules_loadlegacy_yes" type="radio" name="loadlegacy" value="1" checked="checked" />
+				<label for="modules_loadlegacy_no"><!--[pnml name="_NO"]--></label><input id="modules_loadlegacy_no" type="radio" name="loadlegacy" value="0" />
+			</div>
+		<!--[else]-->
+			<div>
+				<label for="modules_loadlegacy_yes"><!--[pnml name="_YES"]--></label><input id="modules_loadlegacy_yes" type="radio" name="loadlegacy" value="1" />
+				<label for="modules_loadlegacy_no"><!--[pnml name="_NO"]--></label><input id="modules_loadlegacy_no" type="radio" name="loadlegacy" value="0" checked="checked" />
+			</div>
+		<!--[/if]-->
+	</div>
+	<div class="pn-adminformrow">
+		<input name="submit" type="submit" value="<!--[pnml name="_MODULESUPDATECONFIG"]-->" />
+	</div>
+	<div class="pn-adminformrow"></div>
+</div>
+</form>

@@ -1,0 +1,292 @@
+<!--[$menu]-->
+<script language="JavaScript">
+var bb="";
+var trace = "traceoff";
+var array_checked = new Array("","","","");
+var basehex = true;
+var target="background";
+var demotarget  = "";
+var statuscolor = "#FFFFFF"
+var statustext = "Current target for colorchange is "+
+"<strong><font color='"+statuscolor+"'>"+target+"</strong>";
+var swapflag="no";
+var swapsource="";
+var updwindow="yes";
+var colorvalue="";
+<!--[section name=items loop=$items]-->  
+	var color1="<!--[$items[items].color1|pnvarprepfordisplay]-->";
+	var color2="<!--[$items[items].color2|pnvarprepfordisplay]-->";
+	var color3="<!--[$items[items].color3|pnvarprepfordisplay]-->";
+	var color4="<!--[$items[items].color4|pnvarprepfordisplay]-->";
+	var color5="<!--[$items[items].color5|pnvarprepfordisplay]-->";
+	var color6="<!--[$items[items].color6|pnvarprepfordisplay]-->";
+	var color7="<!--[$items[items].color7|pnvarprepfordisplay]-->";
+	var color8="<!--[$items[items].color8|pnvarprepfordisplay]-->";
+	var sepcolor="<!--[$items[items].sepcolor|pnvarprepfordisplay]-->";
+	var colorback="<!--[$items[items].bgcolor|pnvarprepfordisplay]-->";
+	var colortext1="<!--[$items[items].text1|pnvarprepfordisplay]-->";
+	var colortext2="<!--[$items[items].text2|pnvarprepfordisplay]-->";
+	var colorlink="<!--[$items[items].link|pnvarprepfordisplay]-->";
+	var colorhover="<!--[$items[items].hover|pnvarprepfordisplay]-->";
+	var colorvlink="<!--[$items[items].vlink|pnvarprepfordisplay]-->";
+<!--[assign var="palname" value=$items[items].palname]-->	
+<!--[/section]-->
+
+var hexvalue = new Array("0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F");
+var hexstring = "0123456789ABCDEF";
+var gg="";
+var rr="";
+var undocolor="FFFFFF";
+var redocolor="";
+
+function brighter (){
+	tempbase = basehex;
+	basehex=false;
+	setrgb();
+	if (control.document.buttonbar.adjred.checked == true) rr = Math.min(255,rr+1);
+	if (control.document.buttonbar.adjgreen.checked == true) gg = Math.min(255,gg+1);
+	if (control.document.buttonbar.adjblue.checked == true) bb = Math.min(255,bb+1);
+	SetColor(rgbtohex(rr)+rgbtohex(gg)+rgbtohex(bb));
+	basehex=tempbase;
+	setrgb();
+	updrgb();
+}
+
+function darker (){
+	tempbase = basehex;
+	basehex=false;
+	setrgb();
+	if (control.document.buttonbar.adjred.checked == true) rr = Math.max(0,rr-1);
+	if (control.document.buttonbar.adjgreen.checked == true) gg = Math.max(0,gg-1);
+	if (control.document.buttonbar.adjblue.checked == true) bb = Math.max(0,bb-1);
+	SetColor(rgbtohex(rr)+rgbtohex(gg)+rgbtohex(bb));
+	basehex=tempbase;
+	setrgb();
+	updrgb();
+}
+
+function UseValue(rr,gg,bb)
+{
+    if (basehex == true) {
+	    SetColor(rr+gg+bb);
+	} else {
+	    SetColor(rgbtohex(rr)+rgbtohex(gg)+rgbtohex(bb));
+    }
+}
+
+function SetDec()
+{
+	if (basehex == true) {
+		control.document.buttonbar.chred.value=parseInt(control.document.buttonbar.chred.value,16);
+		control.document.buttonbar.chgreen.value=parseInt(control.document.buttonbar.chgreen.value,16);
+		control.document.buttonbar.chblue.value=parseInt(control.document.buttonbar.chblue.value,16);
+		basehex = false;
+	}
+}
+
+function SetHex()
+{
+	if (basehex ==false) {
+		control.document.buttonbar.chred.value=rgbtohex(control.document.buttonbar.chred.value);
+		control.document.buttonbar.chgreen.value=rgbtohex(control.document.buttonbar.chgreen.value);
+		control.document.buttonbar.chblue.value=rgbtohex(control.document.buttonbar.chblue.value);
+		basehex = true;
+	}
+}
+
+function Hexdec(token) 
+{
+	var dec = hexstring.indexOf(token);
+	return(dec);
+}
+
+function hextorgb (token)
+{
+	return(parseInt(token,16));
+}
+
+function rgbtohex(token)
+{
+	return(Hex(token));
+}
+
+function init()
+{
+	statustext = "Current target for colorchange is <strong><font color='#000080'>"+target+"</strong>";
+	status2.location.href='<!--[pnmodurl modname="Xanthia" type="admin" func="getIncludes" link="status" authid=$authid]-->';
+}
+
+function swap()
+{
+	swapflag="yes";
+	statustext = "Swapfunction active - push button for swapsource1";
+	status2.location.href='<!--[pnmodurl modname="Xanthia" type="admin" func="getIncludes" link="status" authid=$authid]-->';
+}
+
+function Hex(value)
+{
+	hex2 = value % 16;
+	hex1 = (value-hex2)/16;
+	return(hexvalue[hex1]+hexvalue[hex2]);
+}
+
+function SetTarget(dest)
+{
+	target=dest;
+	if (target=='background')undocolor = colorback;
+	if (target=='color1')    undocolor = color1;
+	if (target=='color2')    undocolor = color2;
+	if (target=='color3')    undocolor = color3;
+	if (target=='color4')    undocolor = color4;
+	if (target=='color5')    undocolor = color5;
+	if (target=='color6')    undocolor = color6;
+	if (target=='color7')    undocolor = color7;
+	if (target=='color8')    undocolor = color8;
+	if (target=='sepcolor')  undocolor = sepcolor;
+	if (target=='text1')     undocolor = colortext1;
+	if (target=='text2')     undocolor = colortext2;
+	if (target=='link')      undocolor = colorlink;
+	if (target=='vlink')     undocolor = colorvlink;
+	if (target=='hover')     undocolor = colorhover;
+	if (swapflag=="no") {
+		colorvalue=undocolor;
+		setrgb();
+		updrgb();
+		statustext = "Current target for colorchange is <strong><FONT COLOR='"+statuscolor+"'>"+target+"</FONT></strong>";
+		status2.location.href='<!--[pnmodurl modname="Xanthia" type="admin" func="getIncludes" link="status" authid=$authid]-->';
+	} else {
+		if (swapsource=="") {
+		   swapsource=target;
+		   swapcolor1=undocolor;
+		   statustext = "Swapsource1="+swapsource+" - click swapsource2";
+		   status2.location.href='<!--[pnmodurl modname="Xanthia" type="admin" func="getIncludes" link="status" authid=$authid]-->';
+		} else {
+			swapflag="no";
+			swapcolor2=undocolor;
+			updwindow="no";
+			SetColor(swapcolor1);
+			SetTarget(swapsource);
+			updwindow="yes";
+			SetColor(swapcolor2);
+			swapsource="";
+		}
+	}
+}
+
+function undo()
+{
+	SetColor(undocolor);
+}
+
+function setrgb()
+{
+	rr = colorvalue.substring(0,2);
+	gg = colorvalue.substring(2,4);
+	bb = colorvalue.substring(4,6);
+	if (basehex == false) {
+		rr = hextorgb(rr);
+		gg = hextorgb(gg);
+		bb = hextorgb(bb);
+	}
+}
+
+function updrgb()
+{
+	control.document.buttonbar.chred.value=rr;
+	control.document.buttonbar.chgreen.value=gg;
+	control.document.buttonbar.chblue.value=bb;
+}
+
+function SetColor(tempcolor)
+{
+	colorvalue=tempcolor;
+	if (target=='background') {
+		undocolor=colorback;
+		colorback=tempcolor;
+	}
+	if (target=='color1') {
+		undocolor=color1;
+		color1 = colorvalue;
+	}
+	if (target=='color2') {
+		undocolor=color2;
+		color2 = colorvalue;
+	}
+	if (target=='color3') {
+		undocolor=color3;
+		color3 = colorvalue;
+	}
+	if (target=='color4') {
+		undocolor=color4;
+		color4 = colorvalue;
+	}
+	if (target=='color5') {
+		undocolor=color5;
+		color5 = colorvalue;
+	}
+	if (target=='color6') {
+		undocolor=color6;
+		color6 = colorvalue;
+	}
+	if (target=='color7') {
+		undocolor=color7;
+		color7 = colorvalue;
+	}
+	if (target=='color8') {
+		undocolor=color8;
+		color8 = colorvalue;
+	}
+	if (target=='sepcolor') {
+		undocolor=sepcolor;
+		sepcolor = colorvalue;
+	}
+	if (target=='text1') {
+		undocolor=colortext1;
+		colortext1 = colorvalue;
+	}
+	if (target=='text2') {
+		undocolor=colortext2;
+		colortext2 = colorvalue;
+	}
+	if (target=='link') {
+		undocolor=colorlink;
+		colorlink = colorvalue;
+	}
+	if (target=='vlink') {
+		undocolor=colorvlink;
+		colorvlink = colorvalue;
+	}
+	if (target=='hover') {
+		undocolor=colorhover;
+		colorhover = colorvalue;
+	}
+	if (updwindow=="yes") {
+		setrgb();
+		updrgb();
+		demo.location.reload();
+	}
+}
+</script>
+
+<table>
+	<tr>
+		<td>
+			<iframe name="control" src="<!--[pnmodurl modname="Xanthia" type="admin" func="getIncludes" link="control" skin=$skin paletteid=$paletteid]-->" width="600" height="90" scrolling="no" frameborder="0"></iframe>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<iframe name="status2" src="<!--[pnmodurl modname="Xanthia" type="admin" func="getIncludes" link="status" skin=$skin paletteid=$paletteid]-->" width="600" height="35" scrolling="no" frameborder="0"></iframe>
+		</td>
+	</tr>
+</table>
+<table>
+	<tr>
+		<td>
+			<iframe name="demo" src="<!--[pnmodurl modname="Xanthia" type="admin" func="getIncludes" link="demo" skin=$skin paletteid=$paletteid palname=$palname]-->" width="400" height="800" scrolling="no" frameborder="0"></iframe>
+		</td>
+		<td>
+			<iframe name="color" src="<!--[pnmodurl modname="Xanthia" type="admin" func="getIncludes" link="color" skin=$skin paletteid=$paletteid]-->" width="200" height="270" scrolling="no" frameborder="0"></iframe>
+		</td>
+	</tr>
+</table>

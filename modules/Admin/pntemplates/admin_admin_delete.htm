@@ -1,0 +1,16 @@
+<!--[*  $Id: admin_admin_delete.htm 15405 2005-01-19 11:20:07Z markwest $  *]-->
+<!--[include file="admin_admin_menu.htm"]-->
+<h2><!--[pnml name="_ADMINDELETECATEGORY"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Admin" type="admin" func="delete"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+    <input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Admin"]-->" />
+    <input type="hidden" name="confirmation" value="1" />
+    <input type="hidden" name="cid" value="<!--[$cid|pnvarprepfordisplay]-->" />
+	<div class="pn-adminformrow">
+		<label for="admin_submit"><!--[pnml name=_ADMINCONFIRMCATEGORYDELETE]--></label>
+		<input id="admin_submit" name="submit" type="submit" value="<!--[pnml name="_ADMINDELETECATEGORY"]-->" />
+	</div>
+	<div style="clear:both;"></div>
+</div>
+</form>
+<a href="<!--[pnmodurl modname="Admin" type="admin" func="view"]-->"><!--[pnml name="_ADMINCANCELCATEGORYDELETE"]--></a>

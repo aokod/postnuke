@@ -1,0 +1,29 @@
+<!--[*  $Id: memberslist_user_currentonline.htm 15220 2004-12-20 10:05:48Z markwest $  *]-->
+<!--[include file="memberslist_user_menu.htm"]-->
+<h2><!--[pnml name=_MEMBERSLISTCURRENTONLINE]--></h2>
+<table class="memberslist-results">
+  <tr>
+    <th><!--[pnml name="_MEMBERSLISTAVATAR"]--></th>
+    <th><!--[pnml name="_MEMBERSLISTNICKNAME"]--></th>
+    <th><!--[pnml name="_MEMBERSLISTREALNAME"]--></th>
+    <th><!--[pnml name="_MEMBERSLISTPM"]--></th>
+    <th><!--[pnml name="_MEMBERSLISTURL"]--></th>
+  </tr>
+  <!--[section name=users loop=$users]-->
+    <tr>
+      <td>
+        <img src="images/avatar/<!--[$users[users].pn_user_avatar|pnvarprepfordisplay]-->" alt="<!--[$users[users].pn_user_avatar|pnvarprepfordisplay]-->" />
+	  </td>
+      <td><strong><a href="user.php?op=userinfo&amp;uname=<!--[$users[users].uname]-->"><!--[$users[users].uname|pnvarprepfordisplay]--></a></strong></td>
+      <td><!--[$users[users].name|default:"&nbsp;"]--></td>
+      <td><!--[pm uname=$users[users].uname]--></td>
+      <td>
+        <!--[if $users[users].url eq '']-->
+			&nbsp;          
+        <!--[else]-->
+          <a href="<!--[$users[users].url|pnvarprepfordisplay]-->"><!--[pnimg src="url.gif" alt=$users[users].url|pnvarprepfordisplay]--></a>
+		<!--[/if]-->
+      </td>
+    </tr>
+  <!--[/section]-->
+</table>

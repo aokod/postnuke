@@ -1,0 +1,10 @@
+Changelog
+2004-02-29  Mark West Converted to pnRender
+2003-04-22  Mark West converted to pnAPI compliant
+2001-07-28  Tim Litwiller  converted to PostNuke
+2000-12-02  Fabian Rodriguez - http://sourceforge.net/users/MagicFab/
+  - changed name of addon
+  - corrected logo image to reflect version 4.2 path
+  - included compliant html tags
+  - made it AvantGo "compliant" (see http://avantgo.com/developer/reference/tutorials/jumpstart/jumpstart.html)
+2000-11-29  Tim Litwiller  original version

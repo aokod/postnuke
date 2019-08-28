@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<chapter id="pnTemp" lang="en-US"
+         status="draft">
+  <!-- $Id: pntemp.xml 18162 2006-03-16 00:20:51Z drak $ -->
+
+  <chapterinfo>
+    <authorgroup>
+      <author>
+        <firstname>Jörg</firstname>
+
+        <surname>Napp</surname>
+
+        <affiliation>
+          <jobtitle>Developer</jobtitle>
+
+          <orgname>PostNuke</orgname>
+        </affiliation>
+      </author>
+    </authorgroup>
+
+
+    <date>$Date: 2006-03-16 00:20:51 +0000 (Thu, 16 Mar 2006) $</date>
+
+    <revhistory>
+      <revision>
+        <revnumber>0.3</revnumber>
+
+        <date>28. Feb 2004</date>
+
+        <revdescription>
+          <para>DocBook split for better re-use</para>
+        </revdescription>
+      </revision>
+
+      <revision>
+        <revnumber>0.2</revnumber>
+
+        <date>07. October 2003</date>
+
+        <revdescription>
+          <para>corrections and added IDs to tags</para>
+        </revdescription>
+      </revision>
+
+      <revision>
+        <revnumber>0.1</revnumber>
+
+        <date>15. September 2003</date>
+
+        <revdescription>
+          <para>Initial version</para>
+        </revdescription>
+      </revision>
+    </revhistory>
+
+    <keywordset>
+      <keyword>pnTemp</keyword>
+    </keywordset>
+  </chapterinfo>
+
+  <title>The PostNuke temp directory (<filename>pnTemp</filename>)</title>
+
+  <section id="pntemp.introduction">
+    <title>Introduction</title>
+
+    <para>The PostNuke temp directory has been introduced for module
+    developers to store temporary files in a central writable file system
+    point.</para>
+  </section>
+
+  <section id="pntemp.uses">
+    <title>Uses</title>
+
+    <section id="pntemp.uses.obtaining">
+      <title>Obtaining the temp path</title>
+
+      <para>A module developer can obtain the path to the temp directory using
+      <command>pnConfigGetVar('<replaceable>temp</replaceable>')</command>.</para>
+    </section>
+
+    <section id="pntemp.uses.filenames">
+      <title>File names</title>
+
+      <para>Developers should use their module name as a suffix to file names
+      stored in the temp directory to avoid name conflicts. The foobar module
+      shuld name its temporary files <filename>foobar_temp1</filename>,
+      <filename>foobar_temp2</filename> a.s.o.</para>
+    </section>
+
+    <section id="pntemp.uses.subdirs">
+      <title>Using Subdirectories</title>
+
+      <para>A module developer may use a subdirectory of the temp directory
+      for his purposes. In this case, the module developer has to take care
+      for this subdirectory to be created and deleted on module initialization
+      or deletion time. The naming conventions stated above appliy to
+      directory names as well.</para>
+    </section>
+
+    <section id="pntemp.uses.deletion">
+      <title>Automatic deletion</title>
+
+      <para>In short, automatic deletion or cleanup will not and must not take
+      place.</para>
+
+      <para>There is no automatic cleanup machanism for the temp directory, so
+      the developer needs to take care that the files he creates are deleted
+      again. On the other hand, the system expects no automatic cleanup to
+      run, so that files can be stored over a certain amount of time.</para>
+    </section>
+
+    <section id="pntemp.uses.webaccess">
+      <title>Web access to files</title>
+
+      <para>Files stored in the temp directory are not accessible via http.
+      Thus, this is not the place to store files like images, documents or
+      such that you would like to be available via http.</para>
+    </section>
+  </section>
+
+  <section id="pntemp.implementation">
+    <title>Implementation</title>
+
+    <para>At installation time, the PostNuke temp directory is located at
+    <filename><replaceable>(PostNuke Root)</replaceable>/pnTemp</filename>.
+    The webmaster installing PostNuke needs to make this directory writable by
+    the web server, typically by <command>chmod</command>ding it (and its
+    subdirectories) to 777.</para>
+
+    <para>The place of the temp directory can be changed in the file
+    <filename>config.php</filename>. Since if we use adodb query caching this
+    temp directory will need to be known before we have access to our db so a
+    config var is not appropriate here.</para>
+
+    <para>For security reasons, webmasters are strongly encouraged to move the
+    temp directory outside the web root.</para>
+
+    <para>To avoid http access to the temp directory, there is a apache styte
+    <filename>.htaccess</filename> included in the <filename>pnTemp</filename>
+    directory prohibiting this access.</para>
+  </section>
+</chapter>

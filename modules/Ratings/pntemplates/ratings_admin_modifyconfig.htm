@@ -1,0 +1,24 @@
+<!--[*  $Id: ratings_admin_modifyconfig.htm 15410 2005-01-19 11:51:29Z markwest $  *]-->
+<!--[include file="ratings_admin_menu.htm"]-->
+<h2><!--[pnml name="_MODIFYCONFIG"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Ratings" type="admin" func="updateconfig"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Ratings"]-->" />
+	<div class="pn-adminformrow">
+		<label for="ratings_style"><!--[pnml name="_RATINGSDEFAULTSTYLE"]--></label>
+		<select id="ratings_style" name="style">
+			<!--[html_options options=$defaultstylevalues selected=$defaultstyle]-->
+		</select>
+	</div>
+	<div class="pn-adminformrow">
+		<label for="ratings_seclevel"><!--[pnml name="_RATINGSSECURITY"]--></label>
+		<select id="ratings_seclevel" name="seclevel">
+			<!--[html_options options=$securitylevelvalues selected=$securitylevel]-->
+		</select>
+	</div>
+	<div class="pn-adminformrow">
+		<input name="submit" type="submit" value="<!--[pnml name="_RATINGSUPDATECONFIG"]-->" />
+	</div>
+	<div style="clear:both"></div>
+</div>
+</form>

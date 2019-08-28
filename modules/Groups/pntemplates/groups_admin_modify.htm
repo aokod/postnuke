@@ -1,0 +1,16 @@
+<!--[*  $Id: groups_admin_modify.htm 16496 2005-07-24 22:24:55Z markwest $  *]-->
+<!--[include file="groups_admin_menu.htm"]-->
+<h2><!--[pnml name="_GROUPSMODIFY"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Groups" type="admin" func="update"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Groups"]-->" />
+	<input type="hidden" name="gid" value="<!--[$gid|pnvarprepfordisplay]-->" />
+	<div class="pn-adminformrow">
+		<label for="groups_name"><!--[pnml name="_GROUPSNAME"]--></label>
+		<input id="groups_name" name="name" type="text" size="30" maxlength="30" value="<!--[$name|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow"><!--[pnmodcallhooks hookobject=item hookaction=modify hookid=$gid module=Groups]--></div>
+	<div class="pn-adminformrow"><input name="submit" type="submit" value="<!--[pnml name="_GROUPSMODIFY"]-->" /></div>
+	<div style="clear:both"></div>
+</div>
+</form>

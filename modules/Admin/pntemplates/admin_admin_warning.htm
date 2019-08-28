@@ -1,0 +1,11 @@
+<!--[*  $Id: admin_admin_warning.htm 14983 2004-11-27 22:08:41Z markwest $  *]-->
+<div class="warning-container">
+	<!--[pnimg src=warning.gif]-->
+	<!--[if $installexists]-->
+		<h2><!--[pnml name='_ADMININSTALLWARNING']--></h2>
+	<!--[/if]-->
+	<!--[if $psakexists]-->
+		<h2><!--[pnml name='_ADMINPSAKWARNING']--></h2>
+	<!--[/if]-->
+	<a href="<!--[ $adminpanellink|pnvarprepfordisplay ]-->"><!--[ pnml name='_ADMINCONTINUE' ]--></a>
+</div>

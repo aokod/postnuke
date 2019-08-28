@@ -1,0 +1,11 @@
+<!--[*  $Id: rss_user_view.htm 15040 2004-12-05 19:33:45Z markwest $  *]-->
+<!--[include file="rss_user_menu.htm"]-->
+<h2><!--[pnml name=_RSSAVAILABLEFEEDS]--></h2>
+<!--[pnmodurl modname=RSS func=view startnum=$startnum assign=returnurl]-->
+<div><!--[pnmodcallhooks hookobject=category hookaction=display module=RSS returnurl=$returnurl]--></div>
+<ul>
+<!--[section name=item loop=$items]-->
+	<li><a href="<!--[$items[item].url|pnvarprepfordisplay]-->"><!--[$items[item].title|pnvarprepfordisplay]--></a></li>
+<!--[/section]-->
+</ul>
+<!--[pager show=page rowcount=$pager.numitems limit=$pager.itemsperpage posvar=startnum shift=1]-->

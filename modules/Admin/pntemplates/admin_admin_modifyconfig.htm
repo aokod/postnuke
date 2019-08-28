@@ -1,0 +1,80 @@
+<!--[*  $Id: admin_admin_modifyconfig.htm 16500 2005-07-24 22:59:28Z markwest $  *]-->
+<!--[include file="admin_admin_menu.htm"]-->
+<h2><!--[pnml name="_MODIFYCONFIG"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Admin" type="admin" func="updateconfig"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Admin"]-->" />
+    <div class="pn-adminformrow">
+	  <label for="admin_graphic"><!--[pnml name="_ADMINDISPLAYICONS"]--></label>
+	  <!--[if $admingraphic eq 1]-->
+        <input id="admin_graphic" name="admingraphic" type="checkbox" value="1" checked="checked" />
+	  <!--[else]-->
+        <input id="admin_graphic" name="admingraphic" type="checkbox" value="1" />
+	  <!--[/if]-->
+    </div>
+    <div class="pn-adminformrow">
+	  <label for="admin_ignoreinstallercheck"><!--[pnml name="_ADMINIGNOREINSTALLERCHECK"]--></label>
+	  <!--[if $ignoreinstallercheck eq 1]-->
+        <input id="admin_ignoreinstallercheck" name="ignoreinstallercheck" type="checkbox" value="1" checked="checked" />
+	  <!--[else]-->
+        <input id="admin_ignoreinstallercheck" name="ignoreinstallercheck" type="checkbox" value="1" />
+	  <!--[/if]-->
+	  <div class="pn-statusmsg"><!--[pnml name=_ADMINIGNOREINSTALLERCHECKWARNING]--></div>
+    </div>
+   	<div class="pn-adminformrow">
+      <label for="admin_skin"><!--[pnml name="_ADMINSKIN"]--></label>
+      <!--[modstyleslist name=modulestylesheet modname=Admin selected=$modulestylesheet]-->
+    </div>
+    <div class="pn-adminformrow">
+      <label for="admin_modulesperrow"><!--[pnml name="_ADMINMODULESPERROW"]--></label>
+      <input id="admin_modulesperrow" name="modulesperrow" type="text" size="3" maxlength="3" value="<!--[$modulesperrow|pnvarprepfordisplay]-->" />
+    </div>
+    <div class="pn-adminformrow">
+      <label for="admin_itemsperpage"><!--[pnml name="_ADMINITEMSPERPAGE"]--></label>
+      <input id="admin_itemsperpage" name="itemsperpage" type="text" size="3" maxlength="3" value="<!--[$itemsperpage|pnvarprepfordisplay]-->" />
+    </div>
+    <div class="pn-adminformrow">
+      <label for="admin_startcategory"><!--[pnml name="_ADMINSTARTCATEGORY"]--></label>
+	    <select id="admin_startcategory" name="startcategory">
+          <!--[section name=categories loop=$categories]-->  
+		    <!--[if  $startcategory eq $categories[categories].cid ]-->
+    		  <option value="<!--[$categories[categories].cid|pnvarprepfordisplay]-->" selected="selected"><!--[$categories[categories].catname|pnvarprepfordisplay]--></option>
+			<!--[else]-->
+    		  <option value="<!--[$categories[categories].cid|pnvarprepfordisplay]-->"><!--[$categories[categories].catname|pnvarprepfordisplay]--></option>
+			<!--[/if]-->
+		  <!--[/section]-->
+	    </select>
+    </div>
+    <div class="pn-adminformrow">
+      <label for="admin_defaultcategory"><!--[pnml name="_ADMINDEFAULTCATEGORY"]--></label>
+	    <select id="admin_defaultcategory" name="defaultcategory">
+          <!--[section name=categories loop=$categories]-->  
+		    <!--[if  $defaultcategory eq $categories[categories].cid ]-->
+    		  <option value="<!--[$categories[categories].cid|pnvarprepfordisplay]-->" selected="selected"><!--[$categories[categories].catname|pnvarprepfordisplay]--></option>
+			<!--[else]-->
+    		  <option value="<!--[$categories[categories].cid|pnvarprepfordisplay]-->"><!--[$categories[categories].catname|pnvarprepfordisplay]--></option>
+			<!--[/if]-->
+		  <!--[/section]-->
+	    </select>
+    </div>
+    <!--[section name=modulecategories loop=$modulecategories]-->  
+      <div class="pn-adminformrow">
+        <label for="admin_<!--[$modulecategories[modulecategories].name]-->"><!--[$modulecategories[modulecategories].name]--></label>
+		  <select id="admin_<!--[$modulecategories[modulecategories].name]-->" name="<!--[$modulecategories[modulecategories].name|pnvarprepfordisplay]-->">
+            <!--[section name=categories loop=$categories]-->  
+		      <!--[if  $modulecategories[modulecategories].category eq $categories[categories].cid ]-->
+                <option value="<!--[$categories[categories].cid|pnvarprepfordisplay]-->" selected="selected"><!--[$categories[categories].catname|pnvarprepfordisplay]--></option>
+              <!--[else]-->
+    		    <option value="<!--[$categories[categories].cid|pnvarprepfordisplay]-->"><!--[$categories[categories].catname|pnvarprepfordisplay]--></option>
+              <!--[/if]-->
+		    <!--[/section]-->
+	      </select>
+      </div>
+    <!--[/section]-->
+  <!--[pnmodcallhooks hookobject=module hookaction=modifyconfig module=Admin]-->
+  <div class="pn-adminformrow">
+    <input name="submit" type="submit" value="<!--[pnml name="_UPDATECONFIG"]-->" />
+  </div>
+  <div style="clear:both;"></div>
+</div>
+</form>

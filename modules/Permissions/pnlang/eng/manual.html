@@ -1,0 +1,418 @@
+<HTML>
+<HEAD>
+<TITLE>Permissions</TITLE>
+</HEAD>
+<BODY BGCOLOR=FFFFFF TEXT=000000>
+<FONT FACE=Verdana,Arial,Helvetica SIZE=2>
+<CENTER><B>Permissions</B></CENTER>
+<BR><BR>
+
+<H1>Introduction</H1>
+
+The PostNuke permissions system allows complete control over which content on
+the site is available to different users, and what they can do with it.  It
+also allows the site to have multiple administrators, each responsible for
+their own area, and further subdivides all content into separate realms to
+allow for multiple sets of content on the same site but viewable by different
+users.
+
+<BR><BR>
+
+This help file covers the administration of the permissions system.
+
+<BR><BR>
+<HR>
+<B>
+  Warning: Incorrect permissions could allow any user administrative access to
+  your site.  Please ensure that you have read and understood this document
+  before attempting to set up your own permissions system.
+</B>
+<HR>
+
+<H2>Permission Attributes</H2>
+
+Each permission is compsed of a number of attributes.  These attributes are
+explained in detail below.
+
+<H2>Realm</H2>
+
+A realm is an area of control for content.  Most users will not need this,
+as they will only have a single realm.  More information on realms can be found
+in the <A HREF="realms.html">realm manual</A>.
+
+<H2>User/Group</H2>
+
+This is the user or group that the permission applies to.  More information on
+groups can be found in the <A HREF="groups.html">groups manual</A>.
+
+<H2>Component</H2>
+
+This is the component that you wish the permission to work against.  The
+component takes the form of a triplet separated by the colon (:) symbol.  There
+are three types of component
+
+<UL>
+
+  <LI>System - System components take the form of
+  "<I>system</I>:<I>area</I>:<I>instance</I>" where <I>area</I> and
+  <I>instance</I> are currently reserved.
+
+  <LI>Block - Block components take the form of
+  "<I>type</I>:<I>instance</I>:<I>action</I>" where <I>type</I> is the block
+  type ('Type' column on the blocks administration page) with 'block' appended
+  to it, and <I>instance</I> and <I>action</I> are currently reserved.
+
+  <LI>Module - Module components take the form of
+  "<I>name</I>:<I>instance</I>:<I>area</I>" where <I>type</I> is the name of
+  the module (e.g. "Web Links", "Downloads"), <I>instance</I> is currently
+  reserved, and <I>area</I> is the are of the module affected.
+
+</UL>
+
+The component value is an anchored regular expression.  To <A TARGET="_NEW"
+  HREF="../admin.php?op=secshowinstanceinformation">see a list of currently
+  registered componenets</A> you can click on the 'Component' or 'Instance'
+headings on the permissions view page.
+
+<HR>
+<B>
+  Warning: Incorrect component values could allow any user administrative
+  access to your site.  Please ensure that you are familiar with regular
+  expressions before attempting to set up your own permissions system.
+</B>
+<HR>
+
+<H2>Instance</H2>
+
+This is the instance of the component that you wish to permission to work
+against.  The instance takes the form of a triplet separated by the colon (:)
+symbol.  The instance values are component-dependent; a list of instance
+templates for all currently installed modules and blocks is available by
+clicking on the 'Instance' heading on the table.
+
+The instance value is an anchored regular expression.
+
+<H2>Level</H2>
+
+This is the level of authorisation provided.  It can be one of the following:
+
+<UL>
+  <LI>None - no access
+  <LI>Overview - allowed an overview of the content
+  <LI>Read - allowed to read the content
+  <LI>Comment - allowed to comment on the content
+  <LI>Moderate - allowed to moderate the content
+  <LI>Edit - allowed to edit the content
+  <LI>Add - allowed to add content
+  <LI>Delete - allowed to delete content
+  <LI>Admin - full access
+</UL>
+
+Ensure that the correct level is chosen to allow only as many permissions as
+are required.
+
+<H2>Ordering</H2>
+
+Ordering of permissions is very important.  When checking for permissions the
+authorisation system will return the first matching permission that it finds, and this must be taken in to account when setting up a permissions sequence.
+
+<H2>User and Group Permissions</H2>
+
+User permissions are considered to explicitly override group permissions.  If a
+group and a user permission are both found for an authorisation attempt, the
+permissions system will return the user permission.
+
+<H2>Examples</H2>
+
+The following are a number of examples showing the security system, with
+explanations.  All of the examples use group permissions rather than user
+permissions; they allow easier configuration for larger sites with multiple
+users.  User permissions follow the same method, but are explicit
+
+<H3>Initial Setup</H3>
+
+<IMG SRC="../../pnimages/perms01.png" ALT="Permissions example 01">
+<BR><BR>
+
+This picture shows the initial permission settings that come with a new
+PostNuke install.  A detailed explanation of each of the items follows:
+
+<UL>
+
+  <LI> Allow those in group 'Admins' to access everything at permission level
+  'Admin'.
+  <UL>
+
+    <LI><B>Group</B> 'Admins'.  This group should have all site administrators
+    in it
+
+    <LI><B>Component</B> '.*'.  This matches any component
+
+    <LI><B>Instance</B> '.*'.  This matches any instance
+
+    <LI><B>Level</B> 'Admin'.  This allows the highest level of access
+
+  </UL>
+
+  <LI> Stop non-administrators from viewing the Administration entry in the
+  main menu.
+
+  <UL>
+
+    <LI><B>Group</B> 'All groups'.  This is a special group that includes every
+    user on the site that is a member of a group, and also the unregistered
+    (anonymous) user.  Note that this group cannot have users added to it; it
+    automatially picks up all users in the system when it runs.  Note that it
+    is a very good idea to ensure that all users are in at least one group on
+    the system
+
+    <LI><B>Component</B> 'Menublock::'.  This matches anything with the
+    component 'Menublock::', which are all of the blocks with type 'Menu'
+
+    <LI><B>Instance</B> 'Main Menu:Administration:'.  This will match for a
+    menu block titled 'Main Menu' and a link titled 'Administration'
+
+    <LI><B>Level</B> 'None'.  This means that no access at all will be allowed;
+    in the case of the menu this just means that the link will not be displayed
+
+  </UL>
+
+  <LI> Allow normal users to do anything on the system up to comment
+
+  <UL>
+
+    <LI><B>Group</B> 'Users'.  This group should have all site users in it
+
+    <LI><B>Component</B> '.*'.  This matches any component
+
+    <LI><B>Instance</B> '.*'.  This matches any instance
+
+    <LI><B>Level</B> 'Comment'.  This allows access up to the level of
+    commenting.  Any attempts to do things beyond this will be refused.
+
+  </UL>
+
+  <LI> Stop unregistered users from seeing user-specific items in the main
+  menu.
+
+  <UL>
+
+    <LI><B>Group</B> 'Unregistered'.  This is a special group that corresponds
+    only to users who are not logged in to the site.
+
+    <LI><B>Component</B> 'Menublock::'.  This matches anything with the
+    component 'Menublock::', which are all of the blocks with type 'Menu'
+
+    <LI><B>Instance</B> 'Main Menu:(My Account|Logout):'.  This will match for
+    a menu block titled 'Main Menu' and a link titled 'My Account' or 'Logout'
+
+    <LI><B>Level</B> 'None'.  This means that no access at all will be allowed;
+    in the case of the menu this just means that the link will not be displayed
+
+  </UL>
+
+  <LI> Allow unregistered users to do anything on the system up to read
+
+  <UL>
+
+    <LI><B>Group</B> 'Unregistered'.  This is a special group that corresponds
+    only to users who are not logged in to the site.
+
+    <LI><B>Component</B> '.*'.  This matches any component
+
+    <LI><B>Instance</B> '.*'.  This matches any instance
+
+    <LI><B>Level</B> 'Read'.  This allows access up to the level of
+    commenting.  Any attempts to do things beyond this will be refused.
+
+  </UL>
+</UL>
+
+<H3>Adding a Sub-administrator Group</H3>
+
+<IMG SRC="../../pnimages/perms02.png" ALT="Permissions example 02">
+<BR><BR>
+
+This picture shows the permission settings after a new sub-administrator group
+has been added.  The sub-administrator group is only allowed to administrate
+the 'Polls' and 'Web Links' areas of the site.
+
+<P>
+
+Note that the Web links area actually has two separate sub-sections for
+permissions.  One is for categories, and the other is for the links themselves.
+We want this group to be able to work on both of these sub-sections.
+
+<P>
+
+This table only has one new entry.  It is explained below.
+
+<UL>
+  <LI>Allow subadmins access to polls and web links
+
+  <UL>
+
+    <LI><B>Group</B> 'Subadmins'.  This is the group of subadministrators.
+    Note that groups are created and populated through the <I>groups</I>
+    administrative interface
+
+    <LI><B>Component</B> '[(Polls::)|(Web lLnks:.*)]'.  This is a relatively
+    complex regular expression, that covers the component 'Polls::' and all
+    components that start with 'Web Links:'
+
+    <LI><B>Instance</B> '.*'.  This matches any instance
+
+    <LI><B>Level</B> 'Admin'.  This allows the highest level of access
+
+  </UL>
+
+</UL>
+<H3>Per-Group Settings</H3>
+
+<IMG SRC="../../pnimages/perms03.png" ALT="Permissions example 03">
+<BR><BR>
+
+This picture shows the permission settings after a set of per-group settings
+have been added.  Two new user groups, 'Technical people' and 'Design people',
+have been added and the administrator of the site wants to give them different
+polls that better reflect their knowledge.
+
+<P>
+
+This table has four new entries.  They are explained below.
+
+<UL>
+
+  <LI> Allow those in group 'Technical people' to comment on the poll about
+  operating systems.
+  
+  <UL>
+
+    <LI><B>Group</B> 'Technical people'.  This is the group of
+    people in the system that understand technical issues
+
+    <LI><B>Component</B> 'Polls::'.  This matches anything with the component
+    'Polls::'
+
+    <LI><B>Instance</B> 'What Operating System Should This Site Run On\?::.*'.
+    This is a very specific instance, and will only match to polls that have
+    this question as the title.  Note that the '?' in the title has to be
+    escaped, as this is a regular expression.<BR>
+    
+    By looking at the instance schema for the polls it can be seen that an
+    alternative way to express this would have been '.*:3', where '3' in this
+    case is the unique ID of this poll.  Using IDs is quicker and ensures
+    uniqueness, but is a lot harder to understand when looking at the
+    permissions system.  The choice to use names or IDs is left to the
+    individual site administrator  It is also possible to use both title and ID
+    if desired in this case the resultant instance would be 'What Operating
+    System Should This Site Run On\?::3'
+
+    <LI><B>Level</B> 'Comment'.  This allows access up to the level of
+    commenting.  Any attempts to do things beyond this, such as editing or
+    deleting the poll, will be refused
+
+  </UL>
+
+  <LI> Don't allow anyone else to comment on the poll about operating systems.
+
+  <UL>
+
+    <LI><B>Group</B> 'All groups'.  This is a special group that includes every
+    user on the site that is a member of a group, and also the unregistered
+    (anonymous) user
+
+    <LI><B>Component</B> 'Polls::'.  This matches anything with the component
+    'Polls::'
+
+    <LI><B>Instance</B> 'What Operating System Should This Site Run On\?::'.
+    The specific instance for this poll, as has been explained above
+
+    <LI><B>Level</B> 'None'.  This means that no access at all will be allowed;
+    in the case of the poll this just means that it will not be displayed
+
+  </UL>
+
+  <LI> Allow those in group 'Design people' to comment on the poll about
+  the site design.
+
+  <UL>
+
+    <LI><B>Group</B> 'Design people'.  This is the group of
+    people in the system that understand design issues
+
+    <LI><B>Component</B> 'Polls::'.  This matches anything with the component
+    'Polls::'
+
+    <LI><B>Instance</B> 'Should This Site Be Redesigned\?::.*'.
+    This is a very specific instance, and will only match to polls that have
+    this question as the title.  Note that the '?' in the title has to be
+    escaped, as this is a regular expression.<BR>See above for more information
+    on specific instances.
+
+    <LI><B>Level</B> 'Comment'.  This allows access up to the level of
+    commenting.  Any attempts to do things beyond this, such as editing or
+    deleting the poll, will be refused
+
+  </UL>
+
+  <LI> Don't allow anyone else to comment on the poll about the site design.
+
+  <UL>
+
+    <LI><B>Group</B> 'All groups'.  This is a special group that includes every
+    user on the site that is a member of a group, and also the unregistered
+    (anonymous) user
+
+    <LI><B>Component</B> 'Polls::'.  This matches anything with the component
+    'Polls::'
+
+    <LI><B>Instance</B> 'Should This Site Be Redesigned\?::.*'.
+    The specific instance for this poll, as has been explained above
+
+    <LI><B>Level</B> 'None'.  This means that no access at all will be allowed;
+    in the case of the poll this just means that it will not be displayed
+
+  </UL>
+
+</UL>
+
+Note that any poll which does not explicitly fit the instance information is
+treated is ignored by these rules, so with this setup the normal poll will
+still show up in addition to the specialised polls.
+
+<H3>Admin Overrides</H3>
+
+<IMG SRC="../../pnimages/perms04.png" ALT="Permissions example 04">
+<BR><BR>
+
+This picture shows how to fix a potential problem that results from the above
+changes.  When an administrator logs on, he will get beseiged by polls - the
+two specialised ones and also the normal poll.  Being an administrator, he
+probably doesn't even want to vote in them!
+
+<P>
+
+The solution to this problem is to block the administrator from seeing the
+polls.  An obvious first attempt to do this would involve setting up a
+permissions entry for the administrators with a component of 'Polls::', an
+instance of '.*', an an access level of 'None'.  However, this is <I>not</I>
+what is required.  An entry like this would block administrative ccess to the
+polls altogether, so the administrators could no edit current polls, create new
+polls, or even access poll results. 
+
+<P>
+
+What the administrator really wants to do is not to block access to the polls
+themselves, but to block access to the polls <I>blocks</I>.  This means that
+the polls blocks are not displayed, but the polls themselves are still fully
+available through the administrative interface.
+
+<H3>Other Examples</H3>
+
+Future examples will be made available at a later date.
+
+
+</FONT>
+</BODY>
+</HTML>

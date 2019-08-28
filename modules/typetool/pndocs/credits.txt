@@ -1,0 +1,2 @@
+This module is based on the VietDev VisualEditor 'TypeTool'
+Check http://vietdev.sourceforge.net for more informations.

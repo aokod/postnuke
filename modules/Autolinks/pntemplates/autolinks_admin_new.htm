@@ -1,0 +1,31 @@
+<!--[*  $Id: autolinks_admin_new.htm 15410 2005-01-19 11:51:29Z markwest $  *]-->
+<!--[include file="autolinks_admin_menu.htm"]-->
+<h2><!--[pnml name="_AUTOLINKSADD"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Autolinks" type="admin" func="create"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Autolinks"]-->" />
+	<div class="pn-adminformrow">
+		<label for="autolinks_keyword"><!--[pnml name="_AUTOLINKSKEYWORD"]--></label>
+		<input id="autolinks_keyword" type="text" name="keyword" size="32" maxsize="100" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="autolinks_title"><!--[pnml name="_AUTOLINKSTITLE"]--></label>
+		<input id="autolinks_title" type="text" name="title" size="32" maxsize="100" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="autolinks_url"><!--[pnml name="_AUTOLINKSURL"]--></label>
+		<input id="autolinks_url" type="text" name="url" size="40" maxsize="200" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="autolinks_comment"><!--[pnml name="_AUTOLINKSCOMMENT"]--></label>
+		<input id="autolinks_comment" type="text" name="comment" size="40" maxsize="200" />
+	</div>
+	<div class="pn-adminformrow">
+		<!--[pnmodcallhooks hookobject=item hookaction=new module=Autolinks]-->
+	</div>
+	<div class="pn-adminformrow">
+		<input name="submit" type="submit" value="<!--[pnml name="_AUTOLINKSCREATE"]-->" />
+	</div>
+	<div style="clear:both"></div>
+</div>
+</form>

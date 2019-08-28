@@ -1,0 +1,25 @@
+<!--[*  $Id: example_init_step2.htm 19361 2006-07-03 14:57:57Z markwest $  *]-->
+<h2><!--[pnml name="_EXAMPLEINIT"]--></h2>
+<div style="text-align:center;">
+<p><!--[ pnml name='_EXAMPLEINITSTEP2' html=1]--></p>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Example" type="init" func="step2"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Example"]-->" />
+	<div class="pn-adminformrow">
+		<label for="example_bold"><!--[pnml name="_EXAMPLEINITBOLD"]--></label>
+		<input id="example_bold" name="bold" type="checkbox" value="1" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="example_itemsperpage"><!--[pnml name="_EXAMPLEINITITEMSPERPAGE"]--></label>
+		<input id="example_itemsperpage" type="text" name="itemsperpage" size="3" value="10" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="example_activate"><!--[pnml name="_EXAMPLEINITACTIVATE"]--></label>
+		<input id="example_activate" name="activate" type="checkbox" value="1" />
+	</div>
+	<div class="pn-adminformrow">
+	<input name="submit" type="submit" value="<!--[pnml name="_SUBMIT"]-->" />
+	</div>
+</div>
+</form>
+</div>

@@ -1,0 +1,7 @@
+<!--[if $displayimage eq 1 ]-->
+	<a href="<!--[$feed->image.link|pnvarprepfordisplay]-->"><img src="<!--[$feed->image.url|pnvarprepfordisplay]-->" alt="<!--[$feed->image.title|pnvarprephtmldisplay]-->" /></a><br /><br />
+<!--[/if]-->
+<!--[section name=rssitems loop=$feed->items max=$numitems]-->  
+    <a href="<!--[$feed->items[rssitems].link|pnvarprepfordisplay]-->" <!--[if $openinnewwindow eq 1]-->target="_blank"<!--[/if]-->><!--[$feed->items[rssitems].title|pnvarprephtmldisplay]--></a>
+    <hr />
+<!--[/section]-->

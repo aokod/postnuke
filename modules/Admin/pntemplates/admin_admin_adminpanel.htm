@@ -1,0 +1,22 @@
+<!--[*  $Id: admin_admin_adminpanel.htm 15893 2005-03-02 21:06:37Z larsneo $  *]-->
+<!--[$menu]-->
+<div class="container" style="border-color:<!--[pnthemegetvar name="sepcolor"]-->;padding:5px;">
+<h2><!--[$category.catname|pnvarprepfordisplay]--></h2>
+<div style="text-align:center;margin-bottom:10px;"><!--[$category.description|pnvarprepfordisplay]--></div><div style="width:100%">
+<!--[section name=adminlinks loop=$adminlinks]-->  
+  <div style="float:left; width:<!--[math equation="100/x" x=$modulesperrow format="%.0f]-->%;">
+	<div style="text-align:center;padding:1px;">
+	<!--[if $admingraphic eq 1]-->
+	   <a title="<!--[$adminlinks[adminlinks].menutexttitle]-->" href="<!--[$adminlinks[adminlinks].menutexturl|pnvarprepfordisplay]-->"><!--[pnimg src=admin.gif width=60 height=60 modname=$adminlinks[adminlinks].modname title=$adminlinks[adminlinks].menutexttitle alt=$adminlinks[adminlinks].menutext default=$defaultimage]--></a>
+	   <br />
+	<!--[/if]-->
+	<a title="<!--[$adminlinks[adminlinks].menutexttitle]-->" href="<!--[$adminlinks[adminlinks].menutexturl|pnvarprepfordisplay]-->"><!--[$adminlinks[adminlinks].menutext|pnvarprepfordisplay]--></a>
+	</div>
+  </div>
+<!--[/section]-->
+<div style="clear:both;"></div>
+</div>
+</div>
+<!--[automatednews]-->
+<!--[articles]-->
+<!--[currentpoll]-->

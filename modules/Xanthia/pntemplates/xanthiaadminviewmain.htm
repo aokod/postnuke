@@ -1,0 +1,45 @@
+<!--[include file="xanthiaadminmenu.htm"]-->
+<br />
+<div class="pn-title"><!--[pnml name=_XA_AVAILABLETHEMES]--></div>
+<div class="pn-normal" style="width:100%;">
+<table width="100%" border="3">
+	<tr>
+		<th><!--[pnml name="_XA_THEMENAME"]--></th>
+		<th><!--[pnml name="_XA_ISACTIVE"]--></th>
+		<th><!--[pnml name="_XA_ACTIONS"]--></th>
+	</tr>
+	<!--[section name=theme loop=$theme]-->
+	<tr>
+		<td><!--[$theme[theme].themename|pnvarprepfordisplay]--></td>
+		<td>
+			<!--[if $theme[theme].state eq 1]-->
+				<!--[pnimg src="green_dot.gif"]-->
+			<!--[else]-->
+				<!--[pnimg src="red_dot.gif"]-->
+			<!--[/if]-->
+			<!--[if $theme[theme].state eq 1]-->
+				<!--[pnml name="_XA_ACTIVE"]-->
+			<!--[else]-->
+				<!--[pnml name="_XA_INACTIVE"]-->
+			<!--[/if]-->						
+		</td>
+		<td>
+			<!--[if $theme[theme].state eq 1]-->
+				|<a href="<!--[pnmodurl modname="Xanthia" type="admin" func="thememenu" skin=$theme[theme].themename]-->"><!--[pnml name="_XA_EDITTHEME"]--></a>|
+				|<a href="<!--[pnmodurl modname="Xanthia" type="admin" func="removeTheme" authid=$authid skin=$theme[theme].themename]-->"><!--[pnml name="_XA_REMOVETHEME"]--></a>|
+				|<a href="index.php?theme=<!--[$theme[theme].themename]-->" target="_blank"><!--[pnml name="_XA_VIEWTHEME"]--></a>|
+			<!--[else]-->
+				|<a href="<!--[pnmodurl modname="Xanthia" type="admin" func="addTheme" authid=$authid skin=$theme[theme].themename]-->"><!--[pnml name="_XA_ADDTHEME"]--></a>|
+			<!--[/if]-->
+			|<a href="<!--[pnmodurl modname="Xanthia" type="admin" func="credits" skin=$theme[theme].themename]-->"><!--[pnml name="_XA_THEMECREDITS"]--></a>|
+		</td>
+	</tr>
+	<!--[sectionelse]-->
+	<tr>
+		<td><!--[pnml name="_XA_NOTHEMESAVAILABLE"]--></td>
+		<td>****</td>
+		<td></td>
+	</tr>
+	<!--[/section]-->
+</table>
+</div>

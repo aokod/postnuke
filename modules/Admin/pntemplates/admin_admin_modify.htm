@@ -1,0 +1,22 @@
+<!--[*  $Id: admin_admin_modify.htm 15514 2005-01-26 21:34:42Z larsneo $  *]-->
+<!--[include file="admin_admin_menu.htm"]-->
+<h2><!--[pnml name="_ADMINUPDATECATEGORY"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Admin" type="admin" func="update"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Admin"]-->" />
+	<input type="hidden" name="cid" value="<!--[$cid|pnvarprepfordisplay]-->" />
+	<div class="pn-adminformrow">
+		<label for="admin_name"><!--[pnml name="_ADMINNAME"]--></label>
+		<input id="admin_name" name="catname" type="text" size="30" maxlength="50" value="<!--[$catname|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="admin_description"><!--[pnml name="_ADMINDESCRIPTION"]--></label>
+		<textarea id="admin_description" name="description" rows="10"><!--[$description|pnvarprepfordisplay]--></textarea>
+	</div>
+    <!--[pnmodcallhooks hookobject=item hookaction=modify hookid=$cid module=Admin]-->
+	<div class="pn-adminformrow">
+		<input name="submit" type="submit" value="<!--[pnml name="_ADMINUPDATECATEGORY"]-->" />
+	</div>
+	<div style="clear:both;"></div>
+</div>
+</form>

@@ -1,0 +1,125 @@
+/*
+Admin interface stylesheet
+
+This stylesheet implements a set of styles used throughout the admin interface of
+PN .8x allowing the site administrator to configure via standard css techniques the
+presentation of the admin interface.
+
+Themers can create a theme specific version of this stylesheet by creating a copy of
+the file in themes\<themename>\style\Admin\admin.css. This version of stylesheet is
+kept as generic as possible to avoid many potential theme clashes. Re-styling this
+stylesheet requires a working knowledge of both CSS1 and CSS2.
+
+For this stylesheet to be loaded Xanthia themes must have the command
+<!--[modulestylesheet stylesheet=admin.css modname=Admin]--> in either the master
+template or a specific template for the admin components of a module (note 1).
+
+Legacy themes support the admin stylesheet by virtue of the header of these themes
+being templated in the Header_Footer module.
+
+Notes
+1) There's no harm in this file being in the master template as these classes are
+not referenced in the user templates.
+
+/* styles for module admin menus */
+.pn-menu {
+    width: 99%;
+	text-align: center;
+}
+
+/* style for main admin tables */
+.pn-admintable {
+	width: 100%;
+	border: thin outset;
+	padding: 1px;
+	border-width: 3px;
+}
+/* classes to define two colors for admin view table to cycle between.*/
+.pn-admintable tr.pn-even {
+	background-color: #fff;
+}
+.pn-admintable tr.pn-odd {
+	background-color: #eee;
+}
+/* stying for the cell elements in admin tables */
+.pn-admintable td, th{
+	border: thin inset;
+	padding: 3px;
+	border-width: 1px;
+}
+
+/* main admin form style */
+form.pn-adminform {
+	border: dashed #0074B0;
+	border-width: 1px 0;
+	padding: 1em 0;
+	margin: 0 1em;
+}
+.accesskey {
+	text-decoration: underline
+}
+/* formrow is used to style a div containing a label and control pair */
+.pn-adminformrow {
+    clear: both;
+	padding: .25em;
+}
+/* style for a label contained in a div of class formrow */
+div.pn-adminformrow label {
+	float: left;
+	width: 250px;
+	text-align: right;
+	padding-right: 5px;
+}
+/* style for a input control contained in a div of class formrow */
+/* style for a textarea control contained in a div of class formrow */
+/* style for a select control contained in a div of class formrow */
+/* style for a div contained in a div of class formrow - allows for grouping
+of a control and subsequent non label text.
+e.g. yes (radio) no (radio)*/
+div.pn-adminformrow input, div.pn-adminformrow textarea,
+div.pn-adminformrow select, div.pn-adminformrow span {
+	margin-left:20px;
+	text-align:left;
+}
+/* styles to ensure that control elements inside the floated div directly above
+don't themselves float*/
+div.pn-adminformrow div input, div.pn-adminformrow div textarea,
+div.pn-adminformrow div select {
+	float: none;
+}
+
+/* styles to allow sub headings to be embedded correctly in admin forms */
+form.pn-adminform div h1, form.pn-adminform div h2, form.pn-adminform div h3,
+form.pn-adminform div h4, form.pn-adminform div h5, form.pn-adminform div h6 {
+	padding: 10px;
+}
+
+/* add the help cursor to labels that provide additional help via the title
+tag of the label */
+form.pn-adminform label.pn-adminformhelp {
+    cursor: help;
+}
+
+
+/* styles for the warning message shown if any of the install directory,
+install.php or psak.php are found */
+.warning-container {
+	padding:10px;
+	text-align: center;
+	border: 1px solid red
+}
+.warning-container h2 {
+	color: red;
+	display: block;
+}
+.warning-container img {
+	float:left;
+}
+
+/* style tags for grouping of controls into logical 'sets' */
+fieldset {
+	border: #0074B0 solid 1px;
+}
+legend {
+	color: #0074B0;
+}

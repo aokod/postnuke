@@ -1,0 +1,24 @@
+<!--[*  $Id: admin_admin_view.htm 15151 2004-12-14 10:09:28Z markwest $  *]-->
+<!--[include file="admin_admin_menu.htm"]-->
+<h2><!--[pnml name="_ADMINVIEW"]--></h2>
+<table class="pn-admintable">
+  <tr>
+    <th><!--[pnml name="_ADMINNAME"]--></th>
+    <th><!--[pnml name="_ADMINOPTIONS"]--></th>
+  </tr>
+  <!--[section name=items loop=$items]-->  
+    <tr class="<!--[cycle values="pn-odd,pn-even"]-->">
+      <td><!--[$items[items].catname|pnvarprepfordisplay]--></td>
+	  <td>
+	    <!--[assign var="options" value=$items[items].options]-->
+		<!--[strip]-->
+        [<!--[section name=options loop=$options]-->
+	    <a href="<!--[$options[options].url|pnvarprepfordisplay]-->"><!--[pnml name=$options[options].text]--></a> 
+		<!--[if !$smarty.section.options.last]--> | <!--[/if]-->
+        <!--[/section]-->]
+		<!--[/strip]-->
+	  </td>
+    </tr>
+  <!--[/section]-->
+</table>
+<!--[pager show=page rowcount=$pager.numitems limit=$pager.itemsperpage posvar=startnum shift=1]-->

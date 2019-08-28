@@ -1,0 +1,25 @@
+<!--[*  $Id: modules_admin_hooks.htm 16087 2005-04-08 11:38:15Z markwest $  *]-->
+<!--[include file="modules_admin_menu.htm"]-->
+<h2><!--[pnml name="_MODULESENABLEHOOKS"]--> - <!--[$displayname|pnvarprepfordisplay]--></h2>
+<!--[if $hooks]-->
+<form class="pn-adminform" action="<!--[pnmodurl modname="Modules" type="admin" func="updatehooks"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+    <input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Modules"]-->" />
+    <input type="hidden" name="id" value="<!--[$id|pnvarprepfordisplay]-->" />
+    <!--[section name=hook loop=$hooks]-->
+        <div class="pn-adminformrow">
+			<label for="modules_<!--[$hooks[hook].targetmodname|pnvarprepfordisplay]-->"><!--[$hooks[hook].hooklabel|pnvarprepfordisplay]--></label>
+		  	<!--[if $hooks[hook].hookvalue eq 1]-->
+		    	<input id="modules_<!--[$hooks[hook].targetmodname|pnvarprepfordisplay]-->" name="hooks_<!--[$hooks[hook].targetmodname|pnvarprepfordisplay]-->" type="checkbox" checked="checked" value="ON" />
+		  	<!--[else]-->
+		    	<input id="modules_<!--[$hooks[hook].targetmodname|pnvarprepfordisplay]-->" name="hooks_<!--[$hooks[hook].targetmodname|pnvarprepfordisplay]-->" type="checkbox" value="ON" />
+		  	<!--[/if]-->
+		</div>
+    <!--[/section]-->
+	<div class="pn-adminformrow"><input name="submit" type="submit" value="<!--[pnml name="_COMMIT"]-->" /></div>
+	<div style="clear:both"></div>
+</div>
+</form>
+<!--[else]-->
+<p><!--[pnml name=_MODULESNOHOOKS]--></p>
+<!--[/if]-->

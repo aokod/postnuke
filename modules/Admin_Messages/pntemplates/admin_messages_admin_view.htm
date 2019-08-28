@@ -1,0 +1,36 @@
+<!--[*  $Id: admin_messages_admin_view.htm 15152 2004-12-14 10:15:49Z markwest $  *]-->
+<!--[include file="admin_messages_admin_menu.htm"]-->
+<h2><!--[pnml name="_ADMINMESSAGESVIEW"]--></h2>
+<table class="pn-admintable">
+  <tr>
+    <th><!--[pnml name="_ADMINMESSAGESID"]--></th>
+    <th><!--[pnml name="_ADMINMESSAGESTITLE"]--></th>
+    <th><!--[pnml name="_LANGUAGE"]--></th>
+    <th><!--[pnml name="_ADMINMESSAGESVIEW"]--></th>
+    <th><!--[pnml name="_ADMINMESSAGESACTIVE"]--></th>
+    <th><!--[pnml name="_ADMINMESSAGESEXPIRY"]--></th>
+    <th><!--[pnml name="_ADMINMESSAGESEXPIRYDATE"]--></th>
+    <th><!--[pnml name="_OPTIONS"]--></th>
+  </tr>
+  <!--[section name=items loop=$items]-->  
+    <tr class="<!--[cycle values="pn-odd,pn-even"]-->">
+      <td><!--[$items[items].mid|pnvarprepfordisplay]--></td>
+      <td><!--[$items[items].title|pnvarprepfordisplay]--></td>
+      <td><!--[$items[items].language|pnvarprepfordisplay]--></td>
+      <td><!--[$items[items].whocanview|pnvarprepfordisplay]--></td>
+      <td><!--[$items[items].active|pnvarprepfordisplay]--></td>
+      <td><!--[$items[items].expire|pnvarprepfordisplay]--></td>
+      <td><!--[$items[items].expiredate|pnvarprepfordisplay]--></td>
+	  <td>
+	    <!--[assign var="options" value=$items[items].options]-->
+		<!--[strip]-->
+        [<!--[section name=options loop=$options]-->
+	    <a href="<!--[$options[options].url|pnvarprepfordisplay]-->"><!--[pnml name=$options[options].text]--></a> 
+		<!--[if !$smarty.section.options.last]--> | <!--[/if]-->
+        <!--[/section]-->]
+		<!--[/strip]-->
+	  </td>
+    </tr>
+  <!--[/section]-->
+</table>
+<!--[pager show=page rowcount=$pager.numitems limit=$pager.itemsperpage posvar=startnum shift=1]-->

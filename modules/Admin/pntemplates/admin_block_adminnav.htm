@@ -1,0 +1,18 @@
+<!--[*  $Id: admin_block_adminnav.htm 15023 2004-12-04 19:01:41Z markwest $  *]-->
+<div>
+<ul>
+	<!--[section name="admincategories" loop=$admincategories]-->
+	<!--[if $admincategories[admincategories].url neq '']-->
+		<!--[assign var=adminmodules value=$admincategories[admincategories].modules]-->
+		<li><a href="<!--[$admincategories[admincategories].url|pnvarprepfordisplay]-->"><!--[$admincategories[admincategories].title|pnvarprepfordisplay]--></a></li>
+		<li style="list-style:none">
+			<ul>
+				<!--[section name=adminmodules loop=$adminmodules]-->
+				<li><a href="<!--[$adminmodules[adminmodules].menutexturl|pnvarprepfordisplay]-->"><!--[$adminmodules[adminmodules].menutexttitle|pnvarprepfordisplay]--></a></li>
+				<!--[/section]-->
+			</ul>
+		</li>
+		<!--[/if]-->
+	<!--[/section]-->
+</ul>
+</div>

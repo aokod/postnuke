@@ -1,0 +1,21 @@
+<!--[*  $Id: groups_admin_modifyconfig.htm 15504 2005-01-26 14:07:34Z landseer $  *]-->
+<!--[include file="groups_admin_menu.htm"]-->
+<h2><!--[pnml name="_GROUPSMODIFYCONFIG"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Groups" type="admin" func="updateconfig"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Groups"]-->" />
+	<div class="pn-adminformrow">
+		<label for="groups_itemsperpage"><!--[pnml name="_GROUPSITEMSPERPAGE"]--></label>
+		<input id="groups_itemsperpage" type="text" name="itemsperpage" size="3" value="<!--[$itemsperpage|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="groups_defaultgroup"><!--[pnml name="_GROUPSDEFAULTGROUP"]--></label>
+		<select id="groups_defaultgroup" name="defaultgroup">
+			<!--[html_options options=$groups selected=$defaultgroup]-->
+		</select>
+	</div>
+	<div class="pn-adminformrow"><!--[pnmodcallhooks hookobject=module hookaction=modifyconfig module=Groups]--></div>
+	<div class="pn-adminformrow"><input name="submit" type="submit" value="<!--[pnml name="_GROUPSUPDATECONFIG"]-->" /></div>
+	<div style="clear:both"></div>
+</div>
+</form>

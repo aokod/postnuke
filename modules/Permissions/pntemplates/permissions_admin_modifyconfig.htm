@@ -1,0 +1,47 @@
+<!--[include file="permissions_admin_menu.htm"]-->
+<h2><!--[pnml name="_MODIFYCONFIG"]--></h2>
+<form class="pn-adminform" name="permissions_admin_modifyconfig" action="<!--[pnmodurl modname="Permissions" type="admin" func="updateconfig"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Permissions"]-->" />
+	<div class="pn-adminformrow">
+		<label for="permissions_filter"><!--[pnml name="_PERM_ENABLEFILTER"]--></label>
+		<!--[if $filter eq 1]-->
+			<input id="permissions_filter" name="filter" type="checkbox" value="1" checked="checked" />
+		<!--[else]-->
+			<input id="permissions_filter" name="filter" type="checkbox" value="1" />
+		<!--[/if]-->
+	</div>
+	<div class="pn-adminformrow">
+		<label for="permissions_warnbar"><!--[pnml name="_PERM_DISPLAYWARNING"]--></label>
+		<!--[if $warnbar eq 1]-->
+			<input id="permissions_warnbar" name="warnbar" type="checkbox" value="1" checked="checked" />
+		<!--[else]-->
+			<input id="permissions_warnbar" name="warnbar" type="checkbox" value="1" />
+		<!--[/if]-->
+	</div>
+	<div class="pn-adminformrow">
+		<label for="permissions_rowview"><!--[pnml name="_PERM_ROWHEIGHTVIEW"]--></label>
+		<select id="permissions_rowview" name="rowview" size="1">
+			<option value="20">20</option>
+			<option value="25">25</option>
+			<option value="30">30</option>
+			<option value="35">35</option>
+			<option value="40">40</option>
+		</select>
+	</div>
+	<div class="pn-adminformrow">
+		<label for="permissions_roweditheight"><!--[pnml name="_PERM_ROWHEIGHTEDIT"]--></label>
+		<select id="permissions_roweditheight" name="rowedit" size="1">
+			<option value="20">20</option>
+			<option value="25">25</option>
+			<option value="30">30</option>
+			<option value="35">35</option>
+			<option value="40">40</option>
+		</select>
+	</div>
+	<div class="pn-adminformrow">
+		<input name="submit" type="submit" value="<!--[pnml name="_PERM_UPDATESETTINGS"]-->" />
+	</div>
+	<div style="clear:both"></div>
+</div>
+</form>

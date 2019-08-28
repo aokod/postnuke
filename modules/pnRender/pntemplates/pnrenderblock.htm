@@ -1,0 +1,51 @@
+<!--[*  $Id: pnrenderblock.htm 16722 2005-08-27 12:35:10Z  $           *]-->
+<!--[*  ====================================================================== *]-->
+<!--[*  pnRender                                                               *]-->
+<!--[*  PostNuke wrapper class for Smarty                                      *]-->
+<!--[*  ====================================================================== *]-->
+<!--[*  Author: PostNuke development team                                      *]-->
+<!--[*  ====================================================================== *]-->
+<!--[*  LICENSE                                                                *]-->
+<!--[*  This program is free software; you can redistribute it and/or          *]-->
+<!--[*  modify it under the terms of the GNU General Public License (GPL)      *]-->
+<!--[*  as published by the Free Software Foundation; either version 2         *]-->
+<!--[*  of the License, or (at your option) any later version.                 *]-->
+<!--[*  This program is distributed in the hope that it will be useful,        *]-->
+<!--[*  but WITHOUT ANY WARRANTY; without even the implied warranty of         *]-->
+<!--[*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the          *]-->
+<!--[*  GNU General Public License for more details.                           *]-->
+<!--[*  To read the license please visit http://www.gnu.org/copyleft/gpl.html  *]-->
+<!--[*  ====================================================================== *]-->
+<!--[*  Purpose of this template:                                              *]-->
+<!--[*  pnRenderblock configuration                                            *]-->
+<!--[*  ====================================================================== *]-->
+
+<tr>
+  <td class="pn-normal">
+    <label for="pnrmodule"><!--[pnml name="_PNRENDERBLOCK_MODULENAME"]-->:</label>
+  </td>
+  <td>
+    <input value="<!--[$module|pnvarprepfordisplay]-->" maxlength="100" size="40" name="pnrmodule" type="text" />
+  </td>
+</tr>
+<tr>
+  <td class="pn-normal">
+    <label for="pnrtemplate"><!--[pnml name="_PNRENDERBLOCK_TEMPLATENAME"]--></label>
+  </td>
+  <td>
+    <input value="<!--[$template|pnvarprepfordisplay]-->" maxlength="100" size="40" name="pnrtemplate" type="text" />
+  </td>
+</tr>
+<tr>
+  <td colspan="2" class="pn-normal">
+    <strong><!--[pnml name="_PNRENDERBLOCK_HINT"]--></strong>
+  </td>
+</tr>
+<tr>
+  <td class="pn-normal">
+    <label for="pnrparameters"><!--[pnml name="_PNRENDERBLOCK_PARAMETERS"]-->:</label>
+  </td>
+  <td>
+    <input value="<!--[$parameters|pnvarprepfordisplay]-->" maxlength="100" size="40" name="pnrparameters" type="text" />
+  </td>
+</tr>

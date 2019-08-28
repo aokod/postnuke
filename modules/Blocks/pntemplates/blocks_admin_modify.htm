@@ -1,0 +1,76 @@
+<!--[*  $Id: blocks_admin_modify.htm 16056 2005-04-03 17:07:15Z larsneo $  *]-->
+<!--[include file="blocks_admin_menu.htm"]-->
+<h2><!--[pnml name="_MODIFYBLOCK"]--></h2>
+<h2><!--[$modtitle|pnvarprepfordisplay]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Blocks" type="admin" func="update"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+    <input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Blocks"]-->" />
+    <input type="hidden" name="bid" value="<!--[$bid|pnvarprepfordisplay]-->" />
+	<table>
+    <tr>
+      <td><label for="blocks_title"><!--[pnml name="_TITLE"]--></label></td>
+      <td><input id="blocks_title" name="title" type="text" size="40" maxlength="60" value="<!--[$blocktitle|pnvarprepfordisplay]-->" /></td>
+    </tr>
+    <tr>
+      <td><label for="blocks_position"><!--[pnml name="_POSITION"]--></label></td>
+      <td>
+	    <select id="blocks_position" name="position">
+            <!--[html_options options=$blockpositions selected=$blockposition]-->
+        </select>
+	  </td>
+    </tr>
+    <tr>
+      <td><!--[pnml name="_COLLAPSABLE"]--></td>
+      <td>
+	    <!--[if $blockcollapsable eq 1]-->
+          <label for="blocks_collapsable_yes"><!--[pnml name="_YES"]--></label><input id="blocks_collapsable_yes" name="collapsable" type="radio" value="1" checked="checked" />
+          <label for="blocks_collapsable_no"><!--[pnml name="_NO"]--></label><input id="blocks_collapsable_no" name="collapsable" type="radio" value="0" />
+		<!--[else]-->
+          <label for="blocks_collapsable_yes"><!--[pnml name="_YES"]--></label><input id="blocks_collapsable_yes" name="collapsable" type="radio" value="1" />
+          <label for="blocks_collapsable_no"><!--[pnml name="_NO"]--></label><input id="blocks_collapsable_no" name="collapsable" type="radio" value="0" checked="checked" />
+        <!--[/if]-->
+      </td>
+    </tr>
+    <tr>
+      <td><!--[pnml name="_DEFAULTSTATE"]--></td>
+      <td>
+	    <!--[if $blockdefaultstate eq 1]-->
+    	    <label for="blocks_defaultstate_expanded"><!--[pnml name=_EXPANDED]--></label><input id="blocks_defaultstate_expanded" name="defaultstate" type="radio" value="1" checked="checked" />
+            <label for="blocks_defaultstate_collapsed"><!--[pnml name=_COLLAPSED]--></label><input id="blocks_defaultstate_collapsed" name="defaultstate" type="radio" value="0" />
+		<!--[else]-->
+    	    <label for="blocks_defaultstate_expanded"><!--[pnml name=_EXPANDED]--></label><input id="blocks_defaultstate_expanded" name="defaultstate" type="radio" value="1" />
+            <label for="blocks_defaultstate_collapsed"><!--[pnml name=_COLLAPSED]--></label><input id="blocks_defaultstate_collapsed" name="defaultstate" type="radio" value="0" checked="checked" />
+		<!--[/if]-->
+      </td>
+    </tr>
+    <tr>
+      <td><label for="blocks_language"><!--[pnml name="_LANGUAGE"]--></label></td>
+      <td>
+	    <select id="blocks_language" name="language">
+          <option value=""><!--[pnml name="_ALL"]--></option>		
+          <!--[html_options options=$languages selected=$blocklanguage]-->
+        </select>
+	  </td>
+    </tr>
+	<!--[if $blockcontentflag eq 1]-->
+      <tr>
+        <td><label for="blocks_content"><!--[pnml name="_CONTENT"]--></label></td>
+		<td>
+          <textarea id="blocks_content" name="content" cols="40" rows="10"><!--[$blockcontent|pnvarprepfordisplay]--></textarea>
+		</td>
+	  </tr>
+	<!--[/if]-->
+    <!--[$blockoutput]-->
+    <tr>
+      <td><label for="blocks_refresh"><!--[pnml name="_BLOCKSREFRESH"]--></label></td>
+      <td>
+	    <select id="blocks_refresh" name="refresh">
+          <!--[html_options options=$blockrefreshtimes selected=$blockrefreshtime]-->
+        </select>
+	  </td>
+    </tr>
+    </table>
+  <!--[pnmodcallhooks hookobject=item hookaction=modify hookid=$bid module=Blocks]-->
+	<input name="submit" type="submit" value="<!--[pnml name="_COMMIT"]-->" />
+</div>
+</form>

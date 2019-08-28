@@ -1,0 +1,17 @@
+<!--[*  $Id: blocks_admin_delete.htm 15409 2005-01-19 11:43:30Z markwest $  *]-->
+<!--[include file="blocks_admin_menu.htm"]-->
+<h2><!--[pnml name="_DELETEBLOCK"]--></h2>
+<h2><!--[$blockname|pnvarprepfordisplay]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Blocks" type="admin" func="delete"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+    <input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Blocks"]-->" />
+    <input type="hidden" name="confirmation" value="1" />
+    <input type="hidden" name="bid" value="<!--[$bid|pnvarprepfordisplay]-->" />
+	<div class="pn-adminformrow">
+		<label for="blocks_submit"><!--[pnml name=_CONFIRMBLOCKDELETE]--></label>	
+		<input id="blocks_submit" name="submit" type="submit" value="<!--[pnml name="_DELETE"]-->" />
+	</div>
+	<div style="clear:both"></div>
+</div>
+</form>
+<a href="<!--[pnmodurl modname="Blocks" type="admin" func="view"]-->"><!--[pnml name="_CANCELBLOCKDELETE"]--></a>

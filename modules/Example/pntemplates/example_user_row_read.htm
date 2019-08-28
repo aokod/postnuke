@@ -1,0 +1,5 @@
+<!--[*  $Id: example_user_row_read.htm 16295 2005-06-03 11:38:38Z markwest $  *]-->
+
+<!--[* Note the use of the pnmodurl function to build a URL to the detail pages           *]-->
+<!--[* and the use of the modifiers to apply hooks, censor and cleanup for HTML display   *]-->
+<a href="<!--[pnmodurl modname="Example" func="display" tid=$tid]-->"><!--[$itemname|pnvarprephtmldisplay|pnvarcensor]--></a>

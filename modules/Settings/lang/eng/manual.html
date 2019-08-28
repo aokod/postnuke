@@ -1,0 +1,202 @@
+<html>
+<head>
+<title>General Preferences</title>
+</head>
+<body bgcolor=FFFFFF text=000000>
+<font face=Verdana,Arial,Helvetica size=2>
+<center><b>General Preferences</b></center>
+<br><br>
+This is the main configuration section of your site. You will specify all the mandatory configuration parameters for your site to be functional here.
+<br><br>
+
+<b>Site Name:</b> Your site needs a name! Well, this is where you set it!<br><br>
+
+<font color="Red" size="+1"><li><b>General Site Info</b></font><font color="Black" size="2"><br><br>
+
+<b>Site URL:</b> Enter the full URL to your website here, including the <i>http://</i>. Don NOT include a trailing slash (/).<br>
+<i>Samples:</i>
+<ul>
+http://www.yourdomain.com<br><br>
+<i>or</i><br><br>
+http://www.yourdomain.com/~username/MySite
+</ul>
+
+<b>Site Logo:</b> This logo will be located in the <i>images</i>
+directory, and is used to be displayed just in the <i>Printer
+Friendly Page</i>. The best option is a grayscale graphic with
+the logo of your site. This logo has nothing to do with your
+theme logo which you need to include for each theme.<br><br>
+
+<b>Site Slogan:</b> If you have a slogan for your site, you may enter it here. This slogan will be added to the title of every page and will be displayed on every page as well, but only if the theme you are using is coded for it (chances are that it is).<br><br>
+
+<b>Site Start Date:</b> You can enter the date you website went live here. This information will
+be visible only in the stats page (stats.php).<br><br>
+
+<b>Administrator Email:</b> Enter the email address for the main admin or webmaster. This is the email address that emails are sent when users try to contact you.
+
+<b>Number of Items in TOP Page:</b> You have a TOP page (top.php)
+where the visitors can view what are the top read articles, most
+commented, the best poll, etc. If you select, for example, <i>10</i> then you will have a TOP "10" page.<br><br>
+
+<b>Stories Number in the Home:</b> Enter the number of stories you would like to display on the front page. A common number is 10, but you may also want to use 5 (or any other number). Remember that registered users
+can change this value to whatever they want. So, this is just a
+default value for non-registered users.<br><br>
+
+<b>Stories in Old Articles Box:</b> On the front page
+you can see a box called <i>Past Articles</i>, if you have it activated that is. This is the
+number of stories to show in that box.<br><br>
+
+<b>Activate Ultramode?:</b> Ultramode is a plain text file located
+in the root directory of your site. By default this value is set to <i>No</i>,
+if you change this be sure to "chmod 666" the file in order to write it.
+In this file will be the last 10 news headlines of your site with
+assorted info, fields (or news) separated by %%. This file is used
+to let other sites "syndicate" your news on their website. The best method is
+to deactivate this feature and use <i>backend.php</i> file, which is in
+RDF/XML format.<br><br>
+
+<b>Allow Anonymous to Post?:</b> If you would like to allow anonymous (non-registered) users to post comments, select <i>Yes</i>, otherwise select <i>No</i>.<br><br>
+
+<b>Default Theme for your site:</b> Select the default theme for your entire site.
+Registered users have the ability to change the theme as well. This value is valid
+only for non-registered users, or registered users who have not selected a theme.<br><br>
+
+<b>Select Language for your site:</b> No explanation is needed here, select the default language for your site.<br><br>
+
+<b>Locale Time Format:</b> Select the Locale format you want. Locales are little databases
+with the date, time, and other stuff in our language. Some Unix/Linux system has the locales
+already installed, if this is the case just select the one you want, otherwise install
+the Locales you need. Usualy, the Locales are installed under the <i>/usr/share/locale</i>
+directory.<br><br></font>
+
+<font color="Red" size="+1"><li><b>Banners</b></font><font color="Black" size="2"><br><br>
+
+<b>Activate Banners in your Site?:</b> Just select if you want to usebanners or not on your site.
+PHP-Nuke has incorporated a basic banners system. If you active the banners, then reload the
+Administration page you will see a new menu called <i>Banner Administration</i> where you
+can configure whatever you want. If you want to use another banners software,
+just select <i>No</i>.<br><br>
+
+<b>Your IP to not count the hits:</b> If you select <i>Yes</i> to the above question, you
+need to put your IP number to prevent the system from counting your hits for the banner displayed.
+If you are an administrator(umm, you should be :p) you will have a high number of pages views on your own site, so if
+a client pays you for impressions it would not be fair to count you. Be honest here!<br><br></font>
+
+<font color="Red" size="+1"><li><b>Footer Messages</b></font><font color="Black" size="2"><br><br>
+
+<b>Foot Lines 1, 2, 3 and 4:</b> This is the text(can be HTML) that will be shown
+in the footer of each page. Usualy here is where you would put "powered by" buttons,
+copyright messages, webmaster email, etc. If you want only 2 or 3 lines instead of 4, then just fill out the ones you would like to use. Please use them in order though (ie. don't use 1 and 2, leave 3 blank and then use 4)!<br><br></font>
+
+<font color="Red" size="+1"><li><b>Backend</b></font><font color="Black" size="2"><br><br>
+
+<b>Backend Title:</b> Your site has an auto-generated XML/RDF file with the lat 10 news stories.
+This file is configured here, so just write your page Title or site name here. You can
+put also your slogan after the title.<br><br>
+
+<b>Backend Language:</b> The format of your site's language.<br><br>
+
+<b>Backend Image URL:</b> The complete URL of the image/logo of your site. This is usefull if
+you will have a MyNetscape Channel. Be sure to include the <i>http://</i> at the begining.<br><br>
+
+<b>Backend Image Width:</b> The width of the Backend Image.<br><br>
+
+<b>Backend Image Height:</b> The height of the Backend Image.<br><br></font>
+
+<font color="Red" size="+1"><li><b>Web Links</b></font><font color="Black" size="2"><br><br>
+
+<b>Links per Page:</b> The maximum links to show on each page of the Web Links section.<br><br>
+
+<b>Hits to be Popular:</b> The number of hits a link needs to have to be listed as <i>popular</i>.
+Popular (Best) links will show a little graphic star and will be listed on The Best
+Links page.<br><br>
+
+<b>Number of Links as New:</b> The number of links to show on the <i>New Links</i> page. On that
+page the links will be sorted by creation date.<br><br>
+
+<b>Number of Links as Best:</b> How many links you want on <i>The Best Links</i> page. This page will list the most popular links.<br><br>
+
+<b>Links in Search Results:</b> The number of links to show on the results page after a search has
+been performed.<br><br></font>
+
+<font color="Red" size="+1"><li><b>Mail New Stories</b></font><font color="Black" size="2"><br><br>
+
+PHP-Nuke has the ability to send an email to the administrator each time a user submits a new article.
+In this section you can configure the options for this email.<br><br>
+
+<b>Notify new submissions by email?:</b> Just select <i>Yes</i> or <i>No</i> if you want or don't want to receive the
+email notification.<br><br>
+
+<b>Email to send the message:</b> To what email do you want to send the notification?<br><br>
+
+<b>Email Subject:</b> The subject of the email.<br><br>
+
+<b>Email Message:</b> Enter the body of the message you would like to receive.<br><br>
+
+<b>Email Account:</b> The email account to show in the <i>From</i> field of the email.<br><br></font>
+
+<font color="Red" size="+1"><li><b>Comments Moderation</b></font><font color="Black" size="2"><br><br>
+
+Moderation doesn't work properly yet. So, you may want to leave this option as is.<br><br>
+
+<b>Type of Moderation:</b> Select if you want No moderation, Moderation by administrator or by
+registered users.<br><br></font>
+
+<font color="Red" size="+1""><li><b>Comments Options</b></font><font color="Black" size="2"><br><br>
+
+<b>Comments Limit in Bytes:</b> Enter the maximum number of bytes a comment will show on the comments page. If
+the comment is bigger than this, the comment will show a link with the text <i>Read the rest
+of this comment...</i> which goes to a separate page for that comment.<br><br>
+
+<b>Anonymous Default Name:</b> Non registered users are Anonymous, and you need to assign a
+name for those people. This name will be displayed under news submittals and comments. So
+you can have Anonymous, Anonymous Coward, Guest, Visitor, etc...<br><br></font>
+
+<font color="Red" size="+1"><li><b>Voting Booth Options</b></font><font color="Black" size="2"><br><br>
+
+<b>Max Poll Options:</b> Set the maximum number of options the Poll can have.<br><br>
+
+<b>Scale of Result Bar:</b> Set a number, multiple of 100. This will base the percentage
+to that number and change the width of the results bars. If you enter <i>3</i>, your poll will
+be based on 300%. You should almost never need to change this, but it's an option just in case ;) Default is <i>i</i>.<br><br>
+
+<font color="Red" size="+1"><li><b>Some Graphics Stuff</b></font><font color="Black" size="2"><br><br>
+
+In future versions, Images Paths will be fixed, there isn't any reason to change these options.<br><br>
+
+<b>Topics Images Path:</b> The path in your server from where to read the topics images.<br><br>
+
+<b>User Menu Images Path:</b> The path in your server from where to read all the buttons, also
+the buttons that are in the user page.<br><br>
+
+<b>Admin Menu Images Path:</b> The path in your server from where to read the images for admin
+section.<br><br>
+
+<b>Graphics in Administration Menu?:</b> If you want a graphic menu in the administration section
+set this value to <i>Yes</i>, otherwise set to <i>No</i>.<br><br>
+
+<b>Site Font:</b> You can control the font of the entire site. This value will be used in the CSS
+stylesheets for the body and tables.<br><br></font>
+
+<font color="Red" size="+1"><li><b>Miscelaneous:</b></font><font color="Black" size="2"><br><br>
+
+<b>Articles Number in Admin:</b> Maximum number of <i>Recent Articles</i> to show on the main Administration page.<br><br>
+
+<b>Minimum users password length:</b> Minimum length a user's password must be before the system accepts it as valid.<br><br>
+
+<b>Activate HTTP Referers?:</b> When activated, this feature will log all referres to your site. In other words, it logs the web page that a user was on before he(or she) visited your site.<br><br>
+
+<b>How many rerefers you want as Maximum?:</b> If the above option is set to yes, you need to enter the maximum number of referersto keep.<br><br>
+
+<b>Activate Comments in Polls?:</b> Selecting <i>Yes</i> will allow users to post comments in the polls.<br><br>
+
+<b>Activate Ephemerids System?:</b> Select yes/no to activate or deactivate Ephemerids system.<br><br>
+
+<b>Activate Advanced Stats Page?:</b> Administrators can view a more complete stats page. If you active
+this option you will see another box called <i>Server Info</i> in the stats.php file.<br><br>
+
+
+<center><img src=../images/global/manual.jpg border=0></center>
+</font>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<script language="JavaScript" type="text/javascript">
+	<!--
+	function formSubmit(myform, target){
+		if (myform.source.value == "") {
+			alert("<!--[pnml name="_XA_TEMPLATE_SOURCE_VALIDATION"]-->");
+			myform.source.focus();
+			myform.source.select();
+		}
+		else if (myform.sourceTpl.value == "") {
+			alert("<!--[pnml name="_XA_TEMPLATE_NAME_VALIDATION"]-->");
+			myform.sourceTpl.focus();
+			myform.sourceTpl.select();
+		}
+		else {
+
+			document.myform.target="_self";
+		    document.myform.action="index.php?module=Xanthia&type=admin&func=addTplFile";
+			document.myform.submit();
+		}
+	} //-->
+</script>
+<!--[$menu]-->
+<form method="post" name="myform" action="">
+<div>
+	<table>
+		<tr>
+			<!--[section name=formcontent loop=$formcontent]-->
+			<td>
+				<input type="hidden" name="authid" id="authid" value="<!--[pnsecgenauthkey module="Xanthia"]-->" />
+				<input type="hidden" name="skinid" id="skinid" value="<!--[$formcontent[formcontent].skinid]-->" />
+				<input type="hidden" name="themename" id="themename" value="<!--[$formcontent[formcontent].themename]-->" />
+				<input type="hidden" name="newtype" id="newtype" value="<!--[$formcontent[formcontent].newtype]-->" />
+				<input type="hidden" name="tpl_module" id="tpl_module" value="<!--[$formcontent[formcontent].tpl_module]-->" />
+				<table>
+					<tr>
+						<th><!--[pnml name="_XA_NEW"]--> <!--[$skin]--> <!--[pnml name="_XA_THEME_TEMPLATE"]--></th>
+					</tr>
+					<tr>
+						<td>
+							<!--[pnml name="_XA_TEMPLATE_NAME"]-->
+							<input type="text" name="sourceTpl" id="sourceTpl" value="" size="22" maxlength="50" tabindex="2" /><strong><!--[pnml name="_XA_TEMPLATE_NAME_INSTRUCTIONS"]--></strong>
+						</td>
+					</tr>
+					<tr>
+						<td><textarea name="source" id="source" rows="25" cols="120" tabindex="1"></textarea></td>
+					</tr>
+					<tr>
+						<td><input type="button" onClick="formSubmit(myform)" name="Submit" value="<!--[pnml name="_SUBMIT"]-->" /></td>
+					</tr>
+					<!--[/section]-->
+				</table>
+			</td>
+		</tr>
+	</table>
+</div>
+</form>

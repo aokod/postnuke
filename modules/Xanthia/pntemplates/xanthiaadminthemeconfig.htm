@@ -1,0 +1,30 @@
+<!--[$menu]-->
+<br />
+<div class="pn-title"><!--[$skin|pnvarprepfordisplay]-->&nbsp;<!--[pnml name="_XA_GENERALCONFIG"]--></div>
+<div class="pn-normal" style="width:100%;">
+<form action="<!--[pnmodurl modname="Xanthia" type="admin" func="updateConfig"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Xanthia"]-->" />
+	<input type="hidden" name="skin" id="skin" value="<!--[$skinid]-->" />
+	<table width="100%" border="3">
+		<tr>
+			<!--[section name=columnheaders loop=$columnheaders]-->
+				<th><!--[pnml name="_XA_CONFIGNAME"]--></th>
+				<th><!--[pnml name="_XA_CONFIGDESCRIPT"]--></th>
+				<th><!--[pnml name="_XA_CONFIGSETTING"]--></th>
+			<!--[/section]-->
+		</tr>
+		<!--[section name=themeconfig loop=$themeconfig]-->  
+		<tr>
+			<td><!--[$themeconfig[themeconfig].name|pnvarprepfordisplay]-->&nbsp;</td>
+			<td><!--[$themeconfig[themeconfig].description|pnvarprepfordisplay]-->&nbsp;</td>
+			<td>
+				<input type="hidden" name="config[]" id="config[]" value="<!--[$themeconfig[themeconfig].name|pnvarprepfordisplay]-->" />
+				<input type="text" name="setting[]" id="setting[]" value="<!--[$themeconfig[themeconfig].setting|pnvarprepfordisplay]-->" size="10" maxlength="10" tabindex="2" />
+			</td>
+		</tr>
+		<!--[/section]-->
+	</table>
+<input name="submit" type="submit" value="<!--[pnml name="_SUBMIT"]-->" />
+</div>
+</form></div>

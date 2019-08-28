@@ -1,0 +1,24 @@
+/* styles for the navigation filter on main page */
+div.memberslist-navmenu {
+    width: 100%;
+    text-align:center;
+	font-size:xx-small;
+	margin-bottom:5px;
+}
+
+/* styles for the search form on main page*/
+form.memberslist-searchform {
+}
+
+/* styles for the results table used in each function */
+table.memberslist-results {
+	width: 100%;
+	border: thin outset;
+	padding: 1px;
+	border-width: 3px;
+}
+.memberslist-results td, th{
+	border: thin inset;
+	padding: 3px;
+	border-width: 1px;
+}

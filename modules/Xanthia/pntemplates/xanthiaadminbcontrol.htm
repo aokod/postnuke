@@ -1,0 +1,105 @@
+<!--[$menu]-->
+<br />
+<div class="pn-title"><!--[$title|pnvarprephtmldisplay]--></div>
+<div class="pn-normal" style="width:100%;text-align:center;">
+<form action="<!--[$formurl|pnvarprepfordisplay]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[$authid]-->" />
+	<input type="hidden" name="skin" id="skin" value="<!--[$skin]-->" />
+	<input type="hidden" name="refresh" id="refresh" value="yes" />  
+	<input type="hidden" name="set" value="yes" />			
+		Module:
+	<select name="bmodule" id="bmodule" size="1" tabindex="1">
+	<option value="SetAll"><!--[pnml name="_XA_ALLMODULES"]--></option>
+		<!--[section name=modules loop=$modules]-->
+			<!--[if  $defaultmodulevalue eq $modules[modules].id ]-->
+				<option value="<!--[$modules[modules].id]-->" selected="selected"><!--[$modules[modules].name]--></option>
+			<!--[else]-->
+				<option value="<!--[$modules[modules].id]-->"><!--[$modules[modules].name]--></option>
+			<!--[/if]-->
+		<!--[/section]-->
+	</select> <input name="remove" type="checkbox" value="yes" /> <label><!--[pnml name="_XA_REMOVE"]--></label>
+	<br /><br />
+	Block:
+	<select name="block[]" id="block[]" size="10" multiple="multiple">
+	<!--[section name=blocks loop=$blocks]-->
+		<!--[if  $defaultmodulevalue eq $blocks[blocks].id ]-->
+			<option value="<!--[$blocks[blocks].id|pnvarprepfordisplay]-->" selected="selected"><!--[$blocks[blocks].name|pnvarprepfordisplay html=1]--></option>
+		<!--[else]-->
+			<option value="<!--[$blocks[blocks].id|pnvarprepfordisplay]-->"><!--[$blocks[blocks].name|pnvarprepfordisplay html=1]--></option>
+		<!--[/if]-->
+	<!--[/section]-->
+	</select>
+	<input type="submit" value="Update" />
+</div>
+</form>
+</div>				
+<div class="pn-sub" style="text-align:center;">
+[&nbsp;<!--[section name=menuoptions loop=$menuoptions]-->
+<a href="<!--[$menuoptions[menuoptions].url]-->"><!--[$menuoptions[menuoptions].title]--></a>
+<!--[if $smarty.section.menuoptions.last neq true]-->
+&nbsp;|&nbsp;
+<!--[/if]-->
+<!--[/section]-->&nbsp;]
+</div>
+<br />
+<div class="pn-normal" style="width:100%;">
+<table width="100%" border="3">
+	<tr>
+		<!--[section name=moduleheaders loop=$moduleheaders]-->
+			<th><!--[$moduleheaders[moduleheaders]]--></th>
+		<!--[/section]-->
+	</tr>
+	<!--[section name=modulecontrol loop=$modulecontrol]-->
+		<!--[if  $modulecontrol[modulecontrol].modulename != '']-->    
+			<tr>
+				<td><!--[$modulecontrol[modulecontrol].modulename]--></td>
+				<td>---</td>
+				<td>---</td>
+				<td>---</td>
+				<td>---</td>
+				<td>---</td>
+				<td>---</td>
+			</tr>
+		<!--[/if]-->	
+		<!--[assign var="actions" value=$modulecontrol[modulecontrol].actions]-->
+		<!--[section name=actions loop=$actions]-->
+			<!--[if  $actions[actions].blockname eq "Block Control" && $actions[actions].modulename eq $modulecontrol[modulecontrol].modulename]-->
+				<tr>
+					<td>|------<!--[$actions[actions].blockname]--></td>
+					<td><a href="<!--[$actions[actions].removeurl]-->"><!--[$actions[actions].removelabel]--></a></td>
+					<td><img src="images/global/<!--[$actions[actions].stateimg]-->" /></td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			<!--[elseif  $actions[actions].blockname != "Block Control" && $actions[actions].blockname != ""]-->
+				<tr>
+					<td>|------<!--[$actions[actions].blockname]--></td>
+					<td><a href="<!--[$actions[actions].removeurl]-->"><!--[$actions[actions].removelabel]--></a></td>
+					<td><img src="images/global/<!--[$actions[actions].stateimg]-->" /></td>
+					<td><a href="<!--[$actions[actions].up]-->"><img src="images/global/up.gif" alt="<!--[$actions[actions].uptext]-->" /></a></td>
+					<td><a href="<!--[$actions[actions].down]-->"><img src="images/global/down.gif" alt="<!--[$actions[actions].downtext]-->" /></a></td>
+					<td>
+						<select name="posizione" onchange="top.location.href=this.options[this.selectedIndex].value">
+							<!--[assign var="dropdown" value=$actions[actions].dropdown]-->
+							<!--[section name=dropdown loop=$dropdown]-->
+								<option value=<!--[$dropdown[dropdown].onchange]-->><!--[$dropdown[dropdown].value]--></option>
+							<!--[/section]-->											
+						</select>
+					</td>
+					<td>
+						<select name="template" onchange="top.location.href=this.options[this.selectedIndex].value">
+							<!--[assign var="tdropdown" value=$actions[actions].tdropdown]-->
+							<!--[section name=tdropdown loop=$tdropdown]-->
+								<option value=<!--[$tdropdown[tdropdown].onchange]-->><!--[$tdropdown[tdropdown].value]--></option>
+							<!--[/section]-->											
+						</select>
+					</td>
+				</tr>
+			<!--[/if]-->
+		<!--[/section]-->
+	<!--[/section]-->
+</table>
+</div>

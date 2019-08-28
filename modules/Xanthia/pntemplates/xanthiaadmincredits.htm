@@ -1,0 +1,13 @@
+<!--[$menu]-->
+<br />
+<div class="pn-normal"><span class="pn-title"><!--[pnml name="_XA_THEMECREDITS"]--></span></div>
+<br />
+<table>
+<!--[foreach from=$themeinfo item=themefield key=themekey]-->
+    <tr>
+	    <!--[assign var=themeconstant value=$themekey|upper]-->
+        <td><!--[pnml name=_XA_$themeconstant]--></td>
+        <td><!--[$themefield|pnvarprepfordisplay]--></td>
+    </tr>
+<!--[/foreach]-->
+</table>

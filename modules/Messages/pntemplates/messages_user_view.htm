@@ -1,0 +1,75 @@
+<script type="text/javascript">
+    <!--
+    function CheckAll() {
+      for (var i=0;i<document.prvmsg.elements.length;i++) {
+        var e = document.prvmsg.elements[i];
+        if ((e.name != 'allbox') && (e.type=='checkbox'))
+        e.checked = document.prvmsg.allbox.checked;
+      }
+    }
+
+    function CheckCheckAll() {
+      var TotalBoxes = 0;
+      var TotalOn = 0;
+      for (var i=0;i<document.prvmsg.elements.length;i++) {
+        var e = document.prvmsg.elements[i];
+        if ((e.name != 'allbox') && (e.type=='checkbox')) {
+          TotalBoxes++;
+          if (e.checked) {
+            TotalOn++;
+          }
+        }
+      }
+      if (TotalBoxes==TotalOn) {
+        document.prvmsg.allbox.checked=true;
+      } else {
+        document.prvmsg.allbox.checked=false;
+      }
+    }
+
+    -->
+</script>
+<!--[include file=messages_user_menu.htm]-->
+<!--[if $messagecount eq 0]-->
+<!--[pnml name=_MESSAGESDONTHAVEMESSAGES]-->
+<!--[else]-->
+
+<form name="prvmsg" action="<!--[pnmodurl modname=Messages type=user func=delete]-->" method="post">
+<div>
+<table border="0" cellspacing="1" cellpadding="3" width="100%">
+	<tr align="left">
+		<td style="background-color:<!--[pnthemegetvar name="bgcolor2"]-->" align="center" valign="middle"><input name="allbox" onclick="CheckAll();" type="checkbox" value="<!--[pnml name=_CHECKALL]-->" /></td>
+		<td style="background-color:<!--[pnthemegetvar name="bgcolor2"]-->" align="center" valign="middle"></td>
+		<td style="background-color:<!--[pnthemegetvar name="bgcolor2"]-->" align="center" valign="middle"></td>
+		<td style="background-color:<!--[pnthemegetvar name="bgcolor2"]-->"><!--[pnml name=_MESSAGESFROM]--></td>
+		<td style="background-color:<!--[pnthemegetvar name="bgcolor2"]-->"><!--[pnml name=_MESSAGESSUBJECT]--></td>
+		<td style="background-color:<!--[pnthemegetvar name="bgcolor2"]-->"><!--[pnml name=_DATE]--></td>
+	</tr>
+	<!--[counter start=1 start=0 assign=counter]-->
+	<!--[section name=messages loop=$messages]-->
+		<tr align="left">
+			<td align="center"><input type="checkbox" onclick="CheckCheckAll();" name="msg_id[<!--[$smarty.section.messages.rownum-1]-->]" value="<!--[$messages[messages].msg_id]-->" /></td>
+			<!--[if $messages[messages].read_msg eq 1]--> 
+			<td align="center">&nbsp;</td>
+			<!--[else]-->
+			<td align="center"><img src="images/global/email.gif" alt="<!--[pnml name=_MESSAGESNOTREAD]-->" /></td>
+			<!--[/if]-->
+			<td align="center">
+			<!--[if $messages[messages].msg_image neq ""]-->
+			<img src="images/smilies/<!--[$messages[messages].msg_image]-->" alt="" />
+			<!--[/if]-->
+			</td>
+			<!--[assign var="posterdata" value=$messages[messages].posterdata]-->
+			<td><!--[$posterdata.pn_uname]--></td>
+			<td><a href="<!--[pnmodurl modname=Messages type=user func=display msgid=$messages[messages].msg_id]-->"><!--[$messages[messages].subject|pnvarprepfordisplay]--></a></td>
+			<td align="left"><!--[$messages[messages].messagetime]--></td>
+		</tr>
+		<!--[counter]-->
+	<!--[/section]-->
+</table>
+<input type="hidden" name="authid" value="<!--[ pnsecgenauthkey ]-->" />
+<input type="submit" name="delete" value="<!--[pnml name=_DELETE]-->" />
+<input type="hidden" name="total_messages" value="<!--[$messagecount]-->" />
+</div>
+</form>
+<!--[/if]-->

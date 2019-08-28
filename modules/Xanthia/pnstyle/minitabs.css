@@ -1,0 +1,36 @@
+/* CSS navtabs technique from http://www.simplebits.com/bits/minitabs.html */
+.container {
+	padding: 20px;
+	margin: 20px 0 20px 0;
+	border: 1px solid;
+}
+
+#minitabs {
+	margin: 0;
+	padding: 0 0 0 10px;
+}
+
+#minitabs li {
+	margin: 0; 
+	padding: 0;
+	display: inline;
+	list-style-type: none;
+}
+	
+#minitabs a:link, #minitabs a:visited {
+	font-size: 10px;
+	line-height: 14px;
+	font-weight: bold;
+	margin: 0 10px 4px 10px;
+	text-decoration: none;
+}
+
+#minitabs a.active:link, #minitabs a.active:visited, #minitabs a:hover {
+	border-bottom: 4px solid;
+	padding-bottom: 2px;
+	color: red;
+}
+
+#minitabs a:hover {
+	color: red;
+}

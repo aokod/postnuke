@@ -1,0 +1,23 @@
+<!--[*  $Id: rss_admin_new.htm 16263 2005-05-21 17:57:18Z markwest $  *]-->
+<!--[include file="rss_admin_menu.htm"]-->
+<h2><!--[pnml name="_RSSADD"]--></h2>
+<form  class="pn-adminform" action="<!--[pnmodurl modname="RSS" type="admin" func="create"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="RSS"]-->" />
+	<div class="pn-adminformrow">
+		<label for="rss_feedname"><!--[pnml name="_RSSNAME"]--></label>
+		<input id="rss_feedname" name="feedname" type="text" size="30" maxlength="30" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="rss_url"><!--[pnml name="_RSSURL"]--></label>
+		<input id="rss_url" name="url" type="text" size="50" maxlength="200" />
+	</div>
+	<div class="pn-adminformrow">
+		<!--[pnmodcallhooks hookobject=item hookaction=new module=RSS]-->
+	</div>
+	<div class="pn-adminformrow">
+		<input name="submit" type="submit" value="<!--[pnml name="_RSSADD"]-->" />
+	</div>
+	<div style="clear:both"></div>
+</div>
+</form>

@@ -1,0 +1,41 @@
+<!--[* $Id: pn_bbsmile_user_bbsmiles.html 63 2006-09-26 15:02:27Z landseer $ *]-->
+
+<!--[* add the javascript file  *]-->
+
+<noscript>
+    <p><strong><!--[ pnml name='_PNBBSMILE_NOSCRIPTWARNING' ]--></strong></p>
+</noscript>
+
+<!--[ pnbbsmile_smilie_list assign="smilies" type="standard" ]-->
+<div class="bb_standardsmilies">
+    <!--[* default smilies *]-->
+    <!--[ foreach item=smilie from=$smilies ]-->
+    <a href="javascript:void(0);" onclick="AddSmilie('<!--[ $textfieldid ]-->', ' <!--[ $smilie.short ]--> ')" title="<!--[$smilie.short]-->">
+    <img class="bb_smilie" src="<!--[ $pncore.pn_bbsmile.smiliepath ]-->/<!--[ $smilie.imgsrc ]-->" alt='Smilie <!--[ $smilie.alt ]-->' />
+    </a>
+    <!--[ /foreach ]-->
+</div>
+
+<!--[ if $pncore.pn_bbsmile.activate_auto  ]-->
+    <!--[ pnbbsmile_smilie_list assign="autosmilies" type="auto" ]-->
+
+    <!--[ if $autosmilies_count > 0 ]-->
+    <div class="bb_showhidesmilies">
+        <a onkeypress="ShowHide('more_smilies_<!--[ $counter ]-->')" href="javascript:void(0);" onclick="ShowHide('more_smilies_<!--[ $counter ]-->')" title="<!--[pnml name="_PNBBSMILE_SHOWHIDE_SMILIES"]-->"><!--[pnml name="_PNBBSMILE_MORESMILIES"]--></a>
+    </div>
+    <div id="more_smilies_<!--[ $counter ]-->" class="bb_moresmilies" style="display: none;">
+        <table class="bb_moresmilies">
+            <tr>
+            <!--[ foreach item=smilie from=$autosmilies key=num]-->
+                <td class="bb_smilie_cell">
+                    <a href="javascript:void(0);" onclick="AddSmilie('<!--[ $textfieldid ]-->', ' <!--[ $smilie.short ]--> ')" title="<!--[$smilie.short]-->">
+                    <img src="<!--[$pncore.pn_bbsmile.smiliepath_auto]-->/<!--[$smilie.imgsrc]-->" alt="Smilie <!--[$smilie.alt]-->" />
+                    </a>
+                </td>
+            <!--[/foreach]-->
+            </tr>
+        </table>
+    </div>  
+    <!--[ /if ]-->
+<!--[/if]-->
+

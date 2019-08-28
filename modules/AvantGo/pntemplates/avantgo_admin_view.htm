@@ -1,0 +1,15 @@
+<!--[*  $Id: avantgo_admin_view.htm 15553 2005-01-30 15:48:31Z larsneo $  *]-->
+<!--[include file="avantgo_admin_menu.htm"]-->
+<h2><!--[pnml name="_AVANTGOVIEW"]--></h2>
+<table class="pn-admintable">
+  <tr>
+      <th><!--[pnml name="_AVANTGOARTICLE"]--></th>
+      <th><!--[pnml name="_DATE"]--></th>
+  </tr>
+  <!--[section name="storyitems" loop=$storyitems]-->  
+    <tr class="<!--[cycle values="pn-odd,pn-even"]-->">
+      <td><!--[$storyitems[storyitems].title|pnvarprephtmldisplay]--></td>
+      <td><!--[$storyitems[storyitems].time|pndate_format:datetimebrief|pnvarprephtmldisplay]--></td>
+    </tr>
+  <!--[/section]-->
+</table>

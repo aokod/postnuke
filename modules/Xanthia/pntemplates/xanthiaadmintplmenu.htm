@@ -1,0 +1,14 @@
+<!--[include file="xanthiaadminmenu.htm"]-->
+<br />
+<div class="pn-title"><!--[pnml name="_XA_THEMECONFIG"]--> - <!--[$skinname|pnvarprepfordisplay]--></div>
+<div class="pn-menu">
+[<!--[section name=menuoption loop=$menuoptions]-->
+<span class="pn-menuitem-title">
+<a href="<!--[$menuoptions[menuoption].url]-->"><!--[$menuoptions[menuoption].title|pnvarprepfordisplay]--></a>
+</span>
+<!--[if $smarty.section.menuoption.last neq true]-->
+&nbsp;|&nbsp;
+<!--[/if]-->
+<!--[/section]-->]
+</div>
+<br />

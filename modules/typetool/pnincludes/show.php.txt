@@ -1,0 +1,131 @@
+<?
+/* Configuration */
+// get the correct base_url: protocoll,url,path to make sure to rewrite only internal links 
+if (empty($HTTP_SERVER_VARS['HTTP_HOST'])) { 
+   $server = getenv('HTTP_HOST'); 
+} else { 
+   $server = $HTTP_SERVER_VARS['HTTP_HOST']; 
+} 
+// IIS sets HTTPS=off 
+if (isset($HTTP_SERVER_VARS['HTTPS']) && $HTTP_SERVER_VARS['HTTPS'] != 'off') { 
+   $proto = 'https://'; 
+} else { 
+   $proto = 'http://'; 
+} 
+// Get the name of this URI 
+// Start of with REQUEST_URI 
+if (isset($HTTP_SERVER_VARS['REQUEST_URI'])) { 
+   $path = $HTTP_SERVER_VARS['REQUEST_URI']; 
+} else { 
+   $path = getenv('REQUEST_URI'); 
+} 
+if ((empty($path)) || (substr($path, -1, 1) == '/')) { 
+   // REQUEST_URI was empty or pointed to a path 
+   // Try looking at PATH_INFO 
+   $path = getenv('PATH_INFO'); 
+   if (empty($path)) { 
+      // No luck there either 
+      // Try SCRIPT_NAME 
+      if (isset($HTTP_SERVER_VARS['SCRIPT_NAME'])) { 
+         $path = $HTTP_SERVER_VARS['SCRIPT_NAME']; 
+      } else { 
+         $path = getenv('SCRIPT_NAME'); 
+      } 
+   } 
+} 
+
+$path = preg_replace('/[#\?].*/', '', $path); 
+$path = dirname($path); 
+
+if (preg_match('!^[/\\\]*$!', $path)) { 
+   $path = ''; 
+} 
+
+$base_url = "$proto$server$path/"; 
+
+$poolDir= "uploads";
+$fulldir= "$base_url$poolDir";
+//$fulldir= "http://127.0.0.1/jscript/$poolDir";
+/* End configuration */
+?>
+
+
+<html>
+<head>
+<title>Files-Pool</title>
+
+<link REL=stylesheet HREF='./skin/vdev.css' TYPE='text/css'>
+<script src="./skin/language.js"></script>
+
+<script>
+function insertImageFile(file)
+{
+ var win= window.opener.window.opener
+ var FID= win.FID
+ var edi= win.document.getElementById(FID).contentWindow
+
+ var cmd= "<? echo $fulldir ?>/" + file
+ win.insertImageSimple(edi, cmd)
+
+}
+
+
+
+function createLink(file)
+{
+ var win= window.opener.window.opener
+ var FID= win.FID
+ var edi= win.document.getElementById(FID).contentWindow
+
+ win.insertLink('<? echo $fulldir ?>/'+file)
+}
+
+</script>
+</head>
+
+<body class=vdev onload="self.focus()">
+<center>
+<h2><script>document.writeln(FILESLIST)</script></h2>
+<a href="javascript:self.close()"><script>document.writeln(CLOSE)</script></a> |
+<a href="show.php?sort=name"><script>document.writeln(SORTFILENAME)</script></a> |
+<a href="show.php?sort=time"><script>document.writeln(SORTFILETIME)</script></a>
+</center>
+<ol>
+
+<?php 
+
+$handle=opendir($poolDir); 
+$fileArr= array ();
+
+while ($file = readdir ($handle)) 
+{ 
+  if ($file != "." && $file != ".." && strtolower($file) != "index.html" && substr ($file,0,1) !="." ) 
+   { 
+     $statArr= stat($poolDir."/".$file);
+     $key= $statArr[9];	   
+     $fileArr[$key]= $file;
+   } 
+}
+
+closedir($handle); 
+
+if($_GET['sort']=='time') krsort($fileArr);
+else asort($fileArr);
+
+reset($fileArr);
+
+
+while (list ($key, $file) = each ($fileArr) ) 
+{ 
+  $statArr= stat($poolDir."/".$file);
+  $mdate= getdate($key);
+  echo "<li>$file (".$mdate['mday'].".".$mdate['month'].".".$mdate['year']." / $statArr[7] Bytes) | <a href=\"$fulldir/$file\"><script>document.writeln(FILEVIEW)</script></a> | <a href=\"javascript:insertImageFile('$file')\"><script>document.writeln(FILEINSERT)</script></a> | <a href=\"javascript:createLink('$file')\"><script>document.writeln(FILELINK)</script></a> |</li>"; 
+}
+
+
+?>
+</ol>
+
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+<tr>
+	<td><!--[pnml name="XANTHIAMODULEBLOCKMODULE"]--></td>
+	<td>
+		<select name="moduleid">
+			<!--[html_options options=$modules selected=$vars.moduleid]-->
+		</select>
+	</td>
+</tr>
+<tr>
+	<td><!--[pnml name="XANTHIAMODULEBLOCKFUNCTION"]--></td>
+	<td><input type="text" name="modulefunction" value="<!--[$vars.modulefunction|pnvarprepfordisplay]-->" /></td>
+</tr>
+<tr>
+	<td><!--[pnml name="XANTHIAMODULEBLOCKPARAMETERS"]--></td>
+	<td><textarea name="moduleparams"><!--[$vars.moduleparams|pnvarprepfordisplay]--></textarea></td>
+</tr>

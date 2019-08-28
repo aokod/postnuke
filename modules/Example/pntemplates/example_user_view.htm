@@ -1,0 +1,23 @@
+<!--[*  $Id: example_user_view.htm 16295 2005-06-03 11:38:38Z markwest $  *]-->
+
+<!--[* Include a common menu to show at the header   *]-->
+<!--[include file="example_user_menu.htm"]-->
+
+<div class="example_itemlist">
+<!--[* Loop through the items and display them   *]-->
+<ul>
+<!--[foreach item=item from=$items]-->
+<li><!--[$item]--></li>
+<!--[/foreach]-->
+</ul>
+</div>
+
+<!--[* Display a pager to go to the pages   *]-->
+<!--[pager  show="page" 
+            rowcount=$pager.numitems 
+			limit=$pager.itemsperpage 
+			posvar=startnum 
+			shift=1]-->
+
+<!--[pnmodurl modname=Example func=view startnum=$startnum assign=returnurl]-->
+<!--[pnmodcallhooks hookobject=category hookaction=display hookid=$startnum module=Example returnurl=$returnurl]-->	

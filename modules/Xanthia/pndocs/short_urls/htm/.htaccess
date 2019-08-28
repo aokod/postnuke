@@ -1,0 +1,176 @@
+# $Id: .htaccess 18277 2006-03-20 16:49:09Z markwest $
+# ----------------------------------------------------------------------
+# PostNuke Content Management System
+# Copyright (C) 2002 by the PostNuke Development Team.
+# http://www.postnuke.com/
+# ----------------------------------------------------------------------
+# Based on:
+# PHP-NUKE Web Portal System - http://phpnuke.org/
+# Thatware - http://thatware.org/
+# ----------------------------------------------------------------------
+# LICENSE
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License (GPL)
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# To read the license please visit http://www.gnu.org/copyleft/gpl.html
+# ----------------------------------------------------------------------
+#
+# Based upon the .htaccess of MD-Pro, written by
+# LongiTEKK.com NETWORK Admin - chtekk@longitekk.com
+# MaxDev Devel - chtekk@maxdev.com
+#
+# ----------------------------------------------------------------------
+#
+# Place this file in your Postnuke root directory, alongside the main
+# index.php file
+# The "Options FollowSymLinks" line may be deleted, since on certain
+# hosts it causes a config error!
+#
+# ----------------------------------------------------------------------
+
+Options FollowSymLinks
+
+RewriteEngine On
+
+# ENG
+# This option is for use in Virtual Hosts or .htaccess files to inherit rewrite rules in the main section,
+# so if you have your own server you don't have to copy the rules into every Virtual Host you run.
+# Will cause an error if placed in the main httpd.conf section, as there's nothing to inherit.
+
+# RewriteOptions 'inherit'
+
+# Exclude certain directories
+RewriteRule ^modules/.*$ - [PT]
+RewriteRule ^themes/.*$ - [PT]
+RewriteRule ^javascript/.*$ - [PT]
+
+# index.php and user.php
+RewriteRule ^changelang-([^-]+)\.htm$ index.php?newlang=$1 [L,NC,NS]
+RewriteRule ^changetheme-([^-]+)\.htm$ index.php?theme=$1 [L,NC,NS]
+RewriteRule ^index\.htm$ index.php [L,NC,NS]
+RewriteRule ^user\.htm$ user.php [L,NC,NS]
+
+# ppnews
+RewriteRule ^ppnews-index\.htm$ index.php?module=ppnews&choix=index [L,NC,NS]
+RewriteRule ^ppnews-([^-]+)\.htm$ index.php?module=ppnews&choix=$1 [L,NC,NS]
+
+# My_eGallery
+RewriteRule ^MeG-([^-]+)\.htm$ index.php?module=My_eGallery&do=$1 [L,NC,NS]
+RewriteRule ^MeG-([^-]+)-([^-]+)-([^-]+)\.htm$ index.php?module=My_eGallery&do=$1&$2=$3 [L,NC,NS]
+RewriteRule ^MeG-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)\.htm$ index.php?module=My_eGallery&do=$1&$2=$3&$4=$5 [L,NC,NS]
+RewriteRule ^MeG-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)\.htm$ index.php?module=My_eGallery&do=$1&$2=$3&$4=$5&$6=$7 [L,NC,NS]
+
+# NS-User_Points
+RewriteRule ^User_Points\.htm$ index.php?name=NS-User_Points [L,NC,NS]
+
+# NS-Link_To_Us
+RewriteRule ^Link_To_Us\.htm$ index.php?name=NS-Link_To_Us [L,NC,NS]
+
+# Polls / Sondaggi
+RewriteRule ^Poll-([0-9]{1,3})([A-Za-z]*)?\.htm$ index.php?name=Polls&req=$2&pollID=$1 [L,NC,NS]
+RewriteRule ^Polls\.htm$ index.php?name=Polls [L,NC,NS]
+
+# Private Messages / Messaggi Privati
+RewriteRule ^Messages-outbox\.htm$ index.php?name=Messages&file=outbox [L,NC,NS]
+RewriteRule ^Messages-inbox\.htm$ index.php?name=Messages [L,NC,NS]
+
+# Search functions (by user and by topic) / Funzioni di ricerca (per utente e per argomento)
+RewriteRule ^Search-author-([^-]+)\.htm$ index.php?name=Search&action=search&overview=1&active_stories=1&stories_author=$1 [L,NC,NS]
+RewriteRule ^Search-topics-([^-]+)\.htm$ index.php?name=Search&action=search&overview=1&active_stories=1&stories_topics[0]=$1 [L,NC,NS]
+RewriteRule ^Search-author-([^-]+)-no\.htm$ index.php?name=Search&action=search&active_stories=1&stories_author=$1 [L,NC,NS]
+RewriteRule ^Search-topics-([^-]+)-no\.htm$ index.php?name=Search&action=search&active_stories=1&stories_topics[0]=$1 [L,NC,NS]
+
+# daily_archive
+RewriteRule ^daily_archive-([^-]+)\.htm$ index.php?module=daily_archive&func=$1 [L,NC,NS]
+RewriteRule ^daily_archive-([^-]+)-([^-]+)\.htm$ index.php?module=daily_archive&func=display&req=get&year=$1&month=$2 [L,NC,NS]
+RewriteRule ^daily_archive-([^-]+)-([^-]+)-([^-]+)\.htm$ index.php?module=daily_archive&func=display&req=get&year=$1&month=$2&day=$3 [L,NC,NS]
+RewriteRule ^daily_archive-([^-]+)-([^-]+)-([^-]+)-([^-]+)\.htm$ index.php?module=daily_archive&func=display&req=get&year=$1&month=$2&day=$3&page=$4 [L,NC,NS]
+
+# News Extension / Estensione News
+RewriteRule ^News-hometopicmore-([0-9]+)\.htm$ index.php?name=News&catid=&topic=&startrow=$1 [L,NC,NS]
+RewriteRule ^News-topicmore-([0-9]+)-([0-9]+)\.htm$ index.php?name=News&catid=&topic=$1&startrow=$2 [L,NC,NS]
+
+# PostCalendar
+RewriteRule ^PostCalendar-([0-9]{2})-([0-9]{2})-([0-9]{4})-event-([0-9]+)\.htm$ index.php?module=PostCalendar&func=view&Date=$3$2$1&tplview=&viewtype=details&eid=$4&print= [L,NC,NS]
+RewriteRule ^PostCalendar-([0-9]{2})-([0-9]{2})-([0-9]{4})\.htm$ index.php?module=PostCalendar&func=view&tplview=default&viewtype=month&Date=$3$2$1 [L,NC,NS]
+RewriteRule ^PostCalendar-([0-9]{2})-([0-9]{2})-([0-9]{4})-([A-Za-z]+)-([^-\.]+)\.htm$ index.php?module=PostCalendar&func=view&tplview=$5&viewtype=$4&Date=$3$2$1&pc_username=&pc_category=&pc_topic=&print= [L,NC,NS]
+RewriteRule ^PostCalendar-([0-9]{2})-([0-9]{2})-([0-9]{4})-([A-Za-z]+)\.htm$ index.php?module=PostCalendar&func=view&tplview=&viewtype=$4&Date=$3$2$1&pc_username=&pc_category=&pc_topic=&print= [L,NC,NS]
+RewriteRule ^PostCalendar-([A-Za-z]+)\.htm$ index.php?module=PostCalendar&func=$1 [L,NC,NS]
+
+# Articles / Articoli
+RewriteRule ^Article([0-9]+)\.htm$ index.php?name=News&file=article&sid=$1&mode=thread&order=0&thold=0 [L,NC,NS]
+RewriteRule ^Article([0-9]+)-([A-Za-z=]+)(-order([0-9]))?(-threshold([0-9\-]{1,2}))?\.htm$ index.php?name=News&file=article&sid=$1&mode=$2&order=$4&thold=$6 [L,NC,NS]
+
+# Recommend us to a friend / Raccomandaci ad un amico
+RewriteRule ^SendArticle([0-9]+)\.htm$ index.php?name=Recommend_Us&req=FriendSend&sid=$1 [L,NC,NS]
+
+# Sections / Sezioni
+RewriteRule ^Section-([0-9]+)\.htm$ index.php?name=Sections&req=listarticles&secid=$1 [L,NC,NS]
+RewriteRule ^Sections-article([0-9]+)(-p([0-9]*))?\.htm$ index.php?name=Sections&req=viewarticle&artid=$1&page=$3 [L,NC,NS]
+
+# Print article / Stampa un articolo
+RewriteRule ^PrintArticle([0-9]+)\.htm$ print.php?sid=$1 [L,NC,NS]
+
+# Categories / Categorie
+RewriteRule ^Category([0-9]+)\.htm$ index.php?name=News&catid=$1 [L,NC,NS]
+RewriteRule ^Category([0-9]+)-All\.htm$ index.php?name=News&catid=$1&allstories=1 [L,NC,NS]
+
+# Topics / Argomenti
+RewriteRule ^Topic([0-9]+)\.htm$ index.php?name=News&catid=&topic=$1 [L,NC,NS]
+RewriteRule ^Topic([0-9]+)all\.htm$ index.php?name=News&catid=&topic=$1&allstories=1 [L,NC,NS]
+
+# FAQ
+RewriteRule ^FAQ-Category([0-9]+)-([^-]+)-Parent([0-9]+)-myfaq-([^-\.]+).htm$ index.php?name=FAQ&myfaq=$4&id_cat=$1&categories=$2&parent_id=$3 [L,NC,NS]
+
+# Rules for PNphpBB2 / Regole per PNphpBB2
+RewriteRule ^PNphpBB2\.htm$ index.php?name=PNphpBB2 [L,NC,NS]
+RewriteRule ^PNphpBB2-([^-]+)\.htm$ index.php?name=PNphpBB2&file=$1 [L,NC,NS]
+RewriteRule ^PNphpBB2-([^-]+)-([^-]+)-([^-]+)\.htm$ index.php?name=PNphpBB2&file=$1&$2=$3 [L,NC,NS]
+RewriteRule ^PNphpBB2-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)\.htm$ index.php?name=PNphpBB2&file=$1&$2=$3&$4=$5 [L,NC,NS]
+RewriteRule ^PNphpBB2-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)\.htm$ index.php?name=PNphpBB2&file=$1&$2=$3&$4=$5&$6=$7 [L,NC,NS]
+RewriteRule ^PNphpBB2-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)\.htm$ index.php?name=PNphpBB2&file=$1&$2=$3&$4=$5&$6=$7&$8=$9 [L,NC,NS]
+
+# User related URLs / URL relative agli utenti
+RewriteRule ^UserInfo-([^-]+)\.htm$ user.php?op=userinfo&uname=$1 [L,NC,NS]
+RewriteRule ^UserReg\.htm$ user.php?op=register&module=NewUser [L,NC,NS]
+RewriteRule ^UserReg-CheckAge\.htm$ user.php?op=check_age&module=NewUser [L,NC,NS]
+RewriteRule ^User-Login\.htm$ user.php?op=loginscreen&module=User [L,NC,NS]
+RewriteRule ^User-LostPassword\.htm$ user.php?op=lostpassscreen&module=LostPassword [L,NC,NS]
+RewriteRule ^User-Logout\.htm$ user.php?module=User&op=logout [L,NC,NS]
+
+# General rules for modules with index.php?name=... / Regole generali per moduli con index.php?name=...
+RewriteRule ^name-([^-]+)\.htm$ index.php?name=$1 [L,NC,NS]
+RewriteRule ^name-([^-]+)-([^-]+)\.htm$ index.php?name=$1&file=$2 [L,NC,NS]
+RewriteRule ^name-([^-]+)-([^-]+)-([^-]+)-([^-]+)\.htm$ index.php?name=$1&file=$2&$3=$4 [L,NC,NS]
+RewriteRule ^name-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)\.htm$ index.php?name=$1&file=$2&$3=$4&$5=$6 [L,NC,NS]
+RewriteRule ^name-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)\.htm$ index.php?name=$1&file=$2&$3=$4&$5=$6&$7=$8 [L,NC,NS]
+
+# General rules for modules with index.php?module=... / Regole generali per moduli con index.php?module=...
+RewriteRule ^module-([^-]+)\.htm$ index.php?module=$1&func=main [L,NC,NS]
+RewriteRule ^module-([^-]+)-([^-]+)\.htm$ index.php?module=$1&func=$2 [L,NC,NS]
+RewriteRule ^module-([^-]+)-([^-]+)-([^-]+)-([^-]+)\.htm$ index.php?module=$1&func=$2&$3=$4 [L,NC,NS]
+RewriteRule ^module-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)\.htm$ index.php?module=$1&func=$2&$3=$4&$5=$6 [L,NC,NS]
+RewriteRule ^module-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)\.htm$ index.php?module=$1&func=$2&$3=$4&$5=$6&$7=$8 [L,NC,NS]
+
+# General rules for modules with index.php?name=...
+RewriteRule ^([^-]+)\.htm$ index.php?name=$1 [L,NC,NS]
+RewriteRule ^([^-]+)-([^-]+)-([^-]+)\.htm$ index.php?name=$1&$2=$3 [L,NC,NS]
+RewriteRule ^([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)\.htm$ index.php?name=$1&$2=$3&$4=$5 [L,NC,NS]
+RewriteRule ^([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)\.htm$ index.php?name=$1&$2=$3&$4=$5&$6=$7 [L,NC,NS]
+RewriteRule ^([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)\.htm$ index.php?name=$1&$2=$3&$4=$5&$6=$7&$8=$9 [L,NC,NS]
+
+# General rules for modules with index.php?name=...&file=... / Regole generali per index.php?name=...&file=...
+RewriteRule ^([^-]+)\+([^-]+)\.htm$ index.php?name=$1&req=$2 [L,NC,NS]
+RewriteRule ^([^-]+)\.htm$ index.php?name=$1 [L,NC,NS]
+RewriteRule ^([^-]+)-([^-]+)\.htm$ index.php?name=$1&file=$2 [L,NC,NS]
+RewriteRule ^([^-]+)-([^-]+)-([^-]+)-([^-]+)\.htm$ index.php?name=$1&file=$2&$3=$4 [L,NC,NS]
+RewriteRule ^([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)\.htm$ index.php?name=$1&file=$2&$3=$4&$5=$6 [L,NC,NS]
+RewriteRule ^([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)-([^-]+)\.htm$ index.php?name=$1&file=$2&$3=$4&$5=$6&$7=$8 [L,NC,NS]

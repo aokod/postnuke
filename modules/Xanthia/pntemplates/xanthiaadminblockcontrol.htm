@@ -1,0 +1,27 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<!--[pnml name="_CHARSET"]-->">
+<title>Xanthia Block Control</title>
+<style>p, input, form {font:8pt Arial, Verdana;text:left; margin: 0pt;} body {text:left; margin: 10pt;}</style>
+</head>
+<body>
+<script language="JavaScript">
+function pippo2(pap){
+	window.opener.document.location.href=pap;
+	return;
+}
+</script>
+<p><!--[$zone]--></p>
+<p><!--[pnml name="_XA_NOMOREHELP" html=1]--></p>
+<form name="tplform" onsubmit="javascript:pippo2('<!--[$chichiama]-->')">
+<div>
+<p><!--[pnml name="_XA_BLOCCO1" html=1]--></p>
+<p><!--[$blocks]--></p>
+<p><!--[pnml name="_XA_NOMOREHELP1" html=1]--></p>
+<br />
+<p><input type="button" value="<!--[pnml name="_XA_RELOAD"]-->" onclick="javascript:window.opener.document.location.reload();" /></p>
+<p align="right"><input type="button" value="<!--[pnml name="_XA_CHIUDI"]-->" onclick="javascript:window.close();" /></p>
+</div>
+</form>
+</body>
+</html>

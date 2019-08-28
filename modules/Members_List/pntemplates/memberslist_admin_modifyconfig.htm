@@ -1,0 +1,28 @@
+<!--[*  $Id: memberslist_admin_modifyconfig.htm 15930 2005-03-07 11:08:21Z markwest $  *]-->
+<!--[include file="memberslist_admin_menu.htm"]-->
+<h2><!--[pnml name="_MEMBERSLISTEDITCONFIG"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Members_List" type="admin" func="updateconfig"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Members_List"]-->" />
+	<div class="pn-adminformrow">
+		<label for="memberslist_memberslistitemsperpage"><!--[pnml name="_MEMBERSLISTMEMBERSPERPAGE"]--></label>
+		<input id="memberslist_memberslistitemsperpage" type="text" name="memberslistitemsperpage" size="3" value="<!--[$memberslistitemsperpage|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="memberslist_onlinemembersitemsperpage"><!--[pnml name="_MEMBERSLISTONLINEMEMBERSITEMSPERPAGE"]--></label>
+		<input id="memberslist_onlinemembersitemsperpage" type="text" name="onlinemembersitemsperpage" size="3" value="<!--[$onlinemembersitemsperpage|pnvarprepfordisplay]-->" />
+	</div>
+<!--	<div class="pn-adminformrow">
+		<label for="memberslist_filterunverified"><!--[pnml name="_MEMBERSLISTUNVERIFIED"]--></label>
+		<!--[if $filterunverified eq 1]-->
+			<input id="memberslist_filterunverified" type="radio" name="filterunverified" value="1" checked="checked" /><!--[pnml name="_YES"]-->
+			<input id="memberslist_filterunverified" type="radio" name="filterunverified" value="0" /><!--[pnml name="_NO"]-->
+		<!--[else]-->
+			<input id="memberslist_filterunverified" type="radio" name="filterunverified" value="1" /><!--[pnml name="_YES"]-->
+			<input id="memberslist_filterunverified" type="radio" name="filterunverified" value="0" checked="checked" /><!--[pnml name="_NO"]-->
+		<!--[/if]-->
+	</div>-->
+	<div class="pn-adminformrow"><input name="submit" type="submit" value="<!--[pnml name="_MEMBERSLISTUPDATECONFIG"]-->" /></div>
+	<div style="clear:both"></div>
+</div>
+</form>

@@ -1,0 +1,63 @@
+<!--[include file=messages_user_menu.htm]-->
+<!--[assign var=posterdata value=$message.posterdata]-->
+<table cellpadding="3" cellspacing="1" width="100%">
+	<tr align="left">
+		<td><span class="pn-sub"><strong><!--[pnml name=_MESSAGESFROM]--></strong></span></td>
+		<td><span class="pn-sub"><strong><!--[pnml name=_MESSAGESMESSAGE]--></strong></span></td>
+	</tr>
+	<!--[if $errormsg neq ""]-->
+	<tr>
+		<td colspan="2" align="center"><!--[pnml name=_MESSAGESDONTHAVEMESSAGES]--></td>
+	<!--[else]-->
+	<tr align="left">
+		<td valign="top"><!--[$posterdata.pn_uname|pnvarprepfordisplay]-->
+		<!--[if $posterdata.pn_user_avatar neq ""]-->
+		<img src="images/avatar/<!--[$posterdata.pn_user_avatar]-->" alt="" />
+		<!--[/if]-->
+		</td>
+		<td>
+			<span class="pn-sub"><!--[pnml name=_MESSAGESSUBJECT]--> :
+			<!--[if $message.msg_image neq ""]-->
+			<img src="images/smilies/<!--[$message.msg_image|pnvarprepfordisplay]-->" alt="" />&nbsp;
+			<!--[/if]-->
+			<!--[$message.subject|pnvarprepfordisplay]-->
+			</span>&nbsp;&nbsp;&nbsp;
+			<span class="pn-sub"><!--[pnml name=_MESSAGESSENT]--> : <!--[$message.messagetime|pnvarprepfordisplay]--></span>
+			<hr />
+			<!--[$message.message|pnmodcallhooks|pnvarcensor|pnvarprephtmldisplay]-->
+			<hr />
+			<a href="user.php?op=userinfo&amp;uname=<!--[$posterdata.pn_uname]-->"><img src="images/global/profile.gif" alt="" /></a>
+			<span class="pn-sub"><!--[pnml name=_MESSAGESPROFILE]--></span>
+			<!--[if $posterdata.pn_femail neq ""]-->
+			&nbsp;&nbsp;<a href="mailto:<!--[$posterdata.pn_femail]-->"><img src="images/global/email.gif" alt="" /></a><span class="pn-sub"><!--[pnml name=_EMAIL]--></span>
+			<!--[/if]-->
+			<!--[if $posterdata.pn_url neq ""]-->
+			&nbsp;&nbsp;<a href="<!--[$posterdata.pn_url]-->"><img src="images/global/www_icon.gif" alt="" /></a><span class="pn-sub">www</span>
+			<!--[/if]-->
+			<!--[if $posterdata.pn_user_icq neq ""]-->
+			&nbsp;&nbsp;<a href="http://wwp.icq.com/scripts/search.dll?to=<!--[$posterdata.pn_user_icq]-->"><img src="http://wwp.icq.com/scripts/online.dll?icq=<!--[$posterdata.pn_user_icq]-->&amp;img=5" alt="" /></a>
+			<span class="pn-sub"><!--[pnml name=_ICQ]--></span>
+			<!--[/if]-->
+			<!--[if $posterdata.pn_user_aim neq ""]-->
+			&nbsp;&nbsp;<a href="aim:goim?screenname=<!--[$posterdata.pn_user_aim]-->&message=Hi+<!--[$posterdata.pn_user_aim]-->+Are+you+there?"><img src="images/global/aim.gif" alt="" /></a>
+			<span class="pn-sub"><!--[pnml name=_AIM]--></span>
+			<!--[/if]-->
+			<!--[if $posterdata.pn_user_yim neq ""]-->
+			&nbsp;&nbsp;<a href="http://edit.yahoo.com/config/send_webmesg?.target=<!--[$posterdata.pn_user_yim]-->&.src=pg"><img src="images/global/yim.gif" alt="" /></a>
+			<span class="pn-sub"><!--[pnml name=_YIM]--></span>
+			<!--[/if]-->
+			<!--[if $posterdata.pn_user_msnm neq ""]-->
+			&nbsp;&nbsp;<a href="user.php?op=userinfo&amp;uname=<!--[$posterdata.pn_uname]-->"><img src="images/global/msnm.gif" alt="" /></a>
+			<span class="pn-sub"><!--[pnml name=_MSNM]--></span>
+			<!--[/if]-->
+		</td>
+		<!--[/if]-->
+	</tr>
+	<tr align="left">
+		<td colspan="2" align="left">
+			[&nbsp;
+			<a href="<!--[pnmodurl modname=Messages type=user func=compose reply=1 msg_id=$message.msg_id]-->"><!--[pnml name=_MESSAGESREPLY]--></a>&nbsp;|&nbsp;
+			<a href="<!--[pnmodurl modname=Messages type=user func=delete msg_id=$message.msg_id authid=$authkey ]-->"><!--[pnml name=_DELETE]--></a>&nbsp;]
+		</td>
+	</tr>
+</table>

@@ -1,0 +1,14 @@
+<!--[*  $Id: pn_bbsmile_admin_menu.html 59 2006-09-09 17:48:08Z landseer $  *]-->
+<!--[admincategorymenu]-->
+<h2><!--[pnml name='_PNBBSMILE_ADMIN_TITLE']--></h2>
+<p><!--[pnml name='_PNBBSMILE_ADMIN_V1_HINT' html=1]--></p>
+<br />
+<div class="pn-menu">
+[<a href="<!--[ pnmodurl modname=pn_bbsmile type=admin func=modifyconfig ]-->"><!--[ pnml name='_PNBBSMILE_ADMIN_TITLE_CONFIG' ]--></a>]&nbsp;
+<!--[ if $pncore.pn_bbsmile.activate_auto eq 1 ]-->
+[<a href="<!--[ pnmodurl modname=pn_bbsmile type=admin func=readsmilies ]-->"><!--[ pnml name='_PNBBSMILE_ADMIN_TITLE_READSMILIESFROMFILESYSTEM' ]--></a>]&nbsp;
+[<a href="<!--[ pnmodurl modname=pn_bbsmile type=admin func=editsmilies ]-->"><!--[ pnml name='_PNBBSMILE_ADMIN_TITLE_EDITSMILIES' ]--></a>]
+<!--[ else ]-->
+<!--[ pnml name="_PNBBSMILE_NOAUTOSMILIES" ]-->
+<!--[ /if ]-->
+</div>

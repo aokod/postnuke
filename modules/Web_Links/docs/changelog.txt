@@ -1,0 +1,19 @@
+// ----------------------------------------------------------------------
+// Changelog
+//
+// 07-06-2001:niceguyeddie - Added category sub-graphics.  Credits to
+//                           Michael Cortez <mcortez@fullcoll.edu>
+// 07-06-2001:niceguyeddie - Added new header
+// 07-07-2001:Wandrer - changed mysql_num_rows to count(*) clause
+// 07-07-2001:niceguyeddie - sfb 439379 carriage return in weblinks
+// 07-07-2001:niceguyeddie - sfb 439399 missing CSS in viewlink function
+// 07-09-2001:Greg         - changed from a core feature to module
+// 08-22-2001:JM           - sfb 451070 452566 added global
+//                    	   - viewlinkcomments(),viewlinkeditorial() date fix
+//                         - web_links_show_star
+//                         - A\D to A/D
+// 08-24-2001:JM           - sfb 452097 Add() $name to $nnmae
+// 11-39-2001:ahumphr      - split index.php into a dynamic loader and
+//                           12 module files, to reduce memory needs and
+//                           increase code cohesion.
+// -----------------------------------------------------------------------

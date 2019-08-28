@@ -1,0 +1,47 @@
+<!--[*  $Id: admin_messages_admin_new.htm 15540 2005-01-29 21:26:15Z larsneo $  *]-->
+<!--[include file="admin_messages_admin_menu.htm"]-->
+<h2><!--[pnml name="_ADMINMESSAGESADD"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Admin_Messages" type="admin" func="create"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Admin_Messages"]-->" />
+	<div class="pn-adminformrow">
+		<label for="admin_messages_title"><!--[pnml name="_ADMINMESSAGESTITLE"]--></label>
+		<input id="admin_messages_title" name="title" type="text" size="50" maxlength="100" />
+	</div>    
+	<div class="pn-adminformrow">
+		<label for="admin_messages_language"><!--[pnml name="_LANGUAGE"]--></label>
+		<!--[languagelist name=language]-->
+	</div>
+	<div class="pn-adminformrow">
+		<label for="admin_messages_content"><!--[pnml name="_ADMINMESSAGESCONTENT"]--></label>
+		<textarea id="admin_messages_content" name="content" cols="50" rows="10"></textarea>
+	</div>
+	<div class="pn-adminformrow">
+		<label for="admin_messages_active"><!--[pnml name="_ADMINMESSAGESACTIVEQ"]--></label>
+		<div>
+		<!--[pnml name=_YES]--><input id="admin_messages_active" name="active" type="radio" value="1" checked="checked" />
+		<!--[pnml name=_NO]--><input id="admin_messages_active" name="active" type="radio" value="0" />
+		</div>
+	</div>
+	<div class="pn-adminformrow">
+		<label for="admin_messages_expire"><!--[pnml name="_ADMINMESSAGESEXPIRE"]--></label>
+		<div><input id="admin_messages_expire" name="expire" type="text" size="5" maxlength="5" value="0" />&nbsp;<!--[pnml name=_ADMINMESSAGESEXPIREHELP]--></div>
+	</div>
+	<div class="pn-adminformrow">
+		<label for="admin_messages_whocanview"><!--[pnml name="_ADMINMESSAGESWHOCANVIEWQ"]--></label>
+		<select id="whocanview" name="whocanview">
+			<option value="1"><!--[pnml name="_ADMINMESSAGESALL"]--></option>
+			<option value="2"><!--[pnml name="_ADMINMESSAGESUSERS"]--></option>
+			<option value="3"><!--[pnml name="_ADMINMESSAGESANON"]--></option>
+			<option value="4"><!--[pnml name="_ADMINMESSAGESADMIN"]--></option>
+		</select>
+	</div>
+	<div class="pn-adminformrow">
+		<!--[pnmodcallhooks hookobject=item hookaction=new module=Admin_Messages]-->
+	</div>
+	<div class="pn-adminformrow">
+		<input name="submit" type="submit" value="<!--[pnml name="_ADMINMESSAGESADD"]-->" />
+	</div>
+	<div style="clear:both;"></div>
+</div>
+</form>

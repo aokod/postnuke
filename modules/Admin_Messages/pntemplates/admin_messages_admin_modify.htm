@@ -1,0 +1,77 @@
+<!--[*  $Id: admin_messages_admin_modify.htm 15409 2005-01-19 11:43:30Z markwest $  *]-->
+<!--[include file="admin_messages_admin_menu.htm"]-->
+<h2><!--[pnml name="_ADMINMESSAGESEDIT"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Admin_Messages" type="admin" func="update"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Admin_Messages"]-->" />
+	<input type="hidden" name="mid" value="<!--[$mid|pnvarprepfordisplay]-->" />
+	<input type="hidden" name="oldtime" value="<!--[$date|pnvarprepfordisplay]-->" />
+	<div class="pn-adminformrow">
+		<label for="admin_messages_title"><!--[pnml name="_ADMINMESSAGESTITLE"]--></label>
+		<input id="admin_messages_title" name="title" type="text" size="50" maxlength="100" value="<!--[$title|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="admin_messages_language"><!--[pnml name="_LANGUAGE"]--></label>
+		<!--[languagelist name=language selected=$language]-->
+	</div>
+	<div class="pn-adminformrow">
+		<label for="admin_messages_content"><!--[pnml name="_ADMINMESSAGESCONTENT"]--></label>
+		<textarea id="admin_messages_content" name="content" cols="50" rows="10"><!--[$content|pnvarprepfordisplay]--></textarea>
+	</div>
+	<div class="pn-adminformrow">
+		<label for="admin_messages_active"><!--[pnml name="_ADMINMESSAGESACTIVEQ"]--></label>
+		<div>
+		<!--[if $active eq 1]-->
+			<!--[pnml name="_YES"]--><input id="admin_messages_active" name="active" type="radio" value="1" checked="checked" />
+			<!--[pnml name="_NO"]--><input id="admin_messages_active" name="active" type="radio" value="0" />
+		<!--[else]-->
+			<!--[pnml name="_YES"]--><input id="admin_messages_active" name="active" type="radio" value="1" />
+			<!--[pnml name="_NO"]--><input id="admin_messages_active" name="active" type="radio" value="0" checked="checked" />
+		<!--[/if]-->
+		</div>
+	</div>
+	<div class="pn-adminformrow">
+		<label for="admin_messages_changestartday"><!--[pnml name="_ADMINMESSAGESCHANGEQ"]--></label>
+		<div>
+			<!--[pnml name=_YES]--><input id="admin_messages_changestartday" name="changestartday" type="radio" value="1" checked="checked" />
+			<!--[pnml name=_NO]--><input id="admin_messages_changestartday" name="changestartday" type="radio" value="0" />
+		</div>
+	</div>
+	<div class="pn-adminformrow">
+		<label for="admin_messages_expire"><!--[pnml name="_ADMINMESSAGESEXPIRE"]--></label>
+		<div><input id="admin_messages_expire" name="expire" type="text" size="5" maxlength="5" value="<!--[$expire/86400]-->" /> <!--[pnml name=_ADMINMESSAGESEXPIREHELP]--></div>
+	</div>
+	<div class="pn-adminformrow">
+		<label for="admin_messages_whocanview"><!--[pnml name="_ADMINMESSAGESWHOCANVIEWQ"]--></label>
+		<select id="admin_messages_whocanview" name="whocanview">
+		<!--[if $whocanview eq 1]-->
+			<option value="1" selected="selected"><!--[pnml name="_ADMINMESSAGESALL"]--></option>
+		<!--[else]-->
+			<option value="1"><!--[pnml name="_ADMINMESSAGESALL"]--></option>
+		<!--[/if]-->
+		<!--[if $whocanview eq 2]-->
+			<option value="2" selected="selected"><!--[pnml name="_ADMINMESSAGESUSERS"]--></option>
+		<!--[else]-->
+			<option value="2"><!--[pnml name="_ADMINMESSAGESUSERS"]--></option>
+		<!--[/if]-->
+		<!--[if $whocanview eq 3]-->
+			<option value="3" selected="selected"><!--[pnml name="_ADMINMESSAGESANON"]--></option>
+		<!--[else]-->
+			<option value="3"><!--[pnml name="_ADMINMESSAGESANON"]--></option>
+		<!--[/if]-->
+		<!--[if $whocanview eq 4]-->
+			<option value="4" selected="selected"><!--[pnml name="_ADMINMESSAGESADMIN"]--></option>
+		<!--[else]-->
+			<option value="4"><!--[pnml name="_ADMINMESSAGESADMIN"]--></option>
+		<!--[/if]-->
+		</select>
+	</div>
+	<div class="pn-adminformrow">
+		<!--[pnmodcallhooks hookobject=item hookaction=modify hookid=$mid module=Admin_Messages]-->
+	</div>
+	<div class="pn-adminformrow">
+		<input name="submit" type="submit" value="<!--[pnml name="_ADMINMESSAGESUPDATE"]-->" />
+	</div>
+	<div style="clear:both"></div>
+</div>
+</form>

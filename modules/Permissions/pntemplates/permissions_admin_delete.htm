@@ -1,0 +1,18 @@
+<!--[*  $Id: permissions_admin_delete.htm 15409 2005-01-19 11:43:30Z markwest $  *]-->
+<!--[include file="permissions_admin_menu.htm"]-->
+<h2><!--[pnml name="_PERMISSIONSDELETE"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Permissions" type="admin" func="delete"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+    <input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Permissions"]-->" />
+    <input type="hidden" name="confirmation" value="1" />
+    <input type="hidden" name="pid" value="<!--[$pid|pnvarprepfordisplay]-->" />
+    <input type="hidden" name="permgrp" value="<!--[$permgrp|pnvarprepfordisplay]-->" />
+    <input type="hidden" name="permtype" value="<!--[$permtype|pnvarprepfordisplay]-->" />
+	<div class="pn-adminformrow">
+		<label for="permissions_delete"><!--[pnml name="_PERMISSIONSCONFIRMDELETE"]--></label>
+		<input name="submit" type="submit" value="<!--[pnml name="_PERMISSIONSCONFIRMDELETE"]-->" />
+	</div>
+	<div style="clear:both"></div>
+</div>
+</form>
+<a href="<!--[pnmodurl modname="Permissions" type="admin" func="view"]-->"><!--[pnml name="_PERMISSIONSCANCELDELETE"]--></a>

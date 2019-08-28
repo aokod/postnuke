@@ -1,0 +1,265 @@
+<?php // $Id: http_get.class 15630 2005-02-04 06:35:42Z jorg $
+/************************************************************************/
+/* Post-Nuke: Content Management System                                 */
+/* ====================================                                 */
+/*                                                                      */
+/* Copyright (c) 2001 by the Post Nuke development team                 */
+/* http://www.postnuke.com                                              */
+/* Modified version of: */
+/*                                                                      */
+/* PHP-NUKE: Web Portal System                                          */
+/* Copyright (c) 2001 by Francisco Burzi fbc@mandrakesoft.com         */
+/* http://phpnuke.org                                                   */
+/*                                                                      */
+/* This program is free software. You can redistribute it and/or modify */
+/* it under the terms of the GNU General Public License as published by */
+/* the Free Software Foundation; either version 2 of the License.       */
+/************************************************************************/
+/* Author: Pim van der Zwet aka Bam-BAM pim@zwet.com
+ */
+// opens a connection to a remote host and optionally uses a (authenticating) proxy
+class http_get
+{
+	// connect information for remote site
+    var $_hostname;
+    var $_port;
+    var $_uname;
+    var $_pass;
+	// connect information for proxy server
+    var $_proxy_hostname;
+    var $_proxy_port;
+    var $_proxy_uname;
+    var $_proxy_pass;
+	// some settings that determine behaviour
+    var $_use_auth = false;
+    var $_use_proxy_auth = false;
+    var $_use_proxy = false;
+    var $_conn = 0;
+    var $_header;
+	//
+    var $_useragent = "Postnuke RSS Robot";
+    var $_debug = false;
+    // set to true to see some debug info
+
+    // class constructor
+    function http_get($host="", $port="80", $uname="", $pass="")
+    {
+	$this->_hostname = $host;
+	$this->_port = $port;
+	$this->_uname = $uname;
+	$this->_pass = $pass;
+    }
+
+    // set the paramters for the proxyserver that should be used
+    function set_proxyserver($host, $port="3128", $uname="", $pass="")
+    {
+	// TODO: perform some checks on parameters
+	// I think we need to use a proxy, what else is the point of setting this info
+	   $this->_use_proxy = true;
+       $this->_proxy_hostname = $host;
+       $this->_proxy_port = $port;
+		// if we've got a username AND a password we will also use proxy authentication
+	if($uname != "" && $pass != "")
+	{
+	    $this->_proxy_uname = $uname;
+	    $this->_proxy_pass = $pass;
+	    $this->_use_proxy_auth = true;
+	}
+	return;
+    }
+
+    // open a connection to the remote host (or the proxy if it was set)
+    function open()
+    {
+	// if we need to use a proxy, we must do so
+        if($this->_use_proxy)
+	{
+	    // copy host information from proxy settings
+	    if($this->_debug) echo "Connecting to proxyserver ";
+	    $host = $this->_proxy_hostname;
+	    $port = $this->_proxy_port;
+	    $conn_type = "proxy ";	// used for debugging and errors only
+	}
+	else
+	{
+	    // copy the remote host information in case of no proxy
+	    if($this->_debug) echo "Connecting to host ";
+	    $host = $this->_hostname;
+	    $port = $this->_port;
+	    $conn_type = "remote "; 	// used for debugging and errors only
+	}
+
+	if($this->_debug) echo "[$host:$port]..";
+
+	// open the connection to the remote host, or the proxy
+	$conn = fsockopen($host, $port, $errno, $errstr, 5);
+	if(!$conn)
+	{
+	    echo $conn_type."connection failed!".$errno. $errstr;
+	    return false;
+	}
+	// Yup, we've got a connection, hope it's any good!
+	if($this->_debug) echo "CONNECTED!";
+
+	// store the connection in this class, so we can use it later
+	$this->_conn = & $conn;
+
+	return true;
+    }
+
+    // close any open connections
+    function close()
+    {
+	// TODO: get some decent error handling in case the connection is not there
+
+
+	// get the current connection
+	$conn &= $this->_conn;
+
+	// close it if it's open
+    	if($conn)
+	{
+	    fputs($conn, "Connection: close\r\n\r\n");
+	    close($conn);
+
+	    // cleanup the variable
+	    unset($this->_conn);
+	    return true;
+	}
+	return;
+    }
+
+
+    // code to see if a request returned a HTTP error
+    function get_http_error()
+    {
+	// do some magic to parse through the HTTP header in search for the error code
+	// and return it
+	$tmp = eregi("^HTTP\/[0-9]\.[0-9] ([0-9]{3})",$this->_header,$code);
+	return $code[1];
+    }
+
+    // read the header from the response
+    function get_header()
+    {
+        if($this->_conn)
+	{
+	    $http = "";
+	    // start reading the HTTP header
+	    while(!feof($this->_conn) && $buffer != "\r\n")
+	    {
+		// read fixed blocks of data
+		$buffer = fgets(&$this->_conn, 4096);
+		$http .= $buffer;
+	    }
+
+	    // store the header
+	    $this->_header = $http;
+	}
+    }
+
+
+    // get the rest of the response and return it
+    function get_body()
+    {
+	// we did have a connection right?!
+        if($this->_conn)
+	{
+	    $http = "";
+	    // start reading the file
+	    while(!feof($this->_conn))
+	    {
+		// read fixed blocks
+		$buffer = fgets($this->_conn, 4096);
+		$http .= $buffer;
+	    }
+	    // tidy-up
+	    $this->close();
+	    return $http;
+	}
+	return " ";
+    }
+
+
+    // request some page from the remote host
+    function send_request($url)
+    {
+	// build HTTP request header
+	$str  = "";
+	$str .= "GET $url HTTP/1.0 \r\n";
+
+	    if($this->_useragent)
+	$str .= "User-Agent: $this->_useragent \r\n";
+#	$str .= "Host: ".$rss_proxy["host"]."\r\n";
+
+	// add some extra header info if SITE authentication is required
+	if($this->_use_auth)
+	{
+	    $str.= "Authorization: Basic ";
+	    $str.= base64_encode($this->_uname.":".$this->_pass) ."\r\n";
+	}
+
+	// add some extra header info if PROXY authentication is required
+	if($this->_use_proxy_auth)
+	{
+	    $str.= "Proxy-Authorization: Basic ";
+	    $str.= base64_encode($this->_proxy_uname.":".$this->_proxy_pass) ."\r\n";
+	}
+
+	// End with empty line according to protocol.
+	$str.="\r\n";
+
+	if($this->_debug) echo "<pre>$str</pre>";
+
+	// write the request
+	fputs($this->_conn, $str);
+    }
+
+    // send get request to URL
+    function get($url)
+    {
+	// try to open a connection to the remote host, or the proxy
+    	if(!$this->_conn)
+	{
+	    # split the url
+	    $rss = parse_url($url);
+	    $rss[port] = ($rss[port])?$rss[port]:80;
+	    $this->_hostname = $rss[host];
+	    $this->_port = $rss[port];
+
+	    if(!$this->open())
+	    	return false;
+	}
+
+	// send the request to the remote host
+	$this->send_request($url);
+	$this->get_header();
+
+	// only return the body of the request, no need to bother with headers ;)
+	return $this->get_body();
+    }
+
+
+    function set_wwwuser($uname, $pass)
+    {
+	$this->_uname = $uname;
+	$this->_pass = $pass;
+	$this->_use_auth = true;
+    }
+
+
+    function set_proxyuser($uname, $pass)
+    {
+	$this->_proxy_uname = $uname;
+	$this->_proxy_pass = $pass;
+	$this->_use_proxy_auth = true;
+    }
+
+    // toggle the debug mode
+    function set_debug($on = true)
+    {
+	$this->_debug = $on;
+    }
+
+}
+

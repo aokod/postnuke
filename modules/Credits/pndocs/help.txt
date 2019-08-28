@@ -1,0 +1,19 @@
+Install as any other pnAPI compatible module:
+
+Upload;
+Regenerate;
+Initialize;
+Activate.
+
+Upgrade from earlier versions just like any other pnAPI compatible module:
+
+Upload;
+Regenerate;
+Upgrade;
+Activate.
+
+With sortcut enabled menus, link to the module using {Credits}  For other links, enter "index.php?module=Credits" .
+
+What does this script do?
+
+Nothing.  Except display what user modules are installed on the site and provide a way to display in a common way the documentation supplied by the module developer.  The idea is that developers will provide all the copyright, license, credits and links to be displayed here and quit filling their module pages with crap.

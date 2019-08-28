@@ -1,0 +1,18 @@
+<!--[$menu]-->
+<br />
+<div class="pn-normal">
+<div class="pn-normal"><!--[$warn]--></div>
+<table>
+	<tr>
+		 <!--[section name=columnheaders loop=$columnheaders]-->
+		<th><!--[$columnheaders[columnheaders]]--></th>
+		<!--[/section]-->
+	</tr>
+   <!--[section name=inuse loop=$inuse]-->
+	<tr>
+		<td><!--[$inuse[inuse].module]--></td>
+		<td><!--[$inuse[inuse].block]--></td>
+	</tr>
+	<!--[/section]-->
+</table>
+</div>

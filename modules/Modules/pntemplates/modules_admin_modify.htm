@@ -1,0 +1,21 @@
+<!--[*  $Id: modules_admin_modify.htm 16359 2005-07-02 17:43:39Z hammerhead $  *]-->
+<!--[include file="modules_admin_menu.htm"]-->
+<h2><!--[pnml name="_MODULESMODIFY"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Modules" type="admin" func="update"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+    <input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Modules"]-->" />
+    <input type="hidden" name="id" value="<!--[$id|pnvarprepfordisplay]-->" />
+	<div class="pn-adminformrow">
+		<label for="modules_newdisplayname"><!--[pnml name="_MODULESNEWNAME"]--></label>
+		<input id="modules_newdisplayname" name="newdisplayname" type="text" size="30" maxlength="64" value="<!--[$newdisplayname|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="modules_newdescription"><!--[pnml name="_MODULESNEWDESCRIPTION"]--></label>
+		<textarea id="modules_newdescription" name="newdescription" cols="50" rows="10"><!--[$newdescription|pnvarprepfordisplay]--></textarea>
+	</div>
+	<div class="pn-adminformrow">
+		<input name="submit" type="submit" value="<!--[pnml name="_COMMIT"]-->" />
+	</div>
+	<div style="clear:both"></div>
+</div>
+</form>

@@ -1,0 +1,8 @@
+// ----------------------------------------------------------------------
+// Changelog
+//
+// 07-06-2001:Alarion - Baselined
+// 07-06-2001:Wandrer - Changed if/else block to switch/case blocks
+// 07-06-2001:Wandrer - Changed mysql to use count(*) instead of
+//                      mysql_num_rows for speed increase
+// ----------------------------------------------------------------------

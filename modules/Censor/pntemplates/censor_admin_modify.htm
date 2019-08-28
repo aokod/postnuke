@@ -1,0 +1,27 @@
+<!--[*  $Id: censor_admin_modify.htm 15415 2005-01-19 13:14:01Z landseer $  *]-->
+<h1><!--[pnml name="_CENSOR"]--></h1>
+<h2><!--[pnml name="_EDITCENSOR"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Censor" type="admin" func="update"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Censor"]-->" />
+	<div class="pn-adminformrow">
+		<label for="censor_censormode"><!--[pnml name="_CENSORMODE"]--></label>
+		<!--[if $censormode eq 1]-->
+			<input id="censor_censormode" name="censormode" type="checkbox" checked="checked" value="ON" />
+		<!--[else]-->
+			<input id="censor_censormode" name="censormode" type="checkbox" value="ON" />
+		<!--[/if]-->
+	</div>
+	<div class="pn-adminformrow">
+		<label for="censor_censorlist"><!--[pnml name="_CENSORLIST"]--></label>
+		<textarea id="censor_censorlist" name="censorlist" cols="50" rows="10"><!--[$censorlist|pnvarprepfordisplay]--></textarea>
+	</div>
+	<div class="pn-adminformrow">
+		<label for="censor_censorreplace"><!--[pnml name="_CENSORREPLACE"]--></label>
+		<input id="censor_censorreplace" name="censorreplace" type="text" size="30" maxlength="50" value="<!--[$censorreplace|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow"><!--[pnmodcallhooks hookobject=module hookaction=modifyconfig module=Censor]--></div>
+	<div class="pn-adminformrow"><input name="submit" type="submit" value="<!--[pnml name="_CENSORUPDATE"]-->" /></div>
+	<div style="clear:both"></div>
+</div>
+</form>

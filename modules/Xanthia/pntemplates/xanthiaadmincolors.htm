@@ -1,0 +1,91 @@
+<!--[$menu]-->
+<br />
+<div class="pn-title"><!--[$skin|pnvarprepfordisplay]-->&nbsp;<!--[pnml name=_XA_COLORSCONFIG]--></div>
+<div class="pn-menu">[&nbsp;<a href="<!--[pnmodurl modname="Xanthia" type="admin" func="newColor" skin=$skinid]-->"><!--[pnml name="_XA_ADDCOLOR"]--></a>&nbsp;]</div>
+<div class="pn-normal" style="width:100%;">
+<!--Start Color Loop-->
+<!--[section name=items loop=$items]-->  		
+<div class="pn-title"><!--[$items[items].palname|pnvarprepfordisplay]--></div>
+<table width="100%" border="3">
+	<tr>
+		<th><!--[pnml name="_XA_BACKGROUNDC"]--></th>
+		<th><!--[pnml name="_XA_SEPERATORC"]--></th>
+		<th><!--[pnml name="_XA_TEXT1C"]--></th>
+		<th><!--[pnml name="_XA_TEXT2C"]--></th>
+		<th><!--[pnml name="_XA_LINKC"]--></th>
+		<th><!--[pnml name="_XA_VLINKC"]--></th>
+		<th><!--[pnml name="_XA_HOVERC"]--></th>
+	</tr>
+	<tr>
+		<td style="background-color:<!--[$items[items].bgcolor|pnvarprepfordisplay]-->">&nbsp;&nbsp;</td>
+		<td style="background-color:<!--[$items[items].sepcolor|pnvarprepfordisplay]-->">&nbsp;&nbsp;</td>
+		<td style="background-color:<!--[$items[items].text1|pnvarprepfordisplay]-->">&nbsp;&nbsp;</td>
+		<td style="background-color:<!--[$items[items].text2|pnvarprepfordisplay]-->">&nbsp;&nbsp;</td>
+		<td style="background-color:<!--[$items[items].link|pnvarprepfordisplay]-->">&nbsp;&nbsp;</td>
+		<td style="background-color:<!--[$items[items].vlink|pnvarprepfordisplay]-->">&nbsp;&nbsp;</td>
+		<td style="background-color:<!--[$items[items].hover|pnvarprepfordisplay]-->">&nbsp;&nbsp;</td>
+	</tr>
+	<tr>
+		<td><!--[$items[items].bgcolor|pnvarprepfordisplay]--></td>
+		<td><!--[$items[items].sepcolor|pnvarprepfordisplay]--></td>
+		<td><!--[$items[items].text1|pnvarprepfordisplay]--></td>
+		<td><!--[$items[items].text2|pnvarprepfordisplay]--></td>
+		<td><!--[$items[items].link|pnvarprepfordisplay]--></td>
+		<td><!--[$items[items].vlink|pnvarprepfordisplay]--></td>
+		<td><!--[$items[items].hover|pnvarprepfordisplay]--></td>
+	</tr>
+</table>
+<table width="100%" border="3">
+	<tr>
+		<th><!--[pnml name="_XA_COLOR1C"]--></th>
+		<th><!--[pnml name="_XA_COLOR2C"]--></th>
+		<th><!--[pnml name="_XA_COLOR3C"]--></th>
+		<th><!--[pnml name="_XA_COLOR4C"]--></th>
+		<th><!--[pnml name="_XA_COLOR5C"]--></th>
+		<th><!--[pnml name="_XA_COLOR6C"]--></th>
+		<th><!--[pnml name="_XA_COLOR7C"]--></th>
+		<th><!--[pnml name="_XA_COLOR8C"]--></th>
+	</tr>
+	<tr>
+		<td style="background-color:<!--[$items[items].color1|pnvarprepfordisplay]-->">&nbsp;&nbsp;</td>
+		<td style="background-color:<!--[$items[items].color2|pnvarprepfordisplay]-->">&nbsp;&nbsp;</td>
+		<td style="background-color:<!--[$items[items].color3|pnvarprepfordisplay]-->">&nbsp;&nbsp;</td>
+		<td style="background-color:<!--[$items[items].color4|pnvarprepfordisplay]-->">&nbsp;&nbsp;</td>
+		<td style="background-color:<!--[$items[items].color5|pnvarprepfordisplay]-->">&nbsp;&nbsp;</td>
+		<td style="background-color:<!--[$items[items].color6|pnvarprepfordisplay]-->">&nbsp;&nbsp;</td>
+		<td style="background-color:<!--[$items[items].color7|pnvarprepfordisplay]-->">&nbsp;&nbsp;</td>
+		<td style="background-color:<!--[$items[items].color8|pnvarprepfordisplay]-->">&nbsp;&nbsp;</td>
+	</tr>
+	<tr>
+		<td><!--[$items[items].color1|pnvarprepfordisplay]--></td>
+		<td><!--[$items[items].color2|pnvarprepfordisplay]--></td>
+		<td><!--[$items[items].color3|pnvarprepfordisplay]--></td>
+		<td><!--[$items[items].color4|pnvarprepfordisplay]--></td>
+		<td><!--[$items[items].color5|pnvarprepfordisplay]--></td>
+		<td><!--[$items[items].color6|pnvarprepfordisplay]--></td>
+		<td><!--[$items[items].color7|pnvarprepfordisplay]--></td>
+		<td><!--[$items[items].color8|pnvarprepfordisplay]--></td>
+	</tr>
+</table>
+<table width="100%" border="3">
+	<tr>
+		<th><!--[pnml name="_XA_ACTIONS"]--><br />
+		<!--[assign var="display" value=$items[items].display]-->	    
+		<!--[section name=display loop=$display]-->
+			<!--[if $display[display].url eq 1]-->
+				<!--[$display[display].label|pnvarprepfordisplay]-->&nbsp;
+			<!--[else]-->
+				<a href="<!--[$display[display].url|pnvarprepfordisplay]-->"><!--[$display[display].label|pnvarprepfordisplay]--></a>&nbsp;
+			<!--[/if]-->
+		<!--[/section]-->
+		<!--[assign var="actions" value=$items[items].actions]-->
+		<!--[section name=actions loop=$actions]-->	  
+			<a href="<!--[$actions[actions].url|pnvarprepfordisplay]-->"><!--[$actions[actions].label|pnvarprepfordisplay]--></a>&nbsp;
+		<!--[/section]-->
+		</th>
+	</tr>
+</table>
+<br /><br />
+<!--End Color Loop-->
+<!--[/section]-->
+</div>

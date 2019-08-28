@@ -1,0 +1,15 @@
+<!--[*  $Id: groups_admin_new.htm 15409 2005-01-19 11:43:30Z markwest $  *]-->
+<!--[include file="groups_admin_menu.htm"]-->
+<h2><!--[pnml name="_GROUPSADD"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Groups" type="admin" func="create"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Groups"]-->" />
+	<div class="pn-adminformrow">
+		<label for="groups_name"><!--[pnml name="_GROUPSNAME"]--></label>
+		<input id="groups_name" name="name" type="text" size="30" maxlength="30" />
+	</div>
+	<div class="pn-adminformrow"><!--[pnmodcallhooks hookobject=item hookaction=new module=Groups]--></div>
+	<div class="pn-adminformrow"><input name="submit" type="submit" value="<!--[pnml name="_GROUPSNEW"]-->" /></div>
+	<div style="clear:both"></div>
+</div>
+</form>

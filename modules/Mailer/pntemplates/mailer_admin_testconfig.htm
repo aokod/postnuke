@@ -1,0 +1,42 @@
+<!--[*  $Id: mailer_admin_testconfig.htm 15409 2005-01-19 11:43:30Z markwest $  *]-->
+<!--[include file="mailer_admin_menu.htm"]-->
+<h2><!--[pnml name=_MAILERTESTCONFIG]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Mailer" type="admin" func="sendmessage"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Mailer"]-->" />
+	<div class="pn-adminformrow">
+		<label><!--[pnml name="_MAILERFROMNAME"]--></label>
+		<label><!--[$fromname]--></label>
+	</div>
+	<div class="pn-adminformrow">
+		<label><!--[pnml name="_MAILERFROMADDRESS"]--></label>
+		<label><!--[$fromaddress]--></label>
+	</div>
+	<div class="pn-adminformrow">
+		<label for="mailer_toname"><!--[pnml name="_MAILERTONAME"]--></label>
+		<input id="mailer_toname" name="toname" type="text" size="30" maxlength="50" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="mailer_toname"><!--[pnml name="_MAILERTOADDRESS"]--></label>
+		<input id="mailer_toaddress" name="toaddress" type="text" size="30" maxlength="50" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="mailer_subject"><!--[pnml name="_MAILERSUBJECT"]--></label>
+		<input id="mailer_subject" name="subject" type="text" size="30" maxlength="50" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="mailer_html"><!--[pnml name="_MAILERHTML"]--></label> <input id="mailer_html" type="checkbox" name="html" value="1" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="mailer_pnmail"><!--[pnml name="_MAILERPNMAIL"]--></label> <input id="mailer_pnmail" type="checkbox" name="pnmail" value="1" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="mailer_body"><!--[pnml name="_MAILERBODY"]--></label>
+		<textarea id="mailer_body" name="body" cols="50" rows="10"></textarea>
+	</div>
+	<div class="pn-adminformrow">
+		<input name="submit" type="submit" value="<!--[pnml name="_MAILERTESTCONFIG"]-->" />
+	</div>
+	<div style="clear:both"></div>
+</div>
+</form>

@@ -1,0 +1,274 @@
+<html>
+
+<head>
+<title>Insert/Edit Image</title>
+<LINK REL=stylesheet HREF='./skin/vdev.css' TYPE='text/css'>
+
+<script src="./skin/language.js"></script>
+
+<script>
+/*** This script is original by Vietdev (2004.01.07) ***/	
+/*** Please notice GPL-copyright (vietdev.sf.net)    ***/
+var curIMG
+if(document.all) curIMG=null
+else curIMG= window.opener.curIMG
+	
+function updateImage()
+{
+ var oForm= document.forms[0]
+ var url= oForm.imgurl.value 
+ if(!url||!curIMG) return;
+ 
+ var text= oForm.imgtext.value 
+ var align= oForm.imgalign.value 
+ var border= oForm.imgborder.value; border++; border--; 
+ var hspace= oForm.imghspace.value; hspace++; hspace--;
+ var vspace= oForm.imgvspace.value; vspace++; vspace--;
+ var width= oForm.imgwidth.value; 
+ var height= oForm.imgheight.value;
+ var el= curIMG
+ el.src= url
+
+ if(text=='') el.removeAttribute("alt")
+ else el.alt= text
+
+ if(align=='') el.removeAttribute('align')
+ else el.align= align
+
+ if(hspace==0 || isNaN(hspace) ) el.removeAttribute('hspace')
+ else el.hspace= hspace
+
+ if(vspace==0 || isNaN(vspace) ) el.removeAttribute('vspace')
+ else el.vspace= vspace
+
+ if(border==0 || isNaN(border) ) el.removeAttribute('border')
+ else el.border= border
+
+ if(width=='' || isNaN(width) ){ el.removeAttribute('width'); el.removeAttribute('style') }
+ else{ width++; width--; el.style.width= width }
+
+ if(height=='' || isNaN(height) ){ el.removeAttribute('height'); el.removeAttribute('style') }
+ else{ height++; height--; el.style.height= height }
+
+} 
+
+
+	
+function insertImage()
+{
+ if(curIMG) return updateImage()
+	
+ var oForm= document.forms[0]
+ var url= oForm.imgurl.value 
+
+ if(!url) return;
+ 
+ var text= oForm.imgtext.value 
+ var align= oForm.imgalign.value 
+ var border= oForm.imgborder.value; border++; border--; 
+ var hspace= oForm.imghspace.value; hspace++; hspace--;
+ var vspace= oForm.imgvspace.value; vspace++; vspace--;
+ var width= oForm.imgwidth.value; width++; width--;
+ var height= oForm.imgheight.value; height++; height--;
+ 
+ var html= '<img src="' + url +'"'
+ if(text) html += ' alt="' + text +'"'
+ if(align) html += ' align="' + align +'"'
+ if(width) html += ' width="' + width +'"'
+ if(height) html += ' height="' + height +'"'
+ if(hspace) html += ' hspace="' + hspace +'"'
+ if(vspace) html += ' vspace="' + vspace +'"'
+ if(border) html += ' border="' + border +'"'
+ html += '>'
+
+ if(!document.all)
+ {
+  var edi= window.opener.document.getElementById(window.opener.FID).contentWindow;
+  window.opener.insertHTML(edi,html)
+
+  // add eventlisten Image
+  var imgA= edi.document.getElementsByTagName('img')
+  for(var i=0; i<imgA.length;i++)
+  imgA[i].addEventListener("click", window.opener.clickIMG, true) 
+ }
+ else
+ {
+  var edi= window.opener.document.frames[window.opener.FID];
+  window.opener.insertHTML(edi,html)
+ }
+
+ window.close()
+
+} 	
+
+
+function init()
+{
+  if(!document.all) return init_Moz();
+
+  var objF= window.opener.document.frames[window.opener.FID];
+  if(!objF){alert(EDISELECT);return}
+  
+  var sel = objF.document.selection;
+  if(sel.type=='None')return
+
+  var Range = sel.createRange();
+  if(Range(0).tagName!='IMG')return
+
+  curIMG= Range(0);
+  var el= Range(0);
+  var url=""; if(el.getAttribute('src')) url= el.src
+  var text=""; if(el.getAttribute('alt')) text= el.alt
+  var hspace=""; if(el.getAttribute('hspace')) hspace= el.hspace
+  var vspace=""; if(el.getAttribute('vsapce')) vspace= el.vspace
+  var align=""; if(el.getAttribute('align')) align= el.align
+  var border=""; if(el.getAttribute('border')) border= el.border
+  var width=""; if(el.getAttribute('width')) width= el.width
+  var height=""; if(el.getAttribute('height')) height= el.height
+
+  var oForm= document.forms[0]
+  oForm.imgurl.value= url
+  oForm.imgtext.value= text 
+  oForm.imgalign.value= align 
+  oForm.imgborder.value= border
+  oForm.imghspace.value= hspace
+  oForm.imgvspace.value= vspace
+  oForm.imgwidth.value= width
+  oForm.imgheight.value= height
+}
+
+
+function init_Moz()
+{
+  if(!curIMG) return
+
+  var el= curIMG
+
+  var url=""; if( el.hasAttribute('src') ) url= el.src
+  var text=""; if( el.hasAttribute('alt') ) text= el.alt
+  var hspace=""; if( el.hasAttribute('hspace') ) hspace= el.hspace
+  var vspace=""; if( el.hasAttribute('vspace') ) vspace= el.vspace
+  var align=""; if( el.hasAttribute('align') ) align= el.align
+  var border=""; if( el.hasAttribute('border') ) border= el.border
+  var width=""; if( el.hasAttribute('width') || el.width ) width= el.width
+  var height=""; if( el.hasAttribute('height') || el.height) height= el.height
+
+  var oForm= document.forms[0]
+  oForm.imgurl.value= url
+  oForm.imgtext.value= text 
+  oForm.imgalign.value= align 
+  oForm.imgborder.value= border
+  oForm.imghspace.value= hspace
+  oForm.imgvspace.value= vspace
+  oForm.imgwidth.value= width
+  oForm.imgheight.value= height
+}
+
+
+function uploadFile()
+{
+ window.opener.doUploadFile()
+ self.close()
+}
+</script>
+
+</head>
+
+<body scroll=no class=vdev onload="setTimeout('init()',100)">
+<center>
+		
+<form>
+	
+<table border="0" width="450px"  cellpadding=0 cellspacing=5>
+  <tbody>
+
+  <tr>
+    <td class=vdevtext2 width=100 align=right><script>document.writeln(IMGURL);</script></td>
+    <td><input name="imgurl" style="width:100%" onchange="updateImage()"></td>
+    <td width=90>
+       <button class=vdev1 onclick="return insertImage()"><script>document.writeln(DO);</script></button>
+       <button class=vdev1 onclick="window.close()"><script>document.writeln(CLOSE);</script></button>
+    </td>
+  </tr>
+  <tr>
+    <td class=vdevtext2 align=right><script>document.writeln(IMGTEXT);</script></td>
+    <td><input name="imgtext" style="width:100%" onchange="updateImage()"></td>
+    <td width=90><button class=vdev onclick="uploadFile()"><script>document.writeln(POOLUP);</script></button></td>
+  </tr>
+
+  </tbody>
+</table>
+
+
+<table border=0 width=450px cellpadding=0 cellspacing=0>
+<tr>	
+	
+<td>
+<fieldset>
+<legend class=vdevtext><script>document.writeln(IMGSIZE);</script></legend>
+<table border=0 cellpadding=0 cellspacing=0>
+<tr>
+ <td class=vdevtext2><script>document.writeln(IMGWIDTH);</script></td>
+ <td class=vdevtext2><input name=imgwidth style="width:60px" onchange="updateImage()">(px)</td>
+</tr>
+<tr>
+ <td class=vdevtext2><script>document.writeln(IMGHEIGHT);</script></td>
+ <td class=vdevtext2><input name=imgheight style="width:60px" onchange="updateImage()">(px)</td>
+</tr>
+</table>
+</fieldset>
+</td>
+
+<td>
+ <fieldset>
+  <legend class=vdevtext><script>document.writeln(IMGLAYOUT);</script></legend>
+   <table border=0 cellpadding=0 cellspacing=0>
+   <tr>
+    <td class=vdevtext2 align=right><script>document.writeln(IMGALIGN);</script></td>
+    <td><select name="imgalign" style="width:60px" onchange="updateImage()">
+         <option value="">Not set</option>
+         <option value="left">Left</option>
+	 <option value="right">Right</option>
+	 <option value="texttop">Texttop</option>
+	 <option value="absmiddle">Absmiddle</option>
+	 <option value="baseline">Baseline</option>
+	 <option value="absbottom">Absbottom</option>
+	 <option value="bottom">Bottom</option>
+	 <option value="middle">Middle</option>
+	 <option value="top">Top</option>
+	</select>
+    </td>
+   </tr>
+  <tr>
+   <td class=vdevtext2 align=right><script>document.writeln(IMGBORDER);</script></td>
+   <td class=vdevtext2><input name="imgborder" style="width:60px" onchange="updateImage()">(px)</td>
+  </tr>
+  </table>
+ </fieldset>
+</td>
+
+<td>
+<fieldset>
+<legend class=vdevtext><script>document.writeln(IMGSPACE);</script></legend>
+<table border=0 cellpadding=0 cellspacing=0>
+<tr>
+ <td class=vdevtext2><script>document.writeln(IMGHSPACE);</script></td>
+ <td class=vdevtext2><input name=imghspace style="width:60px" onchange="updateImage()">(px)</td>
+</tr>
+<tr>
+ <td class=vdevtext2><script>document.writeln(IMGVSPACE);</script></td>
+ <td class=vdevtext2><input name=imgvspace style="width:60px" onchange="updateImage()">(px)</td>
+</tr>
+</table>
+</fieldset>
+</td>
+
+</tr>
+</table
+
+</form>
+
+</center>
+</body>
+</html>
+

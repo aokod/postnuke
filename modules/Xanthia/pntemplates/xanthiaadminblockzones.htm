@@ -1,0 +1,33 @@
+<!--[$menu]-->
+<br />
+<div class="pn-title"><!--[$title|pnvarprephtmldisplay]--></div>
+<div class="pn-normal" style="width:100%;">
+<form action="<!--[$formurl|pnvarprepfordisplay]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[$authid]-->" />
+	<input type="hidden" name="skinID" id="skinID" value="<!--[$skinID]-->" />
+	<input type="hidden" name="id" id="id" value="<!--[$nextid]-->" />
+	<table width="100%" border="3">
+		<tr>
+			<!--[section name=columnheaders loop=$columnheaders]-->
+				<th><!--[$columnheaders[columnheaders]|pnvarprepfordisplay]--></th>
+			<!--[/section]-->
+		</tr>
+		<!--[section name=blockzones loop=$blockzones]-->  
+		<tr>
+			<td><!--[$blockzones[blockzones].zid|pnvarprepfordisplay]--></td>
+			<td><!--[$blockzones[blockzones].zdesc|pnvarprepfordisplay]--></td>
+			<td><!--[$blockzones[blockzones].ztag|pnvarprepfordisplay]--></td>
+			<td><a href="<!--[$blockzones[blockzones].url|pnvarprepfordisplay]-->"><!--[$blockzones[blockzones].label|pnvarprepfordisplay]--></a></td>
+		</tr>
+		<!--[/section]-->
+		<tr>
+			<td><!--[$addzone]--></td>
+			<td><input type="text" name="desc" id="desc" value="" size="20" maxlength="20" tabindex="2" /></td>
+			<td>&lt;!--<input type="text" name="tag" id="tag" value="" size="20" maxlength="20" tabindex="3" />--&gt;</td>
+			<td><input name="submit" type="submit" value="<!--[$submit]-->" /></td>
+		</tr>
+	</table>
+</div>
+</form>
+</div>

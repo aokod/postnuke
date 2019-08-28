@@ -1,0 +1,25 @@
+<!--[*  $Id: xanthiaadminmenunav.htm 16722 2005-08-27 12:35:10Z  $  *]-->
+<!--[include file="xanthiaadminmenu.htm"]-->
+<!--[pngetstatusmsg]-->
+<br />
+<div class="container" style="border-color:<!--[pnthemegetvar name="sepcolor"]-->">
+<div  class="pn-pagetitle" style="width:99%; background-color:<!--[pnthemegetvar name="bgcolor2"]-->; text-align:center; padding:4px;">
+<!--[pnml name=_XA_THEMECONFIG]-->  - <!--[$skin|pnvarprepfordisplay]-->
+</div>
+
+<br />
+ |<a href="<!--[pnmodurl modname="Xanthia" type="admin" func="generatethemecache" authid=$authid skin=$skin]-->"><!--[pnml name="_XA_CACHETHEMESETTINGS"]--></a>|
+
+<br />
+<ul id="minitabs">
+<!--[section name=menuoption loop=$menuoptions]-->
+<li>
+<!--[if $currentcat eq $menuoptions[menuoption].cid]-->
+<a class="active" href="<!--[$menuoptions[menuoption].url]-->"><!--[$menuoptions[menuoption].title|pnvarprepfordisplay]--></a>
+<!--[else]-->
+<a href="<!--[$menuoptions[menuoption].url]-->"><!--[$menuoptions[menuoption].title|pnvarprepfordisplay]--></a>
+<!--[/if]-->
+</li>
+<!--[/section]-->
+</ul>
+</div>

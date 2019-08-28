@@ -1,0 +1,22 @@
+<!--[*  $Id: blocks_admin_modifyconfig.htm 15409 2005-01-19 11:43:30Z markwest $  *]-->
+<!--[include file="blocks_admin_menu.htm"]-->
+<h2><!--[pnml name="_BLOCKSCONFIG"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Blocks" type="admin" func="updateconfig"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Blocks"]-->" />
+	<div class="pn-adminformrow">
+	<!--[pnmodcallhooks hookobject=module hookaction=modifyconfig module=Blocks]-->
+	</div>
+	<div class="pn-adminformrow"><label for="blocks_collapseable"><!--[pnml name="_BLOCKSCOLLAPSEABLE"]--></label> 	 
+		<!--[if $collapseable eq 1]--> 	 
+			<input id="blocks_collapseable" name="collapseable" type="checkbox" value="1" checked="checked" /> 	 
+		<!--[else]--> 	 
+			<input id="blocks_collapseable" name="collapseable" type="checkbox" value="1" /> 	 
+		<!--[/if]--> 	 
+	</div>
+	<div class="pn-adminformrow">
+		<input name="submit" type="submit" value="<!--[pnml name="_UPDATE"]-->" />
+	</div>
+	<div style="clear:both"></div>
+</div>
+</form>

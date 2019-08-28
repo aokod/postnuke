@@ -1,0 +1,54 @@
+<!--[*  $Id: permissions_admin_view.htm 15208 2004-12-19 01:15:05Z markwest $  *]-->
+<!--[include file="permissions_admin_menu.htm" permgrp=$permgrp]-->
+<!--[include file="componentinstance.js"]-->
+<h2><!--[$title|pnvarprepfordisplay]--></h2>
+<!--[if $filterlabel neq '']-->
+<div style="text-align:right;">
+<form action="<!--[$formurl|pnvarprepfordisplay]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+  <input type="hidden" name="authid" value="<!--[$authid|pnvarprepfordisplay]-->" />
+  <select name="permgrp"><!--[html_options options=$permgrps selected=$permgrp]--></select>
+  <input name="submit" type="submit" value="<!--[$submit|pnvarprepfordisplay]-->" />
+</div>
+</form>
+</div>
+<!--[/if]-->
+<!--[if $showsirenbar eq 1]-->
+<!--[include file="permissions_admin_sirenbar.htm"]-->
+<!--[/if]-->
+<table class="pn-admintable">
+  <tr>
+    <th><!--[pnml name="_SEQUENCE"]--></th>
+    <th><!--[pnml name="_SEQ_ADJUST"]--></th>
+    <th><!--[$mlpermtype]--></th>
+    <th><a href="javascript:showinstanceinformation()"> <!--[pnml name="_COMPONENT"]--></a></th>
+    <th><a href="javascript:showinstanceinformation()"> <!--[pnml name="_INSTANCE"]--></a></th>
+    <th><!--[pnml name="_PERMLEVEL"]--></th>
+    <th><!--[pnml name="_PERMOPS"]--></th>
+  </tr>
+  <!--[section name=permissions loop=$permissions]-->
+    <tr class="<!--[cycle values="pn-odd,pn-even"]-->">
+      <td><!--[$permissions[permissions].sequence|pnvarprepfordisplay]--></td>
+      <td>
+	  	<!--[strip]-->
+	    <!--[if $permissions[permissions].arrows.up eq 1 ]-->
+		  <a href="<!--[$permissions[permissions].up.url|pnvarprepfordisplay]-->"><!--[pnimg src="up.gif" alt=$postions.up.title]--></a>
+		<!--[/if]-->
+	    <!--[if $permissions[permissions].arrows.down eq 1 ]-->
+		  <a href="<!--[$permissions[permissions].down.url|pnvarprepfordisplay]-->"><!--[pnimg src="down.gif" alt=$postions.down.title]--></a>
+		<!--[/if]-->
+	  	<!--[/strip]-->
+	  </td>
+      <td><!--[$permissions[permissions].group|pnvarprepfordisplay]--></td>
+      <td><!--[$permissions[permissions].component|pnvarprepfordisplay]--></td>
+      <td><!--[$permissions[permissions].instance|pnvarprepfordisplay]--></td>
+      <td><!--[$permissions[permissions].accesslevel|pnvarprepfordisplay]--></td>
+	  <td>
+	    <!--[assign var="options" value=$permissions[permissions].options]-->
+        <!--[section name=options loop=$options]-->
+	      <a href="<!--[$options[options].url|pnvarprepfordisplay]-->"><!--[pnimg src=$options[options].imgfile title=$options[options].title alt=$options[options].title]--></a>
+        <!--[/section]-->
+	  </td>
+    </tr>
+  <!--[/section]-->
+</table>

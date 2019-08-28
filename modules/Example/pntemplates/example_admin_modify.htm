@@ -1,0 +1,21 @@
+<!--[*  $Id: example_admin_modify.htm 19361 2006-07-03 14:57:57Z markwest $  *]-->
+<!--[include file="example_admin_menu.htm"]-->
+<h2><!--[pnml name="_EXAMPLEEDIT"]--></h2>
+<form class="pn-adminform" action="<!--[pnmodurl modname="Example" type="admin" func="update"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Example"]-->" />
+	<input type="hidden" name="tid" value="<!--[$tid|pnvarprepfordisplay]-->" />
+	<div class="pn-adminformrow">
+		<label for="example_name"><!--[pnml name="_EXAMPLENAME"]--></label>
+		<input id="example_name" name="itemname" type="text" size="32" maxlength="32" value="<!--[$itemname|pnvarprepfordisplay]-->" />
+	</div>
+	<div class="pn-adminformrow">
+		<label for="example_number"><!--[pnml name="_EXAMPLENUMBER"]--></label>
+		<input id="example_number" name="number" type="text" size="5" maxlength="5" value="<!--[$number|pnvarprepfordisplay]-->" />
+	</div>
+    <!--[pnmodcallhooks hookobject=item hookaction=modify hookid=$tid module=Example]-->
+	<div class="pn-adminformrow">
+		<input name="submit" type="submit" value="<!--[pnml name="_UPDATE"]-->" />
+	</div>
+</div>
+</form>

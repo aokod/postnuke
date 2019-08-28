@@ -1,0 +1,47 @@
+<!--[*  $Id: groups_admin_groupmembership.htm 16370 2005-07-03 09:21:43Z jorg $  *]-->
+<!--[include file="groups_admin_menu.htm"]-->
+<h2><!--[pnml name="_GROUPSMEMBERSHIP"]--></h2>
+<table class="pn-admintable">
+  <tr>
+    <th><!--[pnml name="_USERNAME"]--></th>
+    <th><!--[pnml name="_GROUPSUID"]--></th>
+    <th><!--[pnml name="_GROUPSOPTIONS"]--></th>
+  </tr>
+  <!--[section name=groupmembers loop=$groupmembers]-->  
+    <tr class="<!--[cycle values="pn-odd,pn-even"]-->">
+      <td><!--[$groupmembers[groupmembers].uname|pnvarprepfordisplay]--> (<!--[$groupmembers[groupmembers].name|pnvarprepfordisplay]-->)</td>
+      <td><!--[$groupmembers[groupmembers].uid|pnvarprepfordisplay]--></td>
+	  <td>
+	    <!--[assign var="options" value=$groupmembers[groupmembers].options]-->
+        <!--[section name=options loop=$options]-->
+	    <a href="<!--[$options[options].url|pnvarprepfordisplay]-->"><!--[$options[options].title|pnvarprepfordisplay]--></a>
+        <!--[/section]-->
+	  </td>
+    </tr>
+  <!--[/section]-->
+</table>
+<!--[pager show=page rowcount=$pager.numitems limit=$pager.itemsperpage posvar=startnum shift=1]-->
+<h2><!--[pnml name="_GROUPSADDUSER"]--></h2>
+<div class="group-membership-alphanav">
+	[&nbsp;<a href="<!--[pnmodurl modname=Groups type=admin func=groupmembership gid=$gid letter=*]-->">*</a>&nbsp;|&nbsp;<!--[pagerabc posvar="letter" separator="&nbsp;|&nbsp;" names="A;B;C;D;E;F;G;H;I;J;K;L;M;N;O;P;Q;R;S;T;U;V;W;X;Y;Z" forwardvars="module,type,func,gid"]-->&nbsp;|&nbsp;<a href="<!--[pnmodurl modname=Groups type=admin type=admin func=groupmembership gid=$gid letter=?]-->">?</a>&nbsp;]
+</div>
+<br />
+
+<!--[if $uids]-->
+<form class="pn-adminform" action="<!--[pnmodurl modname="Groups" type="admin" func="adduser"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="Groups"]-->" />
+	<input type="hidden" name="gid" value="<!--[$gid|pnvarprepfordisplay]-->" />
+	<div class="pn-adminformrow">
+		<label for="groups_uid"><!--[pnml name="_GROUPSADDUSER"]--></label>
+		<select id="groups_uid" name="uid[]" multiple="multiple" size="10">
+			<!--[html_options options=$uids]-->
+		</select>
+	</div>
+	<div class="pn-adminformrow"><input name="submit" type="submit" value="<!--[pnml name="_GROUPSADDUSER"]-->" /></div>
+	<div style="clear:both"></div>
+</div>
+</form>
+<!--[else]-->
+<!--[pnml name="_GROUPSNOMOREUSERS"]-->
+<!--[/if]-->

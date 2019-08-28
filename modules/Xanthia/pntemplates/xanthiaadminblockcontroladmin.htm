@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<!--[pnml name=_CHARSET]-->">
+<title>Xanthia Block Control</title>
+<style>p, input, form {font:8pt Arial, Verdana;text:left; margin: 0pt;} body {text:left; margin: 10pt;}</style>
+</head>
+<body>
+<script language="JavaScript">
+function spostasu() {
+	opener.location.href="<!--[$uel]-->";
+	return;
+}
+function spostagiu() {
+	opener.document.location.href="<!--[$uell]-->"; 
+	return;
+}
+function pippo2(pap) {
+	window.opener.document.location.href=pap;
+	return;
+}
+</script>
+<p><!--[pnml name="_XA_BLOCCO"]-->: <strong><!--[$block.title]--> <!--[$bid]--></strong></p><br />
+<p><a href=javascript:spostasu();><!--[pnml name="_UP"]--></a></p>
+<p><a href=javascript:spostagiu();><!--[pnml name="_DOWN"]--></a></p><br />
+<form name="posform">
+<div>
+	<p><!--[pnml name="_XA_POSITION"]--></p>
+	<p><!--[$blockadminposition]-->
+	<input type="button" value="<!--[pnml name="_SUBMIT"]-->" onclick="javascript:pippo2(form.posizioni.options[form.posizioni.selectedIndex].value)" />
+	</p>
+</div>
+</form>
+<!--[if $elencotemplate neq ""]-->
+<form name="tplform">
+<div>
+	<br /><p><!--[pnml name="_XA_TEMPLATE"]--></p>
+	<p><!--[$elencotemplate]-->
+	<input type="button" value="<!--[pnml name="_SUBMIT"]-->" onclick="javascript:pippo2(form.template.options[form.template.selectedIndex].value)" />
+	</p>
+</div>
+</form>
+<!--[/if]-->
+<br /><p align="left">
+<input type="button" value="<!--[pnml name="_XA_ADMINBLOCK"]-->" onclick="javascript:pippo2('<!--[$urladm]-->');" />
+<input type="button" value="<!--[pnml name="_XA_REMOVEBLOCK"]-->" onclick="javascript:pippo2('<!--[$urlrem]-->');" />
+</p>
+<br /><p>
+<input type="button" value="<!--[pnml name="_XA_RELOAD"]-->" onclick="javascript:pippo2('<!--[$chichiama]-->');" /></p>
+<p align="right">
+<input type="button" value="<!--[pnml name="_XA_CHIUDI"]-->" onclick="javascript:window.close();" /></p>
+</body>
+</html>
