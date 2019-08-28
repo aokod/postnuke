@@ -41,7 +41,7 @@ $dbconn->Execute("CREATE TABLE " . $prefix . "_session_info (
     $sicolumn[uid] int(11) NOT NULL DEFAULT 0,
     $sicolumn[vars] blob,
     PRIMARY KEY (pn_sessid)
-    ) TYPE=MyISAM");
+    ) ENGINE=MyISAM");
 // New table for hooks
 $hcolumn = $pntable['hooks_column'];
 $dbconn->Execute(" CREATE TABLE " . $prefix . "_hooks (
@@ -150,7 +150,7 @@ $dbconn->Execute("CREATE TABLE " . $prefix . "_modules (
                          $mcolumn[user_capable] tinyint(1) NOT NULL DEFAULT 0,
                          $mcolumn[state] tinyint(1) NOT NULL DEFAULT 0,
                   PRIMARY KEY(pn_id)
-                  ) TYPE=MyISAM");
+                  ) ENGINE=MyISAM");
 
 $mvcolumn = $pntable['module_vars_column'];
 $dbconn->Execute("CREATE TABLE " . $prefix . "_module_vars (
@@ -161,7 +161,7 @@ $dbconn->Execute("CREATE TABLE " . $prefix . "_module_vars (
                          PRIMARY KEY(pn_id),
                          KEY pn_modname (pn_modname),
                          KEY pn_name (pn_name)
-                   ) TYPE=MyISAM");
+                   ) ENGINE=MyISAM");
 // Modules supplied with system
 // TODO - populate module table with current modules
 $result = $dbconn->Execute("INSERT INTO " . $prefix . "_modules VALUES (1,'AvantGo',1,'AvantGo','News for your PDA',2,'AvantGo','1.3',0,1,3)") || die("<b>" . _NOTUPDATED . $prefix . "_modules</b>");
@@ -211,7 +211,7 @@ $dbconn->Execute("CREATE TABLE " . $prefix . "_user_property (
   $upcolumn[prop_validation] varchar(255) default NULL,
   PRIMARY KEY  (pn_prop_id),
   UNIQUE KEY pn_prop_label (pn_prop_label)
-) TYPE=MyISAM;");
+) ENGINE=MyISAM;");
 // Standard Fields included in PostNuke
 $dbconn->Execute("INSERT INTO " . $prefix . "_user_property VALUES (1, '_UREALNAME', 0, 255, 1, NULL)") || die("<b>" . _NOTUPDATED . $prefix . "_user_property</b>");
 $dbconn->Execute("INSERT INTO " . $prefix . "_user_property VALUES (2, '_UREALEMAIL', -1, 255, 2, NULL)") || die("<b>" . _NOTUPDATED . $prefix . "_user_property</b>");
@@ -237,7 +237,7 @@ $dbconn->Execute("CREATE TABLE " . $prefix . "_user_data (
     $udcolumn[uda_uid] int(11) NOT NULL default 0,
     $udcolumn[uda_value] mediumblob NOT NULL,
     PRIMARY KEY  (pn_uda_pid)
-    ) TYPE=MyISAM");
+    ) ENGINE=MyISAM");
 // Add module ID field for blocks
 $bcolumn = $pntable['blocks_column'];
 $dbconn->Execute("ALTER TABLE $pntable[blocks] ADD  $bcolumn[mid] INT(11) UNSIGNED NOT NULL DEFAULT 0 AFTER pn_url");
@@ -267,7 +267,7 @@ $result = $dbconn->Execute("INSERT INTO " . $prefix . "_module_vars VALUES ('7',
 $result = $dbconn->Execute("INSERT INTO " . $prefix . "_module_vars VALUES ('8', '/PNConfig','adminmail','s:22:\"postnuke@example.com\";')") or die ("<b>" . _NOTUPDATED . $prefix . "_module_vars</b>");
 $result = $dbconn->Execute("INSERT INTO " . $prefix . "_module_vars VALUES ('9', '/PNConfig','Default_Theme','s:9:\"ExtraLite\";')") or die ("<b>" . _NOTUPDATED . $prefix . "_module_vars</b>");
 $result = $dbconn->Execute("INSERT INTO ".$prefix."_module_vars VALUES ('10', '/PNConfig','foot1','". serialize($footmsg) ."')") or die ("<strong>"._NOTUPDATED.$prefix."_module_vars</strong>");
-//$result = $dbconn->Execute("INSERT INTO " . $prefix . "_module_vars VALUES ('10', '/PNConfig','foot1','s:1116:\"<br><a href=\"http://www.postnuke.com\" target=\"_blank\"><img src=\"images/powered/postnuke.butn.gif\" border=\"0\" alt=\"Web site powered by PostNuke\" hspace=\"10\"></a> <a href=\"http://php.weblogs.com/ADODB\" target=\"_blank\"><img src=\"images/powered/adodb2.gif\" alt=\"ADODB database library\" border=\"0\" hspace=\"10\"></a><a href=\"http://www.phplivesupport.com/\" target=\"_blank\"><img src=\"images/powered/phplive.gif\" alt=\"PHP Live!, brought to you by LivePeople.info\" border=\"0\" hspace=\"10\"></a><a href=\"http://www.php.net\" target=\"_blank\"><img src=\"images/powered/php2.gif\" alt=\"PHP Scripting Language\" border=\"0\" hspace=\"10\"></a><br><br>All logos and trademarks in this site are property of their respective owner. The comments are property of their posters, all the rest © 2002 by me<br>This web site was made with <a href=\"http://www.postnuke.com\" target=\"_blank\">PostNuke</a>, a web portal system written in PHP. PostNuke is Free Software released under the <a href=\"http://www.gnu.org\" target=\"_blank\">GNU/GPL license</a>.<br>You can syndicate our news using the file <a href=\"backend.php\">backend.php</a>\";')") or die ("<b>" . _NOTUPDATED . $prefix . "_module_vars</b>");
+//$result = $dbconn->Execute("INSERT INTO " . $prefix . "_module_vars VALUES ('10', '/PNConfig','foot1','s:1116:\"<br><a href=\"http://www.postnuke.com\" target=\"_blank\"><img src=\"images/powered/postnuke.butn.gif\" border=\"0\" alt=\"Web site powered by PostNuke\" hspace=\"10\"></a> <a href=\"http://php.weblogs.com/ADODB\" target=\"_blank\"><img src=\"images/powered/adodb2.gif\" alt=\"ADODB database library\" border=\"0\" hspace=\"10\"></a><a href=\"http://www.phplivesupport.com/\" target=\"_blank\"><img src=\"images/powered/phplive.gif\" alt=\"PHP Live!, brought to you by LivePeople.info\" border=\"0\" hspace=\"10\"></a><a href=\"http://www.php.net\" target=\"_blank\"><img src=\"images/powered/php2.gif\" alt=\"PHP Scripting Language\" border=\"0\" hspace=\"10\"></a><br><br>All logos and trademarks in this site are property of their respective owner. The comments are property of their posters, all the rest Â© 2002 by me<br>This web site was made with <a href=\"http://www.postnuke.com\" target=\"_blank\">PostNuke</a>, a web portal system written in PHP. PostNuke is Free Software released under the <a href=\"http://www.gnu.org\" target=\"_blank\">GNU/GPL license</a>.<br>You can syndicate our news using the file <a href=\"backend.php\">backend.php</a>\";')") or die ("<b>" . _NOTUPDATED . $prefix . "_module_vars</b>");
 $result = $dbconn->Execute("INSERT INTO " . $prefix . "_module_vars VALUES ('11', '/PNConfig','commentlimit','i:4096;')") or die ("<b>" . _NOTUPDATED . $prefix . "_module_vars</b>");
 $result = $dbconn->Execute("INSERT INTO " . $prefix . "_module_vars VALUES ('12', '/PNConfig','anonymous','s:9:\"Anonymous\";')") or die ("<b>" . _NOTUPDATED . $prefix . "_module_vars</b>");
 $result = $dbconn->Execute("INSERT INTO " . $prefix . "_module_vars VALUES ('13', '/PNConfig','defaultgroup','s:5:\"Users\";')") or die ("<b>" . _NOTUPDATED . $prefix . "_module_vars</b>");
