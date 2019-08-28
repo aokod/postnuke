@@ -1,0 +1,38 @@
+PostNuke doesn't stand alone in the world: it's part of a greater whole - the Open Source 
+software movement. To create the end result, PostNuke utilizes many other products. 
+These credits cover the many other products used.
+
+* PHP
+Just a few words to the people who developed PHP: Thanks folks! You're the
+best! PHP is easy to install, and extremely easy to learn and use.
+http://www.php.net
+
+* MySQL
+One of the best database software we've ever seen. Flexible and powerful.
+A big thanks for releasing it under GPL!
+http://www.mysql.com
+
+* Apache
+What can we say? The best Web server software.
+http://www.apache.org
+
+* Linux
+This software was made thanks to a love for Linux.
+Linux is a registered trademark of Linus Torvalds.
+
+* ADODB
+This is a database library we integrated in PostNuke, done by John Lim,
+good work John!
+http://php.weblogs.com/ADODB
+
+* PhPLens free debug
+Used for tracing in debug window; lets us trace the SQL and time to
+render... Done by John Lim.
+
+* Smarty
+Smarty is a template engine for PHP.
+http://smarty.php.net
+
+* PHP Mailer
+PHP Mailer is full-featured e-mail transfer class for PHP.
+http://phpmailer.sourceforge.net/

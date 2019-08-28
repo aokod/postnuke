@@ -1,0 +1,150 @@
+PostNuke Release Credits
+==============================================
+
+PostNuke is, as with many successful open-source products, a huge
+collaborative effort spanning many diverse talents from across the 
+globe.  The list below gives an idea of some of the people that have 
+helped in creating the PostNuke Release, and also
+those in other areas such as support and documentation.
+
+PostNuke was originally a fork of PHPNuke by Francisco Burzi, and many of
+the concepts in that program survive even though the code does not.  We (and
+PHPNuke, of course) were also influenced by earlier products such as slash and
+thatware, and I'm sure that we could trace the lineage back to the earliest
+weblog if we wanted to.  Open source at work is taking the best ideas floating
+around the web and building a product out of them, and that's where we hope
+that PostNuke is heading.
+
+Please note that this credits file only contains credits relevant to
+the release of PostNuke.  For full credits, please refer 
+to the file docs/previouscredits.txt. For credits for the many third party 
+applications and tools used to build PostNuke please refer to the file
+docs/thirdpartycredits.txt
+
+
+Project Management
+=================
+
+Vanessa Haakenson
+vworld
+Project Manager
+
+Harry Zink
+hzink
+
+Drak
+Technical Operations Manager
+
+
+Individual Roles
+================
+
+Franz Skaaning
+franz.skanning
+Communications
+
+Simon Birtwistle
+HammerHead
+PostNuke Evangelist
+
+Sebastian Schurmann
+dabase
+Quality Assurance
+
+
+Development Team
+================
+
+Andreas Krapohl
+larsneo
+Lead Development
+
+Mark West
+markwest
+Lead Development
+
+Joerg Napp
+jn
+
+Jorn Lind-Nielsen
+jorn
+
+Frank Schummertz
+Landseer
+
+Franky Chestnut
+Chestnut
+
+Chris Miller
+r3ap3r
+
+Carl Slaughter
+Carls
+
+Valerio Santinelli
+tanis
+
+Brook Humphrey
+webmedic
+
+Larry Masters
+phpnut
+
+Giovanni Van Geel
+bravecobra
+
+Luis Cabrera
+lcabrera
+
+Devin Hayes
+InvalidResponse
+
+Lee Eason
+leason
+
+Jean-Michel Vedrine
+jmvedrine
+
+PostNuke Teams
+==============
+
+Michael Halbrook
+mhalbrook
+Support Team Lead
+
+Simon Birtwistle
+HammerHead
+Documentation Team Lead
+
+David Nelson
+Language and Localization Manager
+
+Ralph Alberti
+zbert
+
+Mark Ouellet
+Spire2000
+
+Frank DeRosa
+FrankDeRosa
+
+
+PostNuke Translations
+=====================
+
+Thanks also go to the many translation teams and individual translators 
+around the world who translate PostNuke. Without translations, PostNuke 
+could not be a truly multinational project with contributions from around 
+the world.
+
+PostNuke's pnLanguages translation/localization project can be found
+at http://noc.postnuke.com/projects/pnlanguages, where you can download
+the latest versions of language packs available for PostNuke.
+
+PostNuke Users
+==============
+
+All users of the PostNuke project deserve a mention here.  In one
+way or another, everyone has contributed to PostNuke, either by
+downloading and installing the system, or in other ways, submitting
+bug fixes, helping in the forums or in many many different ways.

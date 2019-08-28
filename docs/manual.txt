@@ -1,0 +1,223 @@
+﻿PLEASE READ *ALL* OF THIS DOCUMENT BEFORE INSTALLING OR USING POSTNUKE
+=======================================
+
+PostNuke is an Open Source, open-development content management system
+(CMS).  PostNuke started as a fork from PHP-Nuke (http://www.phpnuke.org) and
+provides many enhancements and improvements over the PHP-Nuke system. PostNuke
+is still undergoing development, but a large number of core functions are now
+stabilizing and a complete API for third-party developers is now implemented.
+
+If you would like to help develop this software, please visit our home page
+at http://noc.postnuke.com/
+
+Or visit the community forums at:
+http://forums.postnuke.com/
+
+
+New Installation
+================
+
+PostNuke has a user-friendly installer that divides the process of setting-up your 
+site into a simple set of steps. 
+
+Before running the installer, ensure that both config.php and config-old.php
+are world-writable. Furthermore, make sure that the pnTemp directory and its subdirectories 
+are also world-writable. "World-writable" means applying a permission setting of 777 or 666, 
+depending on your system, if the system is Unix-based.
+
+To install your PostNuke system, run install.php from your browser to start
+the installation process. The exact URL you need to enter depends on your site but, 
+for example, if your site is www.example.com and PostNuke is installed in the 'sampledir' directory,
+then the URL will be:
+
+http://www.example.com/sampledir/install.php
+
+Follow the instructions in the installation script and, when prompted to choose between
+either a new installation or an upgrade, select 'new install'. The installer will
+create the required database tables and prompt you to enter the user name and password
+for the site administrator's account. Once you have completed the installation process,
+you should be able to start using your PostNuke site immediately.
+
+Note: To avoid problems, it is preferable to create the database before running the
+installer, because the installation script often does not have the required permissions 
+in MySQL to create the database. However, should you wish to create the database using
+the installer, ensure your MySQL user has full rights to create new databases.
+
+For security reasons, we recommend you to have magic_quotes set to ON and register_globals
+set to OFF in php.ini, although PostNuke will work regardless of these settings.
+
+ADDENDUM: Should you wish to install PostNuke manually, which is not recommended,
+import the MySQL dump included in the distribution into your database, and edit config.php
+manually in a text editor. If you choose this method, the administrator's  
+user name will be "Admin", and the administrator's password will be "Password".  
+These are case-sensitive. Remember to change the default administrator account user 
+name and password, or you will leave your system open to attacks.
+
+
+Upgrade
+=======
+
+The simple upgrade script allows you to quickly upgrade any previous PostNuke 
+installation (version 0.71 or later). In addition, you can upgrade from 
+other CMS packages.
+
+
+1) Before doing anything else, BACK UP YOUR DATABASE AND FILES. This cannot be 
+stressed enough. If there is a problem with your upgrade procedure, or if the process
+is only partly completed, the best solution is often to restore your original site  
+and try again. Without a backup, this isn't possible.
+
+*IMPORTANT WARNING* DO NOT ATTEMPT TO START THE UPGRADE PROCESS UNTIL YOU HAVE 
+COMPLETED STEPS 2) AND 3) BELOW!!!!!
+
+2) Log in to your site using your administrator user name and password. 
+Make sure that all the modules listed below are initialized, and that they are active.
+state. This step is vital when upgrading, because a number of core  
+modules (notably Admin, Blocks and Modules) will be upgraded in this release, and must 
+be initialized and active for the upgrade process to be successful. These modules
+are as follows:
+
+AddStory (NS-AddStory)
+Admin (or NS-Admin)
+Admin_Messages (or NS-Admin_Messages)
+Blocks
+Censor
+Groups (or NS-Groups)
+Header_Footer
+legal
+LostPassword (or NS-LostPassword)
+Mailer
+Multisites (or NS-Multisites)
+NewUser (or NS-NewUser)
+Permissions
+pnRender
+Search
+Settings (or NS-Settings)
+Submit_News
+User (or NS-User)
+Xanthia
+Your_Account (or NS-Your_Account)
+
+3) Ensure that your default site theme and the theme selected for your site 
+administrator (if you have allowed users to choose their own theme) are set to 
+ExtraLite. The Xanthia module is upgraded in this build, and it is necessary for 
+your site to be using a non-Xanthia theme beforehand: if not, you will have problems 
+accessing your site afterwards. ExtraLite is the only non-Xanthia theme included 
+in the PostNuke distribution. (Note: if you DO fail to do this, the PostNuke Swiss
+Army Knife [PSAK] tool can be used to restore your site to a visitable condition.)
+
+4) Take a copy of your config.php file and store it somewhere safe;
+you'll need it in step 7.
+
+5) If you're upgrading from an earlier release containing the Xanthia and pnRender 
+modules, ensure that all cache and compile directories in pnTemp are emptied.
+
+6) If you haven't already done so, BACKUP your old files and database to a 
+secure location. Remove ALL of the files in your existing PostNuke distribution.  
+ALL of them. Put your new distribution in its place. 
+If you had 3rd party modules and/or blocks installed, copy them from your backup 
+into your new installation NOW, *before* continuing the upgrade process.
+
+7) Take the config.php file that you saved in step 4, and copy
+it to the PostNuke base directory (the directory in which the config.php and 
+config-old.php files are located). It will be used in the upgrade process
+
+Also during this step 7), make sure you set permissions for the config-old.php
+and config.php files to 777 or 666, depending on your system. 
+
+This is necessary in order to allow PHP to update these files. Once the installation 
+process has been completed, change the permissions back to 644.
+
+8) If you are upgrading from a PostNuke version earlier than 0.750, there are also 
+several new entries that need to be added to your config.php file. 
+Add the following entries, just below $pnconfig['encoded']
+
+$pnconfig['dbtabletype'] = 'MyISAM';
+$pnconfig['pconnect'] = '0';
+$pnconfig['temp'] = 'pnTemp';
+
+Now, add the following entry, just below $pndebug['debug_sql'] = 0;
+
+$pndebug['pagerendertime'] = 0;
+
+9) The next step to follow depends on the version you are upgrading from. If your 
+current PostNuke version is earlier than 0.723, proceed with step 10.  
+Otherwise, skip to step 11.
+
+10) *IMPORTANT* THE STEP BELOW IS ONLY TO BE FOLLOWED IF UPGRADING FROM A VERSION 
+EARLIER THAN 0.723
+
+Run install.php from your browser, to start the installation process. The exact URL 
+depends on your site; for example:
+
+http://www.example.com/sampledir/install.php
+
+Follow the instructions given by the installation script and, when prompted to choose 
+between either a new installation or an upgrade, select 'Upgrade'. Then choose the version 
+of PostNuke (or other CMS) that you are currently using. The rest of the procedure 
+should be automatic.
+
+11) Now invoke upgrade.php from your browser, as an example:
+
+http://www.example.com/sampledir/upgrade.php
+
+You will need to enter a user name and password for a user with site administrator rights.
+The upgrade script will then perform the upgrade for you. Once the process is finished, 
+you can click on the link to visit your now-upgraded site.
+
+Remove install.php, remove the 'install' directory and remove upgrade.php from your 
+web site's base directory, as these files are no longer required by PostNuke but will  
+create a security risk if left in place.
+
+11) The new Admin module allows you to categorize modules. 
+During an upgrade, categories are created but are not populated. So all modules 
+will be placed in the 3rd-party category. Modify the configuration of the Admin module, 
+and add each module to a category you feel is suitable. 
+In the Admin module's configuration panel, you can also define new categories and 
+remove unwanted categories.
+
+12) If you want to use a Xanthia theme and enable short URLs for your site, then 
+your web site's .htaccess file will need to be updated so that it contains the simplified 
+URLs in this release. 
+We have provided .htaccess files for the various short URL schemes in the directory  
+/modules/Xanthia/pndocs/short_urls. If you made any changes to the .htaccess file you 
+were using with your existing PostNuke installation, then you will need to merge those 
+changes into the new file we have provided.
+
+Caution
+=======
+
+Previous versions of PostNuke and other derivatives often include plugins
+that alter the database core tables, by adding fields, changing names, etc.
+It should be noted that PostNuke does not support any modification of the core
+tables (namely those that come with this PostNuke distribution) or direct access to
+the core database tables. APIs are provided for developers to use for these
+purposes, so that future planned changes will have a minimal impact on
+third-party added functionality; the APIs we provide should be used at all times.
+
+
+Common Installation Errors
+==========================
+
+Below are some common errors and frequent mistakes: 
+
+1) config.php and config-old.php not world-writable: these files need to be
+writable by the web server process during the install/upgrade, so that 
+certain configuration parameters can be stored. The installation procedure should 
+check for this and inform you if the files are not writable. Note that these files 
+can be reset to read-only once the installation/upgrade process has been completed.
+
+2) Problems creating or populating the database: this is often due to incorrect MySQL 
+privileges for access to the database. If you are not sure that the installer has 
+the necessary permissions, try to access your MySQL database "manually" (using a tool 
+such as phpMyAdmin, for example) using the database user name and password that you 
+intended the PostNuke installer to use, and attempt to create a database and to create 
+a table in that database; if you succeed, you will have ensured that the user exists, 
+has a correct password, and is able to carry out the operations that PostNuke needs to
+perform in order to complete the installation process.
+
+
+Enjoy!
+Cheers!
+
+The PostNuke Development Team
