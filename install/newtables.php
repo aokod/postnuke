@@ -19,7 +19,7 @@ $sql = "
 	pn_name varchar(32) NOT NULL default '',
 	pn_description varchar(254) NOT NULL default '',
 	PRIMARY KEY (pn_cid)
-) TYPE = " . $dbtabletype . "
+) ENGINE = " . $dbtabletype . "
 ";
 dosql($table,$sql);
 
@@ -28,7 +28,7 @@ $sql = "
    CREATE TABLE ".$prefix."_admin_module (
     pn_mid int(10) NOT NULL default 0,
     pn_cid int(10) NOT NULL default 0
-) TYPE = " . $dbtabletype . "
+) ENGINE = " . $dbtabletype . "
 ";
 dosql($table,$sql);
 
@@ -49,7 +49,7 @@ $sql = "
      pn_language varchar(30) NOT NULL default '',
      pn_withcomm int(1) NOT NULL default '0',
      PRIMARY KEY  (pn_anid)
-) TYPE = " . $dbtabletype . "
+) ENGINE = " . $dbtabletype . "
 ";
 dosql($table,$sql);
 
@@ -66,12 +66,12 @@ CREATE TABLE ".$prefix."_blocks (
   pn_weight decimal(10,1) NOT NULL default '0.0',
   pn_active tinyint(3) unsigned NOT NULL default '1',
   pn_refresh int(11) unsigned NOT NULL default '0',
-  pn_last_update timestamp(14) NOT NULL,
+  pn_last_update timestamp NOT NULL,
   pn_language varchar(30) NOT NULL default '',
   pn_collapsable int(11) NOT NULL default '1',
   pn_defaultstate int(11) NOT NULL default '1',
   PRIMARY KEY  (pn_bid)
-) TYPE = " . $dbtabletype . "
+) ENGINE = " . $dbtabletype . "
 ";
 dosql($table,$sql);
 
@@ -84,7 +84,7 @@ CREATE TABLE ".$prefix."_blocks_buttons (
   pn_url varchar(254) NOT NULL default '',
   pn_images longtext NOT NULL,
   PRIMARY KEY  (pn_id)
-) TYPE = " . $dbtabletype . "
+) ENGINE = " . $dbtabletype . "
 ";
 dosql($table,$sql);
 
@@ -93,7 +93,7 @@ $sql = "
 CREATE TABLE ".$prefix."_group_membership (
   pn_gid int(11) NOT NULL default '0',
   pn_uid int(11) NOT NULL default '0'
-) TYPE = " . $dbtabletype . "
+) ENGINE = " . $dbtabletype . "
 ";
 dosql($table,$sql);
 
@@ -109,7 +109,7 @@ CREATE TABLE ".$prefix."_group_perms (
   pn_level smallint(4) NOT NULL default '0',
   pn_bond int(2) NOT NULL default '0',
   PRIMARY KEY  (pn_pid)
-) TYPE = " . $dbtabletype . "
+) ENGINE = " . $dbtabletype . "
 ";
 dosql($table,$sql);
 
@@ -119,7 +119,7 @@ CREATE TABLE ".$prefix."_groups (
   pn_gid int(11) NOT NULL auto_increment,
   pn_name varchar(255) NOT NULL default '',
   PRIMARY KEY  (pn_gid)
-) TYPE = " . $dbtabletype . "
+) ENGINE = " . $dbtabletype . "
 ";
 dosql($table,$sql);
 
@@ -136,7 +136,7 @@ CREATE TABLE ".$prefix."_headlines (
   pn_siteurl varchar(255) NOT NULL default '',
   pn_options varchar(20) default '',
   PRIMARY KEY  (pn_id)
-) TYPE = " . $dbtabletype . "
+) ENGINE = " . $dbtabletype . "
 ";
 dosql($table,$sql);
 
@@ -153,7 +153,7 @@ CREATE TABLE ".$prefix."_hooks (
   pn_ttype varchar(64) NOT NULL,
   pn_tfunc varchar(64) NOT NULL,
   PRIMARY KEY  (pn_id)
-) TYPE = " . $dbtabletype . "
+) ENGINE = " . $dbtabletype . "
 ";
 dosql($table,$sql);
 
@@ -167,7 +167,7 @@ CREATE TABLE ".$prefix."_module_vars (
   PRIMARY KEY  (pn_id),
   KEY pn_modname (pn_modname),
   KEY pn_name (pn_name)
-) TYPE = " . $dbtabletype . "
+) ENGINE = " . $dbtabletype . "
 ";
 dosql($table,$sql);
 
@@ -186,7 +186,7 @@ CREATE TABLE ".$prefix."_modules (
   pn_user_capable tinyint(1) NOT NULL default '0',
   pn_state tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (pn_id)
-) TYPE = " . $dbtabletype . "
+) ENGINE = " . $dbtabletype . "
 ";
 dosql($table,$sql);
 
@@ -204,7 +204,7 @@ CREATE TABLE ".$prefix."_queue (
   pn_language varchar(30) NOT NULL default '',
   pn_bodytext text,
   PRIMARY KEY  (pn_qid)
-) TYPE = " . $dbtabletype . "
+) ENGINE = " . $dbtabletype . "
 ";
 dosql($table,$sql);
 
@@ -214,7 +214,7 @@ CREATE TABLE ".$prefix."_realms (
   pn_rid int(11) NOT NULL auto_increment,
   pn_name varchar(255) NOT NULL default '',
   PRIMARY KEY  (pn_rid)
-) TYPE = " . $dbtabletype . "
+) ENGINE = " . $dbtabletype . "
 ";
 dosql($table,$sql);
 
@@ -226,7 +226,7 @@ CREATE TABLE ".$prefix."_related (
   pn_name varchar(30) NOT NULL default '',
   pn_url varchar(254) NOT NULL default '',
   PRIMARY KEY  (pn_rid)
-) TYPE = " . $dbtabletype . "
+) ENGINE = " . $dbtabletype . "
 ";
 dosql($table,$sql);
 
@@ -240,7 +240,7 @@ CREATE TABLE ".$prefix."_session_info (
   pn_uid int(11) NOT NULL default '0',
   pn_vars blob,
   PRIMARY KEY  (pn_sessid)
-) TYPE = " . $dbtabletype . "
+) ENGINE = " . $dbtabletype . "
 ";
 dosql($table,$sql);
 
@@ -265,7 +265,7 @@ CREATE TABLE ".$prefix."_stories (
   pn_withcomm tinyint(1) NOT NULL default '0',
   pn_format_type tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (pn_sid)
-) TYPE = " . $dbtabletype . "
+) ENGINE = " . $dbtabletype . "
 ";
 dosql($table,$sql);
 
@@ -277,7 +277,7 @@ CREATE TABLE ".$prefix."_stories_cat (
   pn_counter int(11) NOT NULL default '0',
   pn_themeoverride varchar(30) NOT NULL default '',
   PRIMARY KEY  (pn_catid)
-) TYPE = " . $dbtabletype . "
+) ENGINE = " . $dbtabletype . "
 ";
 dosql($table,$sql);
 
@@ -289,7 +289,7 @@ CREATE TABLE ".$prefix."_user_data (
   pn_uda_uid int(11) NOT NULL default '0',
   pn_uda_value mediumblob NOT NULL,
   PRIMARY KEY  (pn_uda_id)
-) TYPE = " . $dbtabletype . "
+) ENGINE = " . $dbtabletype . "
 ";
 dosql($table,$sql);
 
@@ -308,7 +308,7 @@ CREATE TABLE ".$prefix."_user_perms (
   pn_level int(4) NOT NULL default '0',
   pn_bond int(2) NOT NULL default '0',
   PRIMARY KEY  (pn_pid)
-) TYPE = " . $dbtabletype . "
+) ENGINE = " . $dbtabletype . "
 ";
 dosql($table,$sql);
 
@@ -323,7 +323,7 @@ CREATE TABLE ".$prefix."_user_property (
   pn_prop_validation varchar(255) default NULL,
   PRIMARY KEY  (pn_prop_id),
   UNIQUE KEY pn_prop_label (pn_prop_label)
-) TYPE = " . $dbtabletype . "
+) ENGINE = " . $dbtabletype . "
 ";
 dosql($table,$sql);
 
@@ -333,8 +333,8 @@ CREATE TABLE ".$prefix."_userblocks (
   pn_uid int(11) NOT NULL default '0',
   pn_bid int(11) NOT NULL default '0',
   pn_active tinyint(3) NOT NULL default '1',
-  pn_last_update timestamp(14) NOT NULL
-) TYPE = " . $dbtabletype . "
+  pn_last_update timestamp NOT NULL
+) ENGINE = " . $dbtabletype . "
 ";
 dosql($table,$sql);
 
@@ -373,7 +373,7 @@ CREATE TABLE ".$prefix."_users (
   pn_counter int(11) NOT NULL default '0',
   pn_timezone_offset float(3,1) NOT NULL default '0.0',
   PRIMARY KEY  (pn_uid)
-) TYPE = " . $dbtabletype . "
+) ENGINE = " . $dbtabletype . "
 ";
 dosql($table,$sql);
 
