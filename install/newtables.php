@@ -281,6 +281,19 @@ CREATE TABLE ".$prefix."_stories_cat (
 ";
 dosql($table,$sql);
 
+$table = $prefix.'_topics';
+$sql = "
+CREATE TABLE ".$prefix."_topics (
+  pn_topicid tinyint(4) NOT NULL auto_increment,
+  pn_topicname varchar(255) default NULL,
+  pn_topicimage varchar(255) default NULL,
+  pn_topictext varchar(255) default NULL,
+  pn_counter int(11) NOT NULL default '0',
+  PRIMARY KEY  (pn_topicid)
+) ENGINE = " . $dbtabletype . "
+";
+dosql($table,$sql);
+
 $table = $prefix.'_user_data';
 $sql = "
 CREATE TABLE ".$prefix."_user_data (
